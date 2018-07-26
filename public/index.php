@@ -13,5 +13,17 @@
 
 // 定义应用目录
 define('APP_PATH', __DIR__ . '/../application/');
+
+//后台
+define('ADMIN_JS','/static/admin/js');
+define('ADMIN_CSS','/static/admin/css');
+define('ADMIN_IMG','/static/admin/img');
+define('ADMIN_IMGS','/static/admin/imgs');
+define('ADMIN_COM','/static/admin/common');
+// 前台
+define('HOME_JS','/static/home/js');
+define('HOME_CSS','/static/home/css');
+define('HOME_IMG','/static/home/img');
+define('HOME_IMGS','/static/home/images');
 // 加载框架引导文件
 require __DIR__ . '/../thinkphp/start.php';
