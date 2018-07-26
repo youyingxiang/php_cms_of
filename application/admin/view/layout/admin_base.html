@@ -1,3 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>{block name="title"}{/block}</title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <meta name="renderer" content="webkit">
+<!-- 引入css文件   -->
+<link rel="stylesheet" type="text/css" href="/static/global/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="/static/global/bootstrap/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="/static/system/iCheck/minimal/blue.css" />
+<link rel="stylesheet" type="text/css" href="/static/system/select2/select2.min.css" />
+<link rel="stylesheet" type="text/css" href="/static/system/dist/css/AdminLTE.min.css" />
+<link rel="stylesheet" type="text/css" href="/static/system/dist/css/skins/skin-blue.min.css" />
+
+<script type="text/javascript" src="/static/global/jQuery/jquery-2.2.3.min.js"></script>
+<script type="text/javascript" src="/static/global/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/static/system/slimScroll/jquery.slimscroll.min.js"></script>
+<script type="text/javascript" src="/static/system/dist/js/app.min.js"></script>
+<script type="text/javascript" src="/static/global/jQuery/jquery.pjax.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/static/system/kindeditor/themes/default/default.css" />
+<script type="text/javascript" src="/static/system/kindeditor/kindeditor-all.js"></script>
+<script type="text/javascript" src="/static/system/kindeditor/lang/zh-CN.js"></script>
+{block name="css"}{/block}
+</head>
 <body class="hold-transition skin-blue fixed sidebar-mini">
   <div class="wrapper">
   <!-- 头部 -->
@@ -5,9 +32,9 @@
     <!-- Logo -->
     <a href="{:url('Index/lst')}" class="logo">
       <!-- 窗口折叠 -->
-      <span class="logo-mini"><img src="{$Think.ADMIN_IMG}/logo-inverse.png"></span>
+      <span class="logo-mini">php后台</span>
       <!-- 窗口展开 -->
-      <span class="logo-lg"><img src="{$Think.ADMIN_IMG}/logo-inverse.png"></span>
+      <span class="logo-lg">php后台</span>
     </a>
     <!-- 右上导航 -->
     <nav class="navbar navbar-static-top">
@@ -63,13 +90,13 @@
         </div>
         <div class="pull-left info">
           <p>{$admin_base['admin_name']}</p>
-          <a href="#"><i class="fa fa-circle text-success"></i> {$Think.lang.online}</a>
+          <a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
         </div>
       </div>
       <!--搜索-->
       <div class="sidebar-form">
         <div class="input-group">
-          <input type="text" name="q" id="search-btn-value" class="form-control" placeholder="{$Think.lang.search}">
+          <input type="text" name="q" id="search-btn-value" class="form-control" placeholder="搜索">
           <span class="input-group-btn">
                 <button type="submit" name="search" id="search-btn" class="search-btn-menu btn btn-flat"><i class="fa fa-search"></i>
                 </button>
@@ -104,7 +131,7 @@
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
          <ul class="sidebar-menu">
-              <li class="header">{$Think.lang.menu_}</li>
+              <li class="header">菜单</li>
               {volist name="menu" id="oo"}
                   {if condition=" $oo.level eq '0' "/}
                   <li class="treeview">
@@ -150,3 +177,41 @@
   </footer>
   </div>
 </body>
+{/block}
+{block name="js"}{/block}
+<script type="text/javascript" src="/static/global/jQuery/jquery.form.js"></script>
+<script type="text/javascript" src="/static/system/editable/bootstrap-editable.js"></script>
+<link rel="stylesheet" type="text/css" href="/static/system/editable/bootstrap-editable.css" />
+
+<script type="text/javascript" src="/static/global/nprogress/nprogress.js"></script>
+<link rel="stylesheet" type="text/css" href="/static/global/nprogress/nprogress.css" />
+
+<link rel="stylesheet" type="text/css" href="/static/global/jQuery-gDialog/animate.min.css" />
+<link rel="stylesheet" type="text/css" href="/static/global/Amaranjs/amaran.min.css" />
+<script type="text/javascript" src="/static/global/Amaranjs/jquery.amaran.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/static/global/bootstrap/js/bootstrap-dialog.min.css" />
+<script type="text/javascript" src="/static/global/bootstrap/js/bootstrap-dialog.min.js"></script>
+
+<script type="text/javascript" src="/static/system/datetimepicker/moment-with-locales.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/static/system/datetimepicker/bootstrap-datetimepicker.min.css" />
+<script type="text/javascript" src="/static/system/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+
+<script type="text/javascript" src="/static/system/multiselect/multiselect.min.js"></script>
+
+<script type="text/javascript" src="/static/system/iCheck/icheck.min.js"></script>
+
+<script type="text/javascript" src="/static/system/select2/select2.min.js"></script>
+<script type="text/javascript" src="/static/system/select2/i18n/zh-CN.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/static/global/cropper/cropper.min.css" />
+<script type="text/javascript" src="/static/global/cropper/cropper.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/static/global/cropper/cropper.main.css" />
+<script type="text/javascript" src="/static/global/cropper/cropper.main.js"></script>
+<script type="text/javascript" src="/static/system/chart/Chart.min.js"></script>
+
+<script type="text/javascript" src="/static/home/js/upload/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="/static/home/js/upload/jquery.iframe-transport.js"></script>
+<script type="text/javascript" src="/static/home/js/upload/jquery.fileupload.js"></script>
+<script type="text/javascript" src="/static/system/dist/js/common.js"></script>
+<script type="text/javascript" src="/static/system/dist/js/login.js"></script>
+</html>

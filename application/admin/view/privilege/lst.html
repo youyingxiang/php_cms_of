@@ -14,14 +14,14 @@
                 <div class="box-body table-responsive">
                     <table class="table table-bordered table-hover">
                         <tr>
-                            <th>{$Think.lang.pri_name}{:table_sort('module_name')}</th>
-                            <th>{$Think.lang.module_name}</th>
-                            <th>{$Think.lang.controller_name}</th>
-                            <th>{$Think.lang.action_name}</th>
-                            <th>{$Think.lang.parent_id}</th>
-                            <th>{$Think.lang.order_key}{:table_sort('order_key')}</th>
-                            <th>{$Think.lang.icon}</th>
-                            <th width="150">{$Think.lang.action}</th>
+                            <th>权限名称{:table_sort('module_name')}</th>
+                            <th>模块名称</th>
+                            <th>控制器名称</th>
+                            <th>方法名称</th>
+                            <th>父权限ID</th>
+                            <th>排序{:table_sort('order_key')}</th>
+                            <th>图标</th>
+                            <th width="150">操作</th>
                         </tr>
                         {volist name="data" id="vo"}
                         <tr>

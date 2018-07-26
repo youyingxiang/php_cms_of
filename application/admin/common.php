@@ -11,24 +11,18 @@
  */
 function authAction($rule, $cationType='create', $param='')
 {   
-    if($cationType == 'create') $result = "<a href=\"".url($rule, $param)."\" class=\"btn btn-sm btn-primary\"><i class=\"fa fa-save\"></i> ".lang('create')."</a>";
-    if($cationType == 'relation_f') $result = "<a class=\"btn btn-primary btn-xs relation_f\" data-p=\"".$param."\" href=\"javascript:void(0)\"><i class=\"fa fa-download\"></i> ".lang('relation_f')."</a>";
-    if($cationType == 'relation_p') $result = "<a class=\"btn btn-primary btn-xs relation_p\" data-p=\"".$param."\" href=\"javascript:void(0)\"><i class=\"fa fa-cart-plus\"></i> ".lang('relation_p')."</a>";
-    if($cationType == 'relation_c') $result = "<a class=\"btn btn-primary btn-xs relation_c\" data-p=\"".$param."\" href=\"javascript:void(0)\"><i class=\"fa fa-clone\"></i> ".lang('relation_c')."</a>";
-    if($cationType == 'relation_s') $result = "<a class=\"btn btn-primary btn-xs relation_s\" data-p=\"".$param."\" href=\"javascript:void(0)\"><i class=\"fa fa-building-o\"></i> ".lang('relation_s')."</a>";
-    if($cationType == 'push') $result = "<a class=\"btn btn-primary btn-xs push\"  data-newsid=\"".$param."\" href=\"javascript:void(0)\"><i class=\"fa fa-sign-out\"></i> ".lang('push')."</a>";
-    if($cationType == 'create_arc') $result = "<a class=\"btn btn-primary btn-xs\" href=\"".url($rule, $param)."\"><i class=\"fa fa-edit\"></i> ".lang('create_arc')."</a>";
-    if($cationType == 'edit') $result = "<a class=\"btn btn-primary btn-xs\" href=\"".url($rule, $param)."\"><i class=\"fa fa-edit\"></i> ".lang('edit')."</a>";
-    if($cationType == 'delete') $result = "<a class=\"btn btn-danger btn-xs delete-one\" href=\"javascript:void(0);\" data-url=\"".url($rule)."\" data-id=\"".$param."\"><i class=\"fa fa-trash\"></i> ".lang('delete')."</a>";
-    if($cationType == 'delete_all') $result = "<a class=\"btn btn-sm btn-danger delete-all\" href=\"javascript:void(0);\" data-url=\"".url($rule)."\" ><i class=\"fa fa-trash\"></i> ".lang('delete')."</a>";
-    if($cationType == 'save') $result = "<button type=\"submit\" class=\"btn btn-info pull-right submits\" data-loading-text=\"&lt;i class='fa fa-spinner fa-spin '&gt;&lt;/i&gt; ".lang('submit')."\">".lang('submit')."</button>";
-    if($cationType == 'auth_user') $result = "<a class=\"btn btn-primary btn-xs\" href=\"".url($rule, $param)."\"><i class=\"fa fa-edit\"></i> ".lang('auth_user')."</a>";
-    if($cationType == 'auth_group') $result = "<a class=\"btn btn-primary btn-xs\" href=\"".url($rule, $param)."\"><i class=\"fa fa-edit\"></i> ".lang('auth_group')."</a>";
-    if($cationType == 'agree') $result = "<a class=\"btn btn-success btn-xs\" onclick=\"return confirm('是否已确认给用户退完款？');\" href=\"".url($rule, $param)."\"><i class=\"fa fa-repeat\"></i> ".lang('agree')."</a>";
+    if($cationType == 'create') $result = "<a href=\"".url($rule, $param)."\" class=\"btn btn-sm btn-primary\"><i class=\"fa fa-save\"></i> 创建</a>";
+    
+    if($cationType == 'edit') $result = "<a class=\"btn btn-primary btn-xs\" href=\"".url($rule, $param)."\"><i class=\"fa fa-edit\"></i> 编辑</a>";
+    if($cationType == 'delete') $result = "<a class=\"btn btn-danger btn-xs delete-one\" href=\"javascript:void(0);\" data-url=\"".url($rule)."\" data-id=\"".$param."\"><i class=\"fa fa-trash\"></i> 删除</a>";
+    if($cationType == 'delete_all') $result = "<a class=\"btn btn-sm btn-danger delete-all\" href=\"javascript:void(0);\" data-url=\"".url($rule)."\" ><i class=\"fa fa-trash\"></i> 删除所有</a>";
+    if($cationType == 'save') $result = "<button type=\"submit\" class=\"btn btn-info pull-right submits\" data-loading-text=\"&lt;i class='fa fa-spinner fa-spin '&gt;&lt;/i&gt; 保存\">保存</button>";
+
+  
     if($cationType == 'disagree') $result = "<a class=\"btn btn-danger btn-xs\" href=\"".url($rule, $param)."\"><i class=\"fa fa-undo\"></i> ".lang('disagree')."</a>";
-    if($cationType == 'backup') $result = "<a class=\"btn btn-primary btn-sm delete-all\" href=\"javascript:void(0);\" data-url=\"".url($rule)."\" data-title=\"".lang('backup')."\"><i class=\"fa fa-save\"></i> ".lang('backup')."</a>";
-    if($cationType == 'restore') $result = "<a class=\"btn btn-primary btn-xs delete-one\" href=\"javascript:void(0);\" data-url=\"".url($rule)."\" data-id=\"".$param."\" data-title=\"".lang('restore')."\"><i class=\"fa fa-rotate-left\"></i> ".lang('restore')."</a>";
-    if($cationType == 'dowonload') $result = "<a class=\"btn btn-warning btn-xs\" href=\"".url($rule, $param)."\"><i class=\"fa fa-download\"></i> ".lang('dowonload')."</a>";
+    if($cationType == 'backup') $result = "<a class=\"btn btn-primary btn-sm delete-all\" href=\"javascript:void(0);\" data-url=\"".url($rule)."\" data-title=‘备份’><i class=\"fa fa-save\"></i> 备份</a>";
+    if($cationType == 'restore') $result = "<a class=\"btn btn-primary btn-xs delete-one\" href=\"javascript:void(0);\" data-url=\"".url($rule)."\" data-id=\"".$param."\" data-title=’还原‘><i class=\"fa fa-rotate-left\"></i> 还原</a>";
+    if($cationType == 'dowonload') $result = "<a class=\"btn btn-warning btn-xs\" href=\"".url($rule, $param)."\"><i class=\"fa fa-download\"></i> 下载</a>";
     $res = cache(session('adminId'));
     $rule2 = explode('/',$rule);
     if (isset($res[$rule])){
@@ -52,6 +46,7 @@ function check_auth($rule)
         $data  = think\Db::name('privilege')->where(['id'=>['in',$role['role_pri']],'controller_name'=>['eq',$rule[0]],'action_name'=>['eq',$rule[1]]])->count();
     return $data;
 }
+
 function clear_auth()
 {
     cache(session('adminId'),null);
@@ -79,7 +74,7 @@ function table_sort($param)
             if ($sortArr[1] == 'asc'){
                 $faStr = 'fa-sort-asc';
                 $sort = 'desc';
-            }elseif ($sortArr[1] == 'desc'){
+            } elseif ($sortArr[1] == 'desc'){
                 $faStr = 'fa-sort-desc';
                 $sort = 'asc';
             }
@@ -91,11 +86,12 @@ function table_sort($param)
         $get['_sort'] = $param.',asc';
     }
     $paramStr = [];
+    array_shift($get);
     foreach ($get as $k=>$v){
         $paramStr[] = $k.'='.$v;
     }
     $paramStrs = implode('&', $paramStr);
-    $url_path = '/cn'.$url_path.'?'.$paramStrs;
+    $url_path = $url_path.'?'.$paramStrs;
     return "<a class=\"fa ".$faStr."\" href=\"".$url_path."\"></a>";
 }
 /**

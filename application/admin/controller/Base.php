@@ -16,10 +16,10 @@ class Base extends Controller
 
 	public function _initialize()
 	{
+		if (is_login() === false){$this->redirect('Login/logout');exit;}
 		header("Cache-control: private");
 		$priMode = new Pri;
 		$RoleMode = new Role_m;
-		session('adminId',1);
 		//获取用户的信息
 		$this->admin = $priMode->getBySeesionIdAdminInfo();
 		$this->role  = $RoleMode->getRoleInfoById($this->admin['role_id']);
@@ -41,9 +41,8 @@ class Base extends Controller
 
 	private function check_pri()
 	{
-		if (is_login()==false){$this->redirect('Login/logout');exit;}
-		if (CONTROLLER_NAME == 'Index')return true;
-		if ($this->role['role_type'] == 1)
+		if (CONTROLLER_NAME === 'Index')return true;
+		if ($this->role['role_type'] === 1)
 			$pri_ = 1;
 		else {
 			$where['id'] = ['in',$this->role['role_pri']];
