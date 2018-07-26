@@ -1,0 +1,152 @@
+<body class="hold-transition skin-blue fixed sidebar-mini">
+  <div class="wrapper">
+  <!-- 头部 -->
+  <header class="main-header">
+    <!-- Logo -->
+    <a href="{:url('Index/lst')}" class="logo">
+      <!-- 窗口折叠 -->
+      <span class="logo-mini"><img src="{$Think.ADMIN_IMG}/logo-inverse.png"></span>
+      <!-- 窗口展开 -->
+      <span class="logo-lg"><img src="{$Think.ADMIN_IMG}/logo-inverse.png"></span>
+    </a>
+    <!-- 右上导航 -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </a>
+
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <li class="dropdown messages-menu">
+             <a href="{:url('/')}" target="_blank">网站首页</a>
+          </li>
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <img src="{$admin_base['img']}" class="user-image" alt="User Image">
+              <span class="hidden-xs">{$admin_base['admin_name']}</span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- User image -->
+              <li class="user-header">
+                <img src="{$admin_base['img']}" class="img-circle" alt="User Image">
+                <p>
+                  {$admin_base['admin_name']}
+                  <small>{$role_base['role_name']}</small>
+                </p>
+              </li>
+              <li class="user-footer">
+                <div class="pull-left">
+                  <a href="{:url('Admin/edit',['id'=>$admin_base['id']])}" class="btn btn-default btn-flat">个人设置</a>
+                </div>
+                <div class="pull-right">
+                  <a href="{:url('Login/logout')}" class="btn btn-default btn-flat">退出登录</a>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- Sidebar user panel -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="{$admin_base['img']}" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p>{$admin_base['admin_name']}</p>
+          <a href="#"><i class="fa fa-circle text-success"></i> {$Think.lang.online}</a>
+        </div>
+      </div>
+      <!--搜索-->
+      <div class="sidebar-form">
+        <div class="input-group">
+          <input type="text" name="q" id="search-btn-value" class="form-control" placeholder="{$Think.lang.search}">
+          <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="search-btn-menu btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+              </span>
+        </div>
+      </div>
+
+      <script>
+          $(function () {
+              $(".search-btn-menu ").on('click',function () {
+                  var data_value = $("#search-btn-value").val().trim()
+                  $('.menu_check').each(function () {
+                      var obj = $(this)
+                      var search_content = obj.html()
+                      if (search_content.indexOf(data_value) >= 0) {
+                          if (obj.parent().parent().hasClass('treeview-menu')) {
+                              if (obj.parent().parent().parent().hasClass('active') == false) {
+                                  obj.parent().parent().prev().trigger('click')
+                                  obj.trigger('click')
+                              } else {
+                                  obj.trigger('click')
+                              }
+                          } else {
+                              obj.trigger('click');
+                          }
+                          return false
+                      }
+                  })
+              })
+          })
+      </script>
+      <!-- /.search form -->
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+         <ul class="sidebar-menu">
+              <li class="header">{$Think.lang.menu_}</li>
+              {volist name="menu" id="oo"}
+                  {if condition=" $oo.level eq '0' "/}
+                  <li class="treeview">
+                      <a class="menu_check" href="javascript:void(0);">
+                          <i class="{$oo.icon}"></i><span>{$oo.pri_name}</span>
+                          <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                      </a>
+                      <ul class="treeview-menu">
+                          {volist name="menu" id="to"}
+                          {if condition=" $to.parent_id eq $oo.id "}
+                          <li><a class="menu_check" href="{:url($to.module_name.'/'.$to.controller_name.'/'.$to.action_name)}"><i class="{$to.icon}"></i>{$to.pri_name}</a></li>
+                          {/if}
+                          {/volist}
+                      </ul>
+                  </li>
+                {/if}
+              {/volist}
+          </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+  <!-- 内容框 不能分开的-->
+  <div class="content-wrapper" id="pjax-container">
+      
+    <section class="content-header">
+      <h1>
+        {$_page_title}
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i>{$_page_btn_name}</a></li>
+      </ol>
+    </section>
+    {block name="content"}{/block}
+  </div>
+     <!-- 底部很少改变的  -->
+  <footer class="main-footer">
+    <div class="pull-right hidden-xs">
+      <b>Version</b> ls 1.0
+    </div>
+    <input id="fileupload_" type="file" style='display:none' name="imgFile"  data-url="{:url('Uploads/upload')}?dir=image" multiple>
+    <strong>Copyright &copy; 2017-2018 <a target="_blank"  href="/">yxx</a>.</strong> All rights
+    reserved.
+  </footer>
+  </div>
+</body>

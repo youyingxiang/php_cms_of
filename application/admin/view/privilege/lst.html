@@ -1,0 +1,72 @@
+{extend name="layout/admin_base"/}
+{block name='title'}权限管理{/block}
+{block name="content"}
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title"></h3>
+                    <div class="pull-left">
+                         {:authAction(CONTROLLER_NAME.'/add', 'create')}
+                    </div>
+                </div>
+                <div class="box-body table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <tr>
+                            <th>{$Think.lang.pri_name}{:table_sort('module_name')}</th>
+                            <th>{$Think.lang.module_name}</th>
+                            <th>{$Think.lang.controller_name}</th>
+                            <th>{$Think.lang.action_name}</th>
+                            <th>{$Think.lang.parent_id}</th>
+                            <th>{$Think.lang.order_key}{:table_sort('order_key')}</th>
+                            <th>{$Think.lang.icon}</th>
+                            <th width="150">{$Think.lang.action}</th>
+                        </tr>
+                        {volist name="data" id="vo"}
+                        <tr>
+                            <td>
+                                {eq name="vo['level']" value="2"}　　　│　　　├{/eq}
+                                {eq name="vo['level']" value="1"}　　　├{/eq}
+                                <span class="editable" data-pk="{$vo.id}" data-name="pri_name" data-url="{:url(CONTROLLER_NAME.'/edit', 'id='.$vo['id'])}" >{$vo.pri_name}</span>
+                            </td>
+                            <td><span class="editable" data-pk="{$vo.id}" data-name="module_name" data-url="{:url(CONTROLLER_NAME.'/edit', 'id='.$vo['id'])}" >{$vo.module_name}</span></td>
+                            <td><span class="editable" data-pk="{$vo.id}" data-name="controller_name" data-url="{:url(CONTROLLER_NAME.'/edit', 'id='.$vo['id'])}" >{$vo.controller_name}</span></td>
+                            <td><span class="editable" data-pk="{$vo.id}" data-name="action_name" data-url="{:url(CONTROLLER_NAME.'/edit', 'id='.$vo['id'])}" >{$vo.action_name}</span></td>
+                            <td>{$vo.parent_id}</td>                           
+                            <td><span class="editable" data-pk="{$vo.id}" data-name="order_key" data-url="{:url(CONTROLLER_NAME.'/edit', 'id='.$vo['id'])}" >{$vo.order_key}</span></td>
+                            <td align="center"><i class='{$vo.icon}'></i></td>
+                            <!-- <td>{$vo.add_time}</td> -->
+                            <td> {:authAction(CONTROLLER_NAME.'/edit', 'edit', ['id' => $vo.id])} {:authAction(CONTROLLER_NAME.'/delete', 'delete', $vo.id)} </td>
+                            
+                        </tr>
+                        {/volist}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script type="text/javascript">
+$(function(){
+    $('.editable').editable({
+        emptytext: "empty",
+        params: function(params) {      //参数
+            var data = {};
+            data['id'] = params.pk;
+            data[params.name] = params.value;
+            return data;
+        },
+        success: function(response, newValue) {
+            var res = $.parseJSON( response );
+            if(res.status == 1){
+            }else{
+                return res.info;
+            }
+        }
+    });
+})
+</script>
+{/block}
+
+
