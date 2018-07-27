@@ -23,7 +23,7 @@ class Admin extends Model
         return $value;
         
     }
-    protected function getRoleIdAttr($value)
+    public function getRoleIdAttr($value,$data)
     {
         $value = db('role')->where('id',$value)->value('role_name');
         return $value;

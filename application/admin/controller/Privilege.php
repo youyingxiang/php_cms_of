@@ -91,7 +91,9 @@ class Privilege extends Base
 					if (FALSE !== $result) {
 						write_log("删除权限成功！");
 	                    return ajaxReturn("操作成功", url('lst'));
-					}
+					} else {
+		                exception($this->cModel->getError(),401);
+		            }
 				} else {
 					exception('没有需要删除的ID！',401);
 				}

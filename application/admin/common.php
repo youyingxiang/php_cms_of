@@ -17,8 +17,6 @@ function authAction($rule, $cationType='create', $param='')
     if($cationType == 'delete') $result = "<a class=\"btn btn-danger btn-xs delete-one\" href=\"javascript:void(0);\" data-url=\"".url($rule)."\" data-id=\"".$param."\"><i class=\"fa fa-trash\"></i> 删除</a>";
     if($cationType == 'delete_all') $result = "<a class=\"btn btn-sm btn-danger delete-all\" href=\"javascript:void(0);\" data-url=\"".url($rule)."\" ><i class=\"fa fa-trash\"></i> 删除所有</a>";
     if($cationType == 'save') $result = "<button type=\"submit\" class=\"btn btn-info pull-right submits\" data-loading-text=\"&lt;i class='fa fa-spinner fa-spin '&gt;&lt;/i&gt; 保存\">保存</button>";
-
-  
     if($cationType == 'disagree') $result = "<a class=\"btn btn-danger btn-xs\" href=\"".url($rule, $param)."\"><i class=\"fa fa-undo\"></i> ".lang('disagree')."</a>";
     if($cationType == 'backup') $result = "<a class=\"btn btn-primary btn-sm delete-all\" href=\"javascript:void(0);\" data-url=\"".url($rule)."\" data-title=‘备份’><i class=\"fa fa-save\"></i> 备份</a>";
     if($cationType == 'restore') $result = "<a class=\"btn btn-primary btn-xs delete-one\" href=\"javascript:void(0);\" data-url=\"".url($rule)."\" data-id=\"".$param."\" data-title=’还原‘><i class=\"fa fa-rotate-left\"></i> 还原</a>";
@@ -86,7 +84,6 @@ function table_sort($param)
         $get['_sort'] = $param.',asc';
     }
     $paramStr = [];
-    array_shift($get);
     foreach ($get as $k=>$v){
         $paramStr[] = $k.'='.$v;
     }
@@ -152,7 +149,7 @@ function search_url($delparam){
         $url_path = ltrim($url_path,DS);
         $url_path = '/'.$url_path;
     }
-    return "/cn".$url_path;
+    return $url_path;
 }
 
 /**

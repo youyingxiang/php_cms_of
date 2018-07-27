@@ -1,4 +1,6 @@
-{include file="layout/top" /}
+{extend name="layout/admin_base"/}
+{block name='title'}{$_page_title}{/block}
+{block name="content"}
 <section class="content">
     <div class="row">
         <div class="col-md-12">
@@ -15,15 +17,15 @@
                     <table class="table table-bordered table-hover table-sort">
                         <tr>
                             <th width="35"><input type="checkbox" class="minimal checkbox-toggle"></th>
-                            <th>{$Think.lang.id}{:table_sort('id')}</th>
-                            <th>{$Think.lang.admin_name}{:table_sort('admin_name')}</th>
-                            <th>{$Think.lang.img}</th>
-                            <th>{$Think.lang.role_id}</th>
-                            <th>{$Think.lang.account}{:table_sort('account')}</th>
-                            <th>{$Think.lang.sex}</th>
-                            <th>{$Think.lang.state}</th>
-                            <th>{$Think.lang.last_time}{:table_sort('last_time')}</th>
-                            <th width="204">{$Think.lang.action}</th>
+                            <th>ID{:table_sort('id')}</th>
+                            <th>姓名{:table_sort('admin_name')}</th>
+                            <th>图像</th>
+                            <th>角色</th>
+                            <th>账号{:table_sort('account')}</th>
+                            <th>性别</th>
+                            <th>状态</th>
+                            <th>上一次登陆时间{:table_sort('last_time')}</th>
+                            <th width="204">操作</th>
                         </tr>
                         {volist name="data" id="vo"}
                         <tr>
@@ -36,7 +38,7 @@
                             <td style="vertical-align:middle">
                                 <a href="javascript:void(0);" data-id="{$vo.id}" data-field="sex" 
                                 data-value="{$vo.sex}" data-url="{:url('edit', 'id='.$vo['id'])}" 
-                                class='editimg fa {if condition=" $vo.sex == 1 "}fa-male text-green{else /}fa-female text-red{/if}'></a>
+                                class='editimg sex fa {if condition=" $vo.sex == 1 "}fa-male text-green{else /}fa-female text-red{/if}'></a>
                             </td>
                             <td style="vertical-align:middle">
                                 <a href="javascript:void(0);" data-id="{$vo.id}" data-field="state" 
@@ -99,4 +101,4 @@ $(function(){
     });
 })
 </script>
-{include file="layout/bottom" /}
+{/block}
