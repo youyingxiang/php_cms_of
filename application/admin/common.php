@@ -103,13 +103,13 @@ function table_sort($param)
  function write_log($log_detail)
  {   
         $log = new \app\admin\model\Log();
-        $data['log_type'] = request()->action();
+        $data['log_type'] = ACTION_NAME;
         $data['log_detail'] = $log_detail;
         // $data['admin_id'] = session('admin')['id'];
         $data['admin_id'] = session('adminId');
-        $data['ip'] = $_SERVER['HTTP_X_REAL_IP'];
+        $data['ip'] = $_SERVER['REMOTE_ADDR'];
         $visitors = cache('visitors');
-        if (request()->action() !== 'login') clear_cache();
+        if (ACTION_NAME !== 'login') clear_cache();
         cache('visitors',$visitors);
         $log->save($data);
  }

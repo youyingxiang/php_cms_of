@@ -71,4 +71,8 @@ class Privilege extends Model
 		$id = session('adminId');
 		return $id?db('Admin')->find($id):'';
 	}
+
+	public function getParentInfoAttr($value,$data) {
+		return $this->where(['id'=>$data['parent_id']])->find()->getData();
+	}
 }

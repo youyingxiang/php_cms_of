@@ -1,0 +1,179 @@
+<extend name="Public/base"/>
+
+<block name="body">
+	 <!--   包含的数据展示面板-->
+    <div style=  "position:absolute; z-index:3; width: 82%;">
+	
+    <!-- 标题栏 -->
+    <div class="main-title">
+     <h2> [{$model['title']}]列表</h2>
+     
+    </div>
+	<div class="cf">
+		<div class="fl">
+		<empty name="model.extend">
+			<div class="tools">
+				<a class="btn" href="{:U('add?model='.$model['id'])}">新 增</a>
+				<button class="btn ajax-post confirm" target-form="ids" url="{:U('del?model='.$model['id'])}">删 除</button>
+				<button class="btn confirm" target-form="ids" onclick="GetIDFromTable()"  >导 出</button>
+				<button class="btn confirm"  id='in' >导 入</button>
+			</div>
+		</empty>
+		</div>
+		<!-- 高级搜索 -->
+		<div class="search-form fr cf">
+			   <form action="{:U('Taxation/lists','model='.$model['id'])}">
+			<div class="sleft">
+				
+				<!--所在大厦-->
+				<select style="float:left; margin-right:10px;"  name="bid" id="building" >
+	                 <option value="">所有楼宇</option>
+	                 <volist name=":get_table_value('building',array('id','name'),'status=1')" id="vo">
+	                    <option value="{$vo.id}" <eq name="vo.id" value="$_REQUEST['bid']">selected</eq> >{$vo.name}</option>
+	                 </volist>
+	           </select>
+				<input type="text" name="{$model['search_key']|default='title'}" class="search-input" value="{:I('title')}" placeholder="请输入名称">
+				<a class="sch-btn" href="javascript:;" id="search" url="{:U('Taxation/lists','model='.$model['id'],false)}"><button class="btn-search" id="li" style="border:0px"></button></a>
+			</div>
+			</form>
+		</div>
+	</div>
+
+
+    <!-- 数据列表 -->
+    <div class="data-table">
+        <div class="data-table table-striped">
+            <table   id='mytable'>
+                <!-- 表头 -->
+                <thead>
+                    <tr>
+                        <th class="row-selected row-selected">
+                            <input class="check-all" type="checkbox">
+                        </th>
+                        <volist name="list_grids" id="field">
+                            <th>{$field.title}</th>
+                        </volist>
+                    </tr>
+                </thead>
+
+                <!-- 列表 -->
+                <tbody>
+                    <volist name="list_data" id="data">
+                        <tr>
+                            <td><input class="ids" type="checkbox" value="{$data['id']}" name="ids[]"  id="data{$data['id']}"></td>
+                            <volist name="list_grids" id="grid">
+                                <td>{:get_list_field($data,$grid,$model)}</td>
+                            </volist>
+                        </tr>
+                    </volist>
+                    <tr>
+                    	<font color="crimson" >面积单位:㎡  资金单位:万</font>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="page">
+        {$_page|default=''}
+    </div>
+    </div>
+    
+      <!-- 导入界面  -->
+    <div id="import" style="position:relative;display: none; z-index:5;background:#ccc">
+    	<div style=" width: 400px; height: 600px;vertical-align: middle;
+  text-align: center; margin-left: 240px;">
+  						<h3>楼宇{$model['title']}导入</h3>
+    	  <form action="__URL__/importExcel" method="post" enctype="multipart/form-data">
+                <input type="file" name="import"  style="width: 160px;margin: 150px" />
+                <input type="hidden" name="modelid" value="{$model['id']}"/>
+                <br />
+                <input type="submit" value="导入" style="width: 120px;"  />
+                <input type="button" id='exit' value="退出"  style="width: 120px;" />
+           </form>
+           </div>
+    </div>
+    <!-- 导入界面END  -->
+   
+</block>
+
+<block name="script">
+<script type="text/javascript">
+$(function(){
+	//搜索功能
+	$("#search").click(function(){
+		var url = $(this).attr('url');
+        var query  = $('.search-form').find('input').serialize();
+        query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+        query = query.replace(/^&/g,'');
+        if( url.indexOf('?')>0 ){
+            url += '&' + query;
+        }else{
+            url += '?' + query;
+        }
+		window.location.href = url;
+	});
+
+    //回车自动提交
+    $('.search-form').find('input').keyup(function(event){
+        if(event.keyCode===13){
+            $("#search").click();
+        }
+    });
+     $("tbody").find("tr").find("td:last").each(function(){
+     	
+     	 $(this).find("a:last").click(function(){
+     	 	if(confirm('确认删除吗?')){
+     	 		return true ;
+     	 	}
+     	 	return false ;
+     	 })
+     	 
+     })
+ //删除提示语
+     $("tbody").find("tr").find("td:last").each(function(){
+     	 $(this).find("a:last").click(function(){
+     	 	if(confirm('确认删除吗?')){
+     	 		return true ;
+     	 	}
+     	 	return false ;
+     	 })
+     	 
+     })
+
+})
+
+
+
+
+function GetIDFromTable() {
+	
+	var url ="{:U('export','','')}";
+    var ids = "";
+    var tableObj = document.getElementById('mytable');
+   
+    for (var i = 1; i < tableObj.rows.length-1; i++) {    //遍历Table的所有Row
+           oid = "data"+tableObj.rows[i].cells[1].innerText;   //获取Table中单元格的内容
+         if(document.getElementById(oid).checked == true){
+			ids += tableObj.rows[i].cells[1].innerText;
+			ids = ids+"-";
+		}
+    }
+   
+   window.location.href = url+'/ids/'+ids;
+}
+
+//点击导入事件
+
+ document.getElementById('in').onclick = function () {  
+ 	
+        if (document.getElementById('import').style.display == 'none') {  
+            document.getElementById('import').style.display = 'block';  
+        } else {  
+            document.getElementById('import').style.display = 'none';  
+        }  
+    }  
+document.getElementById('exit').onclick = function () {  
+            document.getElementById('import').style.display = 'none';  
+    }  
+</script>
+</block>

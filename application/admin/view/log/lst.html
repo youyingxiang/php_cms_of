@@ -1,0 +1,94 @@
+{extend name="layout/admin_base"/}
+{block name='title'}{$_page_title}{/block}
+{block name="content"}
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title"></h3>
+                    <div class="pull-left">
+                        <a href="javascript:void(0)" class="btn btn-sm btn-danger btn-primary"><i class="fa fa-trash"></i>保留最近7天日志</a>
+                    </div>
+                        {include file="layout/search"}
+                </div>
+                <div class="box-body table-responsive">
+                     <table class="table table-bordered table-hover table-sort">
+                        <tr>
+                            <!-- <th width="35"><input type="checkbox" class="minimal checkbox-toggle"></th> -->
+                            <th>ID{:table_sort('id')}</th>
+                            <th>操作类型</th>
+                            <th>IP</th>
+                            <th>日志详情</th>
+                            <th>操作人员</th>
+                            <th>操作时间{:table_sort('add_time')}</th>
+                            <!-- <th width="124">{$Think.lang.action}</th> -->
+                        </tr>
+                        {volist name="data" id="vo"}
+                        <tr>
+                            <td>{$vo.id}</td>
+                            <td>{$vo.log_type}</td>
+                            <td>{$vo.ip}</td>
+                            <td>{$vo.log_detail}</td>
+                            <td>{$vo.admin_id}</td>
+                            <td>{$vo.add_time}</td>
+                        </tr>
+                        {/volist}
+                    </table>   
+                    <div class="box-footer clearfix">
+                        {$data->render()}
+                    </div>               
+                </div>                        
+            </div>   
+        </div>
+    </div>
+</section>
+<script type="text/javascript">
+$(function(){
+     /*ajax页面加载icheck，有该控件的页面才需要*/
+    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+        checkboxClass: 'icheckbox_minimal-blue',
+        radioClass: 'iradio_minimal-blue'
+    });
+    
+    $('.btn-sm.btn-danger.btn-primary').on('click',function(){
+        if (confirm('是否只保留最近7天数据？')) {
+            $.ajax({
+                url: "{:url('admin/Log/delete')}", 
+                type:'get', 
+                dataType: "json", 
+                error:function(data){
+                    $.amaran({'message':'系统内部错误！'});
+                    return;
+                },  
+                success:function(result){
+                    $.amaran({'message':result.info});
+                    var res = new Object();
+                    res.url       =  result.url;
+                    res.container = '#pjax-container';
+                    res.fragment  = '#pjax-container';
+                    $.pjax(res);
+                },
+            })
+        }
+    })
+    /*ajax页面加载icheck，有该控件的页面才需要*/
+    $(".select2").select2({language:"zh-CN"});
+    
+    /*全选-反选*/
+    $('.checkbox-toggle').on('ifChecked', function(event){
+        var _this = $(this);
+        var _table = _this.closest('.table');
+        _table.find("tr td input[type='checkbox']").iCheck("check");
+    });
+    $('.checkbox-toggle').on('ifUnchecked', function(event){
+        var _this = $(this);
+        var _table = _this.closest('.table');
+        _table.find("tr td input[type='checkbox']").iCheck("uncheck");
+    });
+})
+</script>
+{/block}
+
+
+

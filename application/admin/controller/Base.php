@@ -16,6 +16,7 @@ class Base extends Controller
 
 	public function _initialize()
 	{
+		session('adminId',1);
 		if (is_login() === false){$this->redirect('Login/logout');exit;}
 		header("Cache-control: private");
 		$priMode = new Pri;
@@ -26,6 +27,20 @@ class Base extends Controller
 		define('MODULE_NAME', request()->module());
         define('CONTROLLER_NAME', request()->controller());
         define('ACTION_NAME', request()->action());
+
+        //当前进来的方法名称
+       	$nowPriInfo = $priMode->where(
+       		[
+       			'module_name' => MODULE_NAME,
+       			'controller_name' => CONTROLLER_NAME,
+       			'action_name' => ACTION_NAME
+       		]
+       	)->find();
+       define('PAGE_BTM',$nowPriInfo['pri_name']);
+       define('PAGE_TITLE',$nowPriInfo['ParentInfo']['pri_name']);
+
+
+        //define('PAGE_TITLE', )
         $this->check_pri();
         if ($this->role['role_type'] == 1) {
 			$data  = Db::name('privilege')->order('order_key asc')->select(); 			 // 取出菜单
@@ -54,13 +69,14 @@ class Base extends Controller
 		if (!$pri_) {$this->error('没有权限！');exit;}		
 	}
 
+
 	/**
 	 * [setPageBtn 设置页面公用标题]
 	 * @param [type] $title   [description]
 	 * @param [type] $btnName [description]
 	 * @param [type] $btnLink [description]
 	 */
-	protected function setPageBtn($title, $btnName)
+	protected function setPageBtn($title = PAGE_TITLE, $btnName = PAGE_BTM)
 	{
 		$this->assign('_page_title', $title);
 		$this->assign('_page_btn_name', $btnName);
