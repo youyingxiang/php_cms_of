@@ -120,7 +120,7 @@ class Database extends Base
             }
         } catch (\Exception $e) {
             write_log('下载备份文件；错误：'.$e->getMessage());
-            abort(404);
+            return $this->notFound();
         }
     }
     
@@ -148,8 +148,8 @@ class Database extends Base
                 exception('请求方式不正确！',401);
             } 
         } catch (\Exception $e) {
-            write_log('下载备份文件；错误：'.$e->getMessage());
-            abort(404);
+            write_log('删除备份文件；错误：'.$e->getMessage());
+            return $this->notFound();
         }
     }
 }

@@ -16,18 +16,16 @@ class Base extends Controller
 
 	public function _initialize()
 	{
-		session('adminId',1);
-		if (is_login() === false){$this->redirect('Login/logout');exit;}
 		header("Cache-control: private");
+		if (is_login() === false){$this->redirect('Login/logout');exit;}
 		$priMode = new Pri;
 		$RoleMode = new Role_m;
 		//获取用户的信息
 		$this->admin = $priMode->getBySeesionIdAdminInfo();
 		$this->role  = $RoleMode->getRoleInfoById($this->admin['role_id']);
 		define('MODULE_NAME', request()->module());
-        define('CONTROLLER_NAME', request()->controller());
-        define('ACTION_NAME', request()->action());
-
+		define('CONTROLLER_NAME', request()->controller());
+		define('ACTION_NAME', request()->action());
         //当前进来的方法名称
        	$nowPriInfo = $priMode->where(
        		[
@@ -80,5 +78,9 @@ class Base extends Controller
 	{
 		$this->assign('_page_title', $title);
 		$this->assign('_page_btn_name', $btnName);
+	}
+
+	protected function notFound() {
+		return response($this->fetch('layout/404'),404);
 	}
 }

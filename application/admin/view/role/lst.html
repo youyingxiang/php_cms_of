@@ -18,40 +18,23 @@
                         <tr>
                             <th width="35"><input type="checkbox" class="minimal checkbox-toggle"></th>
                             <th>ID{:table_sort('id')}</th>
-                            <th>姓名{:table_sort('admin_name')}</th>
-                            <th>图像</th>
-                            <th>角色</th>
-                            <th>账号{:table_sort('account')}</th>
-                            <th>性别</th>
-                            <th>状态</th>
-                            <th>上一次登陆时间{:table_sort('last_time')}</th>
-                            <th width="204">操作</th>
+                            <th>角色名称{:table_sort('role_name')}</th>                            
+                            <th>角色类型</th>
+                            <th>角色权限</th>
+                            <th>角色描述</th>
+                            <th>增加时间</th>
+                            <th width="202">操作</th>
                         </tr>
                         {volist name="data" id="vo"}
                         <tr>
-                            <td style="vertical-align:middle"><input type="checkbox" name="id[]" value="{$vo.id}" class="minimal"></td>
-                            <td style="vertical-align:middle">{$vo.id}</td>
-                            <td style="vertical-align:middle"><span class="editable" data-pk="{$vo.id}" data-name="admin_name" data-url="{:url(CONTROLLER_NAME.'/edit', 'id='.$vo['id'])}" >{$vo.admin_name}</span></td>
-                            <td style="vertical-align:middle"><img src="{$vo.img}" style="width:40px;border-radius:40%;" /></td>
-                            <td style="vertical-align:middle">{$vo.role_id}</td>
-                            <td style="vertical-align:middle"><span class="editable" data-pk="{$vo.id}" data-name="account" data-url="{:url(CONTROLLER_NAME.'/edit', 'id='.$vo['id'])}" >{$vo.account}</span></td>
-                            <td style="vertical-align:middle">
-                                <a href="javascript:void(0);" data-id="{$vo.id}" data-field="sex" 
-                                data-value="{$vo.sex}" data-url="{:url('edit', 'id='.$vo['id'])}" 
-                                class='editimg sex fa {if condition=" $vo.sex == 1 "}fa-male text-green{else /}fa-female text-red{/if}'></a>
-                            </td>
-                            <td style="vertical-align:middle">
-                                <a href="javascript:void(0);" data-id="{$vo.id}" data-field="state" 
-                                data-value="{$vo.state}" data-url="{:url('edit', 'id='.$vo['id'])}" 
-                                class='editimg fa {if condition=" $vo.state == 1 "}fa-check-circle text-green{else /}fa-times-circle text-red{/if}'></a>
-                            </td>
-                            <td style="vertical-align:middle">{$vo.last_time}</td>
-                            <td style="vertical-align:middle">
-                                {:authAction(CONTROLLER_NAME.'/edit', 'edit', ['id' => $vo.id])}
-                                {if condition="$vo.id != session('adminId')"} 
-                                {:authAction(CONTROLLER_NAME.'/delete', 'delete', $vo.id)}
-                                {/if}
-                            </td>
+                            <td><input type="checkbox" name="id[]" value="{$vo.id}" class="minimal"></td>
+                            <td>{$vo.id}</td>
+                            <td><span class="editable" data-pk="{$vo.id}" data-name="role_name" data-url="{:url(CONTROLLER_NAME.'/edit', 'id='.$vo['id'])}" >{$vo.role_name}</span></td>                                                       
+                            <td>{$vo.role_type}</td>
+                            <td>{$vo.role_pri}</td>
+                            <td><span class="editable" data-pk="{$vo.id}" data-name="describe" data-url="{:url(CONTROLLER_NAME.'/edit', 'id='.$vo['id'])}" >{$vo.describe}</span></td>
+                            <td>{$vo.add_time}</td>
+                            <td> {:authAction(CONTROLLER_NAME.'/edit', 'edit', ['id' => $vo.id])} {:authAction(CONTROLLER_NAME.'/delete', 'delete', $vo.id)} </td>
                         </tr>
                         {/volist}
                     </table>

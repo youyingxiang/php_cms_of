@@ -11,11 +11,11 @@
  */
 function authAction($rule, $cationType='create', $param='')
 {   
-    if($cationType == 'create') $result = "<a href=\"".url($rule, $param)."\" class=\"btn btn-sm btn-primary\"><i class=\"fa fa-save\"></i> 创建</a>";
+    if($cationType == 'create') $result = "<a href=\"".url($rule, $param)."\" class=\"btn btn-sm btn-primary\"><i class=\"fa fa-save\"></i> 增加</a>";
     
     if($cationType == 'edit') $result = "<a class=\"btn btn-primary btn-xs\" href=\"".url($rule, $param)."\"><i class=\"fa fa-edit\"></i> 编辑</a>";
     if($cationType == 'delete') $result = "<a class=\"btn btn-danger btn-xs delete-one\" href=\"javascript:void(0);\" data-url=\"".url($rule)."\" data-id=\"".$param."\"><i class=\"fa fa-trash\"></i> 删除</a>";
-    if($cationType == 'delete_all') $result = "<a class=\"btn btn-sm btn-danger delete-all\" href=\"javascript:void(0);\" data-url=\"".url($rule)."\" ><i class=\"fa fa-trash\"></i> 删除所有</a>";
+    if($cationType == 'delete_all') $result = "<a class=\"btn btn-sm btn-danger delete-all\" href=\"javascript:void(0);\" data-url=\"".url($rule)."\" ><i class=\"fa fa-trash\"></i> 删除选中</a>";
     if($cationType == 'save') $result = "<button type=\"submit\" class=\"btn btn-info pull-right submits\" data-loading-text=\"&lt;i class='fa fa-spinner fa-spin '&gt;&lt;/i&gt; 保存\">保存</button>";
     if($cationType == 'disagree') $result = "<a class=\"btn btn-danger btn-xs\" href=\"".url($rule, $param)."\"><i class=\"fa fa-undo\"></i> ".lang('disagree')."</a>";
     if($cationType == 'backup') $result = "<a class=\"btn btn-primary btn-sm delete-all\" href=\"javascript:void(0);\" data-url=\"".url($rule)."\" data-title=‘备份’><i class=\"fa fa-save\"></i> 备份</a>";
@@ -100,21 +100,21 @@ function table_sort($param)
  function write_log($log_detail)
  {   
         $log = new \app\admin\model\Log();
-        $data['log_type'] = ACTION_NAME;
+        $data['log_type'] = request()->action();
         $data['log_detail'] = $log_detail;
         // $data['admin_id'] = session('admin')['id'];
         $data['admin_id'] = session('adminId');
         $data['ip'] = $_SERVER['REMOTE_ADDR'];
         $visitors = cache('visitors');
-        if (ACTION_NAME !== 'login') clear_cache();
+        if (request()->action() !== 'login') clear_cache();
         cache('visitors',$visitors);
         $log->save($data);
  }
 
  function clear_cache()
  {
-    deldir(RUNTIME_PATH.'cache');
-    deldir(RUNTIME_PATH.'temp');
+    // deldir(RUNTIME_PATH.'cache');
+    // deldir(RUNTIME_PATH.'temp');
     $c = new think\Cache(config('cache'));
     $c->clear();
  }

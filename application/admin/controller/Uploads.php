@@ -18,9 +18,8 @@ class Uploads extends Controller
     public function _initialize()
     {
         parent::_initialize();
-        set_time_limit(1800);
 	    if (is_login() == false && empty(session('user_flag'))) {
-            return ajaxReturn(lang('user_stop'));
+            return ajaxReturn('上传文件请先登录!');
             exit;
         }      
         $this->up_type = input('dir');
@@ -48,68 +47,39 @@ class Uploads extends Controller
     {
         $up_config = cache('DB_UP_CONFIG');   //获取数据库中的上传文件配置信息缓存
         $file = request()->file('imgFile');
-        if ($file) {         
-            if ($this->up_type == 'file')$size = $up_config['file_size'];else $size = $up_config['image_size'];    
-            $info = $file->validate(['size'=>$size, 'ext' => $up_config[$this->up_type.'_format']])
-            ->move($this->file_move_path);
-            if ($info) {
-                if ($this->up_type == 'image') {
-                    if ($up_config['isprint'] == 1 && file_exists('.'.$up_config['image_print'])) {   //上传图片，加水印
-                        $file = Image::open( $this->file_move_path.DS.$info->getSaveName() );   //打开上传的图片
-                        //水印图片、水印位置、水印透明度 -> 保存同名图片覆盖
-                        $file->water(WEB_PATH.$up_config['image_print'], $up_config['print_position'], $up_config['print_blur'])
-                        ->save( $this->file_move_path.DS.$info->getSaveName() );
-                    }
-                    $file_path = $this->file_back_path.DS.$info->getSaveName();
-                    $file_path = $up_config['image_url'].str_replace('\\', '/', $file_path);
+        try {
+            if ($file) {         
+                if ($this->up_type == 'file')$size = $up_config['file_size'];else $size = $up_config['image_size'];    
+                $info = $file->validate(['size'=>$size, 'ext' => $up_config[$this->up_type.'_format']])
+                ->move($this->file_move_path);
+                if ($info) {
+                    if ($this->up_type == 'image') {
+                        if ($up_config['isprint'] == 1 && file_exists('.'.$up_config['image_print'])) {   //上传图片，加水印
+                            $file = Image::open( $this->file_move_path.DS.$info->getSaveName() );   //打开上传的图片
+                            //水印图片、水印位置、水印透明度 -> 保存同名图片覆盖
+                            $file->water(WEB_PATH.$up_config['image_print'], $up_config['print_position'], $up_config['print_blur'])
+                            ->save( $this->file_move_path.DS.$info->getSaveName() );
+                        }
+                        $file_path = $this->file_back_path.DS.$info->getSaveName();
+                        $file_path = $up_config['image_url'].str_replace('\\', '/', $file_path);
+                    } elseif ($this->up_type == 'file') {
+                        $file_path = $this->file_back_path.DS.$info->getSaveName();
+                        $file_path = $up_config['image_url'].str_replace('\\', '/', $file_path);
+                    } 
+                    write_log('上传文件成功！');
                     echo json_encode(['error' => 0, 'url' => $file_path]);
-                } elseif ($this->up_type == 'file') {
-                    $file_path = $this->file_back_path.DS.$info->getSaveName();
-                    $file_path = $up_config['image_url'].str_replace('\\', '/', $file_path);
-                    echo json_encode(['error' => 0, 'url' => $file_path]);
-                } 
-
+                } else {
+                    exception($file->getError(),401);
+                }
             } else {
-                return ajaxReturn($file->getError());
+                exception("请选择文件！",401);
             }
-        } else {
-            return ajaxReturn(lang('select_file'));
-        }
+        } catch (\Exception $e) {                   
+            write_log('上传失败！原因：'.$e->getMessage());
+            return ajaxReturn($e->getMessage());
+        }   
     }
-    //百度编辑器上传
-    public function webupload()
-    {
-        $up_config = cache('DB_UP_CONFIG');   //获取数据库中的上传文件配置信息缓存
-        $file = request()->file('file'); 
-        if ($file){         
-            $info = $file->validate(['size'=>$up_config['file_size'], 'ext' => $up_config[$this->up_type.'_format']])
-            ->move($this->file_move_path);
-            if ($info) {
-                if ($this->up_type == 'image') {
-                    if ($up_config['isprint'] == 1 && file_exists('.'.$up_config['image_print'])) {   //上传图片，加水印
-                        $file = Image::open( $this->file_move_path.DS.$info->getSaveName() );   //打开上传的图片
-                        //水印图片、水印位置、水印透明度 -> 保存同名图片覆盖
-                        $file->water(WEB_PATH.$up_config['image_print'], $up_config['print_position'], $up_config['print_blur'])
-                        ->save( $this->file_move_path.DS.$info->getSaveName() );
-                    }
-                    $file_path = $this->file_back_path.DS.$info->getSaveName();
-                    $file_path = $up_config['image_url'].str_replace('\\', '/', $file_path);
-                    echo json_encode(['error' => 0, 'url' => $file_path]);
-                } elseif ($this->up_type == 'file') {
-                    $file_path = $this->file_back_path.DS.$info->getSaveName();
-                    $file_path = $up_config['image_url'].str_replace('\\', '/', $file_path);
-                    $file_name = $_FILES['file']['name'];
-                    $file_size = $_FILES['file']['size'];
-                    echo json_encode(['error' => 0, 'url' => $file_path,'name' => $file_name,'size' => $file_size]);
-                } 
 
-            } else {
-                return ajaxReturn($file->getError());
-            }
-        } else {
-            return ajaxReturn(lang('select_file'));
-        }
-    }
     
     
     /**

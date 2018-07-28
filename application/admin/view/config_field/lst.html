@@ -1,0 +1,96 @@
+{extend name="layout/admin_base"/}
+{block name='title'}{$_page_title}{/block}
+{block name="content"}
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                     <h3 class="box-title"></h3>
+                    <div class="pull-left">
+                        {:authAction(CONTROLLER_NAME.'/add', 'create')} 
+                        {:authAction(CONTROLLER_NAME.'/delete', 'delete_all')} 
+                    </div>
+                    {include file="layout/search" /}
+                </div>
+                <div class="box-body table-responsive">
+                    <table class="table table-bordered table-hover table-sort">
+                        <tr>
+                            <th width="35"><input type="checkbox" class="minimal checkbox-toggle"></th>
+                            <th>ID{:table_sort('id')}</th>
+                            <th>键</th>
+                            <th>描述</th>
+                            <th>类型{:table_sort('type')}</th>
+                            <th>文本类型{:table_sort('texttype')}</th>
+                            <th>排序{:table_sort('sorts')}</th>
+                            <th>状态{:table_sort('status')}</th>
+                            <th width="180">操作</th>
+                        </tr>
+                        {volist name="dataList" id="vo"}
+                        <tr>
+                            <td><input type="checkbox" name="id[]" value="{$vo.id}" class="minimal"></td>
+                            <td>{$vo.id}</td>
+                            <td><span class="editable" data-pk="{$vo.id}" data-name="k" data-url="{:url(CONTROLLER_NAME.'/edit', 'id='.$vo['id'])}" >{$vo.k}</span></td>
+                            <td><span class="editable" data-pk="{$vo.id}" data-name="desc" data-url="{:url(CONTROLLER_NAME.'/edit', 'id='.$vo['id'])}" >{$vo.desc}</span></td>
+                            <td><span class="editable" data-pk="{$vo.id}" data-name="type" data-url="{:url(CONTROLLER_NAME.'/edit', 'id='.$vo['id'])}" >{$vo.type}</span></td>
+                            <td>{$vo.texttype}</td>
+                            <td><span class="editable" data-pk="{$vo.id}" data-name="sorts" data-url="{:url(CONTROLLER_NAME.'/edit', 'id='.$vo['id'])}" >{$vo.sorts}</span></td>
+                            <td>
+                                <a href="javascript:void(0);" data-id="{$vo.id}" data-field="status" 
+                                data-value="{$vo.status}" data-url="{:url('edit', 'id='.$vo['id'])}" 
+                                class='editimg fa {if condition=" $vo.status == 1 "}fa-check-circle text-green{else /}fa-times-circle text-red{/if}'></a>
+                            </td>
+                            <td>{:authAction(CONTROLLER_NAME.'/edit', 'edit', ['id' => $vo.id,'page'=>input('get.page')])} {:authAction(CONTROLLER_NAME.'/delete', 'delete', $vo.id)}</td>
+                        </tr>
+                        {/volist}
+                    </table>
+                </div>
+                <div class="box-footer clearfix">
+                    {$dataList->render()}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script type="text/javascript">
+$(function(){
+    /*ajax页面加载icheck，有该控件的页面才需要*/
+    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+        checkboxClass: 'icheckbox_minimal-blue',
+        radioClass: 'iradio_minimal-blue'
+    });
+    
+    /*ajax页面加载icheck，有该控件的页面才需要*/
+    $(".select2").select2({language:"zh-CN"});
+    
+    /*全选-反选*/
+    $('.checkbox-toggle').on('ifChecked', function(event){
+        var _this = $(this);
+        var _table = _this.closest('.table');
+        _table.find("tr td input[type='checkbox']").iCheck("check");
+    });
+    $('.checkbox-toggle').on('ifUnchecked', function(event){
+        var _this = $(this);
+        var _table = _this.closest('.table');
+        _table.find("tr td input[type='checkbox']").iCheck("uncheck");
+    });
+    
+    $('.editable').editable({
+        emptytext: "empty",
+        params: function(params) {      //参数
+            var data = {};
+            data['id'] = params.pk;
+            data[params.name] = params.value;
+            return data;
+        },
+        success: function(response, newValue) {
+            var res = $.parseJSON( response );
+            if(res.status == 1){
+            }else{
+                return res.info;
+            }
+        }
+    });
+})
+</script>
+{/block}

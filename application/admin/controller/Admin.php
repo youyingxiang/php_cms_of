@@ -76,16 +76,13 @@ class Admin extends Base
                 return ajaxReturn($e->getMessage());   
             }
         } else {
-            if ($id > 0) {
+                $this->setPageBtn();
                 $data = $this->cModel->get($id);
-                $roleData = db('Role')->field('id,role_name')->select();
-                $this->setPageBtn();                
+                if (empty($data)) return $this->notFound();
+                $roleData = db('Role')->field('id,role_name')->select();                
                 $this->assign('roleData',$roleData);
                 $this->assign('data', $data);
                 return $this->fetch();
-            } else {
-                abort(404);
-            }
         }
     }
 	public function delete()
@@ -101,14 +98,13 @@ class Admin extends Base
                     if ($result !== false ) {                        
                         foreach ($data as $k => $v){
                             if ($v['img'] != '/static/global/face/default.png'){
-                                unlink(WEB_PATH.$v['img']);          //删除头像文件
+                                @unlink(WEB_PATH.$v['img']);          //删除头像文件
                             }
                         }
                         write_log('删除管理员成功！');
                         return ajaxReturn('操作成功！', url('lst'));
                     } else {
-                        write_log(lang('del_error_admin'));
-                        return ajaxReturn($this->cModel->getError());
+                        exception($this->cModel->getError(),401);
                     }
                 } else {
                     exception('没有需要删除的ID！',401);

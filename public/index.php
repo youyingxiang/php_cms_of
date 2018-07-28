@@ -13,6 +13,7 @@
 
 // 定义应用目录
 define('APP_PATH', __DIR__ . '/../application/');
+define('WEB_PATH',__DIR__);
 
 //后台
 define('ADMIN_JS','/static/admin/js');
