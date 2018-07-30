@@ -93,9 +93,9 @@ class Role extends Base
             $this->setPageBtn();            
             $pri = new Pri;
             $order = 'order_key asc';
-            $priData = $pri->getTree($order);
             $data = $this->cModel->get($id)->getData();
             if (empty($data)) return $this->notFound();
+            $priData = $pri->getTree($order);
             $data['role_pri'] = explode(',',$data['role_pri']);
             $this->assign('priData',$priData);
             $this->assign('data', $data);         

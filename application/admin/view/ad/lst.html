@@ -1,0 +1,140 @@
+{include file="layout/top" /}
+<style>
+.screen-box .box-tools .input-group .input-group-btn .btn{height:34px;}
+@media screen and (max-width:769px){
+    .screen-box > .box-tools{position:static;}
+    .screen-box > .pull-left{margin-bottom:10px;}
+    .screen-box .input-group{width:100% !important;}
+    .screen-box .select2-container{}
+    .screen-box .box-tools .input-group .pull-right{margin-bottom:10px;}
+    .screen-box .box-tools .input-group .pull-right,.screen-box .box-tools .input-group .pull-left,.screen-box .box-tools .input-group .pull-left .select2-container{width:100% !important;}
+    .screen-box .box-tools .input-group .input-group-btn{vertical-align:bottom;}
+}
+</style>
+<section class="content">
+<div class="alert alert-danger">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+    <p>{$Think.lang.ad_msg}</p>
+</div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border screen-box">
+                    <h3 class="box-title"></h3>
+                    <div class="pull-left">
+                        {if condition="$type == 'aboutus'"}
+                            {:authAction(CONTROLLER_NAME.'/add_'.$type, 'create',['position'=>input('position')])}
+                        {else /} 
+                            {:authAction(CONTROLLER_NAME.'/add_'.$type, 'create')}
+                        {/if} 
+                        {:authAction(CONTROLLER_NAME.'/delete_'.$type, 'delete_all')} 
+                    </div>
+                    <div class="box-tools" style="top:10px;">
+                        <form action="{:search_url('search')}" method="GET" pjax-search="">
+                            <div class="input-group input-group-sm" style="width:600px">
+                                    <div class='pull-right' style="width:40%">
+                                        <input type="text" name="search" class="form-control" value="{:input('get.search')}" placeholder="{$Think.lang.search}" />
+                                    </div>
+                                    {if condition="$type != 'aboutus'"}
+                                    <div class='pull-left' style="width:60%">
+                                        <select name="display_position" class="form-control select2" placeholder="{$Think.lang.search}">
+                                            <option value="">{$Think.lang.unlimited}</option>
+                                            {volist name=":config('ad_'.$type.'_list')" id='vo'}
+                                                <option {if condition="input('get.display_position') == $key"}selected='selected'{/if} value="{$key}">{$vo}</option>
+                                            {/volist}
+                                        </select>
+                                    </div>
+                                    {/if}
+                                    <div class="input-group-btn">
+                                        <button type="submit" class="btn btn-default sreachs"><i class="fa fa-search"></i></button>
+                                    </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="box-body table-responsive">
+                    <table class="table table-bordered table-hover table-sort">
+                        <tr>
+                            <th width="35"><input type="checkbox" class="minimal checkbox-toggle"></th>
+                            <th>{$Think.lang.id}{:table_sort('id')}</th>
+                            <th>{$Think.lang.title}{:table_sort('title')}</th>
+                            <th>{$Think.lang.display_position}{:table_sort('display_position')}</th>
+                            <th>{$Think.lang.img}</th>
+                            <th>{$Think.lang.state}</th>
+                            <th>{$Think.lang.order_key}{:table_sort('order_key')}</th>
+                            <th width="204">{$Think.lang.action}</th>
+                        </tr>
+                        {volist name="data" id="vo"}
+                        <tr>
+                            <td style="vertical-align:middle"><input type="checkbox" name="id[]" value="{$vo.id}" class="minimal"></td>
+                            <td style="vertical-align:middle">{$vo.id}</td>
+                            <td style="vertical-align:middle"><span class="editable" data-pk="{$vo.id}" data-name="title" data-url="{:url(CONTROLLER_NAME.'/edit_'.$type, 'id='.$vo['id'])}" >{$vo.title}</span></td>
+                            <td style="vertical-align:middle">{$vo.display_position}</td>
+                            <td style="vertical-align:middle"><img src="{$vo.img|default='/en/static/global/face/no-image.png'}" style="width:70px;border-radius:10%;height:30px" /></td>
+                            <td style="vertical-align:middle">
+                                <a href="javascript:void(0);" data-id="{$vo.id}" data-field="state" 
+                                data-value="{$vo.state}" data-url="{:url('edit_'.$type, 'id='.$vo['id'])}" 
+                                class='editimg fa {if condition=" $vo.state == 1 "}fa-check-circle text-green{else /}fa-times-circle text-red{/if}'></a>
+                            </td>
+                            <td style="vertical-align:middle"><span class="editable" data-pk="{$vo.id}" data-name="order_key" data-url="{:url(CONTROLLER_NAME.'/edit_'.$type, 'id='.$vo['id'])}" >{$vo.order_key}</span></td>
+                            <td style="vertical-align:middle">
+                                {if condition="$type == 'aboutus'"}
+                                    {:authAction(CONTROLLER_NAME.'/edit_'.$type, 'edit', ['id' => $vo.id,'page'=>input('get.page'),'position'=>input('position')])}
+                                {else /}
+                                    {:authAction(CONTROLLER_NAME.'/edit_'.$type, 'edit', ['id' => $vo.id,'page'=>input('get.page')])}
+                                {/if}
+                                {:authAction(CONTROLLER_NAME.'/delete_'.$type, 'delete', $vo.id)}
+                            </td>
+                        </tr>
+                        {/volist}
+                    </table>
+                </div>
+                <div class="box-footer clearfix">
+                    {$data->render()}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script type="text/javascript">
+$(function(){
+    /*ajax页面加载icheck，有该控件的页面才需要*/
+    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+        checkboxClass: 'icheckbox_minimal-blue',
+        radioClass: 'iradio_minimal-blue'
+    });
+    
+    /*ajax页面加载icheck，有该控件的页面才需要*/
+    $(".select2").select2({language:"zh-CN"});
+    
+    /*全选-反选*/
+    $('.checkbox-toggle').on('ifChecked', function(event){
+        var _this = $(this);
+        var _table = _this.closest('.table');
+        _table.find("tr td input[type='checkbox']").iCheck("check");
+    });
+    $('.checkbox-toggle').on('ifUnchecked', function(event){
+        var _this = $(this);
+        var _table = _this.closest('.table');
+        _table.find("tr td input[type='checkbox']").iCheck("uncheck");
+    });
+    
+    $('.editable').editable({
+        emptytext: "empty",
+        params: function(params) {      //参数
+            var data = {};
+            data['id'] = params.pk;
+            data[params.name] = params.value;
+            return data;
+        },
+        success: function(response, newValue) {
+            var res = $.parseJSON( response );
+            if(res.status == 1){
+            }else{
+                return res.info;
+            }
+        }
+    });
+})
+</script>
+{include file="layout/bottom" /}

@@ -97,11 +97,11 @@ function table_sort($param)
  * @return [type]             [description]
  * @author 游兴祥
  */
- function write_log($log_detail)
+ function write_log($log_detail = null)
  {   
         $log = new \app\admin\model\Log();
         $data['log_type'] = request()->action();
-        $data['log_detail'] = $log_detail;
+        $data['log_detail'] = $log_detail?PAGE_BTM.'失败的原因：'.$log_detail:PAGE_BTM.'成功';
         // $data['admin_id'] = session('admin')['id'];
         $data['admin_id'] = session('adminId');
         $data['ip'] = $_SERVER['REMOTE_ADDR'];

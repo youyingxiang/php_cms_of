@@ -1,0 +1,372 @@
+{include file="layout/top" /}
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <form class="form-horizontal" method="POST" {if condition="$type == 'aboutus'"}action='{:url("admin/Ad/add_$type",["position"=>input("position")])}'{else /}action='{:url("admin/Ad/add_$type")}'{/if} onsubmit="return false" >
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab1" data-toggle="tab">{$Think.lang.base_param}</a></li>
+                        <li class="pull-right"><a href="javascript:history.back(-1)" class="btn btn-sm" style="padding:10px 2px;"><i class="fa fa-list"></i> {$Think.lang.back}</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab1">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{$Think.lang.title}</label>
+                                <div class="col-sm-7"><input class="form-control" name="title" value="" placeholder="{$Think.lang.title}"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{$Think.lang.display_position}</label>
+                                <div class="col-sm-7">
+                                    <select class="form-control select2" name="display_position" style="width:100%;">
+                                    {volist name='ad' id='vo'}
+                                        <option value="{$key}">{$vo}</option>
+                                    {/volist}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group" id='icon_'>
+                                <label class="col-sm-2 control-label">{$Think.lang.icon}</label>
+                                <div class="col-sm-7">
+                                    <div class="input-group">
+                                        <input class="form-control" name="icon" placeholder="{$Think.lang.icon}" >
+                                        <span class="input-group-btn up_img"><button class="btn btn-success btn-flat"><i class="fa fa-cloud-upload"> {$Think.lang.Upload}</i></button></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group" id='img_'>
+                                <label class="col-sm-2 control-label" id='img_name'>{$Think.lang.img}</label>
+                                <div class="col-sm-7">
+                                    <div class="input-group">
+                                        <input class="form-control" name="img" placeholder="{$Think.lang.img}" >
+                                        <span class="input-group-btn up_img"><button class="btn btn-success btn-flat"><i class="fa fa-cloud-upload"> {$Think.lang.Upload}</i></button></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group" id="url_">
+                                <label class="col-sm-2 control-label">{$Think.lang.url}</label>
+                                <div class="col-sm-7"><input class="form-control" name="url" value="" placeholder="{$Think.lang.url}"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{$Think.lang.order_key}</label>
+                                <div class="col-sm-7"><input class="form-control" name="order_key" value="1" placeholder="{$Think.lang.order_key}"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{$Think.lang.state}</label>
+                                <div class="col-sm-7">
+                                    <select class="form-control select2" name="state" style="width:100%;">
+                                        <option value="1" >{$Think.lang.status1}</option>
+                                        <option value="0" >{$Think.lang.status0}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group" id='content_'>
+                                <label class="col-sm-2 control-label">{$Think.lang.content}</label>
+                                <div class="col-sm-7">
+                                <textarea class="form-control" name="content" placeholder="{$Think.lang.content}"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group" id='video_'>
+                                <label class="col-sm-2 control-label">{$Think.lang.video}</label>
+                                <div class="col-md-7" >
+                                    <div id="uploader" class="wu-example">
+                                        <!--用来存放文件信息-->
+                                        <div id="thelist" class="uploader-list"></div>
+                                        <div class="btns">
+                                            <div id="picker">{$Think.lang.select_video}</div>
+                                            <button id="ctlBtn" class="btn btn-default">{$Think.lang.start_upload}</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="hidden" name="video" id="video">
+                            <input type="hidden" name="video_name" id="video_name"> 
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-7">
+                            <div class="btn-group pull-right">
+                                <button type="submit" class="btn btn-info pull-right submits" data-loading-text="&lt;i class='fa fa-spinner fa-spin '&gt;&lt;/i&gt; {$Think.lang.submit}">{$Think.lang.submit}</button>
+                            </div>
+                            <div class="btn-group pull-left">
+                                <button type="reset" class="btn btn-warning">{$Think.lang.reset}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<script type="text/javascript">
+
+$(function(){
+    /*ajax页面加载icheck，有该控件的页面才需要*/
+    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+        checkboxClass: 'icheckbox_minimal-blue',
+        radioClass: 'iradio_minimal-blue'
+    });
+
+    $('#fileupload_').fileupload({
+        dataType: 'json',
+        done: function (e, data) {
+            if (data.result.error == 0) {
+                var up_url = data.result.url.trim();
+                obj.prev().val(up_url );
+                if (obj.children('a').length>0) {
+                    obj.children('a').attr('href',up_url);
+                    obj.find('img').attr('src',up_url );
+                }
+            } else {
+                $.amaran({'message':data.result.info});
+            }      
+        }
+    });
+    $(".up_img").on('click',function(){
+        obj = $(this);
+        $('#fileupload_').trigger('click');
+    })
+    
+    /*ajax页面加载icheck，有该控件的页面才需要*/
+    $(".select2").select2({language:"zh-CN"});
+    KindEditor.create('textarea[name="content"]',{
+        width : '100%',   //宽度
+        height : '320px',   //高度
+        resizeType : '0',   //禁止拖动
+        allowFileManager : true,   //允许对上传图片进行管理
+        uploadJson : '{:url("Uploads/upload")}',   //文件上传地址
+        fileManagerJson : '{:url("Uploads/manager")}',   //文件管理地址
+        //urlType : 'domain',   //带域名的路径
+        formatUploadUrl: true,   //自动格式化上传后的URL
+        autoHeightMode: false,   //开启自动高度模式
+        afterBlur: function () { this.sync(); }   //同步编辑器数据
+    });
+    var time = 1;
+    var val = $("select[name='display_position']").val();
+    
+    var chart = new Array('公司简介-中文字','首页-中文字','新闻-中文字','企业文化','公司文化','企业活动','公司简介-中文字','荣誉资质-文字','联系我们-文字内容','社会责任-文字','社会责任列表-文字','培训中心-文字','培训中心-网络课程文字','认证及流程-文字','中控团队-文字','合作伙伴介绍-介绍文字','案例列表-介绍文字','解决方案列表-介绍文字');
+    var img_chart = new Array('首页-轮播图','公司简介-应用区域','合作共赢-中-大图','荣誉资质-图片','质量管理-认证证书','关于我们-跳转图标','关于我们-跳转图标','关于我们-合作客户','企业活动图片','案例详情-底部图片','首页-底部图标','如何购买-导航-图标','行业详情-banner','项目咨询-banner','新闻中心-banner','新闻列表-banner','新闻详情-banner','联系我们-banner','总部地址-banner','销售地图-banner','社会责任列表-banner','社会责任详情-banner','案例列表-banner','预约查询-banner','提交工单-banner','在线支持-banner','授权网店-banner','产品列表-banner','核心技术-banner','发展历程-banner','中控智慧文化-banner','常见问题-banner','专家团队-banner','公司简介-banner','合作共赢-banner','服务支持-banner','防伪查询-banner','服务公告-banner','维修登记-banner','招聘-banner','荣誉资质-banner','质量管理-banner','培训中心-banner','培训视频-banner','培训课程文件-banner','培训Technology-banner','培训中心ApplyTraining-banner','培训中心ApplyTraining-中图','培训中心-网络课程banner','认证及流程-banner','培训证书');
+    var video = new Array('公司简介-集团概况','质量管理-视频','产品保修政策','首页-轮播视频');
+    var banner = new Array('首页-中背景','首页-微信','关于我们-小背景','关于我们-大背景','合作伙伴好处-中背景','合作伙伴好处-背景小图','产品详情特点-背景','产品详情下载-背景','行业详情-底部背景','产品分类-长图','是否新品','是否项目','培训中心-网络课程中图片','质量管理-证书标志');
+    var icon_img = new Array('联系我们-右图标','关于我们-图标','首页-中小图');
+    var flag_c1 = jQuery.inArray(val,chart);
+    var flag_ic1 = jQuery.inArray(val,img_chart);
+    var flag1 = jQuery.inArray(val,video);
+    var flag_b1 = jQuery.inArray(val,banner);
+    var flagI_img = jQuery.inArray(val,icon_img);
+    if (flag1 >= 0) {
+        if (val == '公司简介-集团概况') {
+            $('#video_').show();
+            $('#content_').show();
+            $('#img_').show();
+            $('#url_').show();
+            $('#icon_').hide();
+            $('#img_name').html('广告图片600*328');
+        } else if (val == '产品保修政策') {
+            $('#video_').show();
+            $('#content_').show();
+            $('#img_').hide();
+            $('#url_').hide();
+            $('#icon_').hide();
+            $('#img_name').html("{$Think.lang.img}");
+        } else if (val == '首页-轮播视频') {
+            $('#video_').show();
+            $('#content_').hide();
+            $('#img_').hide();
+            $('#url_').hide();
+            $('#icon_').hide();
+            $('#img_name').html("{$Think.lang.img}");
+        } else {
+            $('#video_').show();
+            $('#content_').hide();
+            $('#img_').show();
+            $('#url_').show();
+            $('#icon_').hide();
+            $('#img_name').html('广告图片600*328');
+        }     
+        webuploader();
+    } else if (flag_c1 >= 0) {
+        $('#img_').hide();
+        $('#url_').hide();
+        $('#content_').show();
+        $('#video_').hide();
+        $('#icon_').hide();
+        $('#img_name').html("{$Think.lang.img}");
+    } else if (flag_ic1 >= 0) {
+        $('#content_').hide();
+        $('#img_').show();
+        $('#url_').show();
+        $('#video_').hide();
+        $('#icon_').hide();
+        $('#img_name').html("{$Think.lang.img}");
+    } else if (flag_b1 >= 0) {
+        $('#content_').hide();
+        $('#img_').show();
+        $('#url_').hide();
+        $('#video_').hide();
+        $('#icon_').hide();
+        $('#img_name').html("{$Think.lang.img}");
+    } else if(flagI_img >= 0 ) {
+        $('#content_').hide();
+        $('#img_').show();
+        $('#url_').show();
+        $('#video_').hide();
+        $('#icon_').show();
+        $('#img_name').html("{$Think.lang.img}");
+    } else {
+        $('#img_').show();
+        $('#url_').show();
+        $('#content_').show();
+        $('#video_').hide();
+        $('#icon_').hide();
+        $('#img_name').html("{$Think.lang.img}");
+    }
+    $("select[name='display_position']").on('change',function(){
+        var val2 = $(this).val();
+        var flag = jQuery.inArray(val2,video);          //视频
+        var flag_c = jQuery.inArray(val2,chart);        //文字
+        var flag_ic = jQuery.inArray(val2,img_chart);   //图文
+        var flag_b = jQuery.inArray(val2,banner);       //banner
+        var flagI_img = jQuery.inArray(val2,icon_img);
+        if (flag >= 0) {
+            if (val2 == '公司简介-集团概况') {
+                $('#video_').show();
+                $('#content_').show();
+                $('#img_').show();
+                $('#url_').show();
+                $('#icon_').hide();
+                $('#img_name').html('广告图片600*328');
+            } else if (val2 == '首页-轮播视频') {
+                $('#video_').show();
+                $('#content_').hide();
+                $('#img_').hide();
+                $('#url_').hide();
+                $('#icon_').hide();
+                $('#img_name').html("{$Think.lang.img}");
+            } else if (val2 == '产品保修政策') {
+                $('#video_').show();
+                $('#content_').show();
+                $('#img_').hide();
+                $('#url_').hide();
+                $('#icon_').hide();
+                $('#img_name').html("{$Think.lang.img}");
+            } else {
+                $('#video_').show();
+                $('#content_').hide();
+                $('#img_').show();
+                $('#url_').show();
+                $('#icon_').hide();
+                $('#img_name').html('广告图片600*328');
+            }   
+            webuploader();
+        } else if (flag_c >= 0) {
+            $('#img_').hide();
+            $('#url_').hide();
+            $('#content_').show();
+            $('#video_').hide();
+            $('#icon_').hide();
+            $('#img_name').html("{$Think.lang.img}");
+        } else if (flag_ic >= 0) {
+            $('#content_').hide();
+            $('#img_').show();
+            $('#url_').show();
+            $('#video_').hide();
+            $('#icon_').hide();
+            $('#img_name').html("{$Think.lang.img}");
+        } else if(flag_b >= 0) {
+            $('#content_').hide();
+            $('#img_').show();
+            $('#url_').hide();
+            $('#video_').hide();
+            $('#icon_').hide();
+            $('#img_name').html("{$Think.lang.img}");
+        } else if(flagI_img >= 0 ) {
+            $('#content_').hide();
+            $('#img_').show();
+            $('#url_').show();
+            $('#video_').hide();
+            $('#icon_').show();
+            $('#img_name').html("{$Think.lang.img}");
+        } else {
+            $('#img_').show();
+            $('#url_').show();
+            $('#content_').show();
+            $('#video_').hide();
+            $('#icon_').hide();
+            $('#img_name').html("{$Think.lang.img}");
+        }
+    })
+    function webuploader(){
+        if(time>1)return;
+        time++;   
+        $upload = $('#ctlBtn'),
+        uploader = WebUploader.create({               
+            swf: '{$Think.ADMIN_JS}/webuploader/Uploader.swf', //加载swf文件，路径一定要对
+              // 文件接收服务端。
+            server: "{:url('Uploads/webupload?dir=file','',false)}",
+
+              // 选择文件的按钮。可选。
+              // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+            pick: {
+                    id: '#picker',
+            },
+            fileNumLimit: 1,
+              // 不压缩image, 默认如果是jpeg，文件上传前会压缩一把再上传！
+            resize: true,
+
+        });
+        uploader.on('error', function(handler) {
+            if (handler == "Q_EXCEED_NUM_LIMIT") {
+                showErrMsg("只能上传一个文件");
+            }else if(handler == "Q_EXCEED_SIZE_LIMIT"){
+                showErrMsg("添加的文件总大小超出");
+            }else if(handler == "Q_TYPE_DENIED"){
+            }
+        });
+        uploader.on( 'fileQueued', function( file ) {
+            $("#thelist").append( '<div id="' + file.id + '" class="item">' +
+                '<h4 class="info">' + file.name + '</h4>' +
+                '<p class="state">等待上传...</p>' +
+            '</div>' );
+        });
+        $("#ctlBtn").click(function(){
+            uploader.upload();
+        })
+        uploader.on( 'uploadProgress', function( file, percentage ) {
+            var $li = $( '#'+file.id ),
+                $percent = $li.find('.progress .progress-bar');
+
+            // 避免重复创建
+            if ( !$percent.length ) {
+                $percent = $('<div class="progress progress-striped active">' +
+                  '<div class="progress-bar" role="progressbar" style="width: 0%">' +
+                  '</div>' +
+                '</div>').appendTo( $li ).find('.progress-bar');
+            }
+
+            $li.find('p.state').text('上传中');
+
+            $percent.css( 'width', percentage * 100 + '%' );
+        });
+        uploader.on( 'uploadSuccess', function( file , response ) {
+            if (response.error == 0) {                          
+                $('#video').val(response.url);
+                $('#video_name').val(response.name);
+                $( '#'+file.id ).find('p.state').text('已上传');             
+            }  else {
+                $( '#'+file.id ).find('p.state').text(response.info);  
+            } 
+            
+        });
+
+        uploader.on( 'uploadError', function( file ) {
+            $( '#'+file.id ).find('p.state').text('上传出错');
+        });
+
+        uploader.on( 'uploadComplete', function( file ) {
+            $( '#'+file.id ).find('.progress').fadeOut();
+        });
+    }
+});
+</script>
+{include file="layout/bottom" /}
