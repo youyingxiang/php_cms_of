@@ -47,6 +47,7 @@ class Uploads extends Controller
     {
         $up_config = cache('DB_UP_CONFIG');   //获取数据库中的上传文件配置信息缓存
         $file = request()->file('imgFile');
+        define('PAGE_BTM','上传文件'); 
         try {
             if ($file) {         
                 if ($this->up_type == 'file')$size = $up_config['file_size'];else $size = $up_config['image_size'];    
@@ -65,8 +66,8 @@ class Uploads extends Controller
                     } elseif ($this->up_type == 'file') {
                         $file_path = $this->file_back_path.DS.$info->getSaveName();
                         $file_path = $up_config['image_url'].str_replace('\\', '/', $file_path);
-                    } 
-                    write_log('上传文件成功！');
+                    }
+                    write_log();
                     echo json_encode(['error' => 0, 'url' => $file_path]);
                 } else {
                     exception($file->getError(),401);
@@ -75,7 +76,7 @@ class Uploads extends Controller
                 exception("请选择文件！",401);
             }
         } catch (\Exception $e) {                   
-            write_log('上传失败！原因：'.$e->getMessage());
+            write_log($e->getMessage());
             return ajaxReturn($e->getMessage());
         }   
     }

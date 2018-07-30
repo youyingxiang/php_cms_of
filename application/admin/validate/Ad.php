@@ -10,9 +10,9 @@ class Ad extends Validate
         'order_key' => 'require|integer',
     ];
     protected $message = [
-        'title.max'                 => '{%title_m}', 
-        'order_key.require'         => '{%order_key_r}',
-        'order_key.integer'         => '{%order_key_i}',
+        'title.max'                 => '标题名称最多128个字符！', 
+        'order_key.require'         => '排序不能为空！',
+        'order_key.integer'         => '排序必须是个整数！',
     ];
     protected $scene = [
         'add'   => ['title', 'order_key'],

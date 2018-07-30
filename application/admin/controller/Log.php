@@ -29,13 +29,13 @@ class Log extends Base
             $where['add_time'] = ['<',$end_time];
             $result = log_::where($where)->delete();   //删除主表数据 
             if ($result !== false ) {  
-                write_log('删除日志成功！');
+                write_log();
                 return ajaxReturn("操作成功", url('lst'));
             } else {
                 exception($this->cModel->getError(),401);
             }
         } catch (\Exception $e) {
-            write_log('删除日志失败！原因：'.$e->getMessage());
+            write_log($e->getMessage());
             return ajaxReturn($e->getMessage());
         }  
     }

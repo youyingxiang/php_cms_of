@@ -148,7 +148,7 @@ class Ad extends Base
     {
         $type = 'index';
         if (request()->isPost()) {
-            try{
+            try {
                 $data = input('post.');
                 $data['type'] = $type;
                 $result = $this->cModel->validate(CONTROLLER_NAME.'.add')->allowField(true)->save($data);             
@@ -162,7 +162,7 @@ class Ad extends Base
                 write_log($e->getMessage());               
                 return ajaxReturn($e->getMessage());   
             }
-        }else{
+        } else {
             $this->setPageBtn();
             $ad = config('ad_'.$type.'_list');
             $this->assign('ad',$ad);
@@ -223,7 +223,7 @@ class Ad extends Base
                 write_log($e->getMessage());               
                 return ajaxReturn($e->getMessage());   
             }
-        }else{
+        } else {
             $this->setPageBtn();
             $ad = config('ad_'.$type.'_list');
             $this->assign('ad',$ad);
@@ -473,409 +473,195 @@ class Ad extends Base
                 return ajaxReturn($e->getMessage());   
             }
         } else {
-            if ($id > 0) {
-                $data = $this->cModel->get($id);
-                $ad = config('ad_'.$type.'_list');
-                $this->setPageBtn(lang('show_title_ad_'.$type), lang('show_title_edit_ad'));               
-                $this->assign('ad',$ad);                 
-                $this->assign('data', $data);
-                return $this->fetch('edit');
-            }
+            $this->setPageBtn();
+            $data = $this->cModel->get($id);
+            if (empty($data)) return $this->notFound();
+            $ad = config('ad_'.$type.'_list');              
+            $this->assign('ad',$ad);                 
+            $this->assign('data', $data);
+            return $this->fetch('edit');
         }
     }
-    public function edit_solution($id)
-    {
-        $type = 'solution';
-        if (request()->isPost()) {
-            $data = input('post.');
-            if (count($data) == 2) {
-                foreach ($data as $k =>$v) {
-                    $fv = $k!='id' ? $k : '';
-                }
-                $result = $this->cModel->validate(CONTROLLER_NAME.'.'.$fv)->allowField(true)->save($data, $data['id']);
-            } else {
-                $data['type'] = $type;
-                $result = $this->cModel->validate(CONTROLLER_NAME.'.edit')->allowField(true)->save($data, $data['id']);
-            }
-            if (false !== $result) {
-                write_log(lang('edit_success_ad'));
-                $page = !empty(input('page'))?input('page'):'';
-                return ajaxReturn(lang('action_success'), url($type)."?page=".input('page'));
-            } else {
-                write_log(lang('edit_error_ad'));
-                return ajaxReturn($this->cModel->getError());
-            }
-        } else {
-            if ($id > 0) {
-                $data = $this->cModel->get($id);
-                $ad = config('ad_'.$type.'_list');
-                $this->setPageBtn(lang('show_title_ad_'.$type), lang('show_title_edit_ad'));               
-                $this->assign('ad',$ad);                 
-                $this->assign('data', $data);
-                return $this->fetch('edit');
-            }
-        }
-    }
-    public function edit_online_store($id)
-    {
-        $type = 'online_store';
-        if (request()->isPost()) {
-            $data = input('post.');
-            if (count($data) == 2) {
-                foreach ($data as $k =>$v) {
-                    $fv = $k!='id' ? $k : '';
-                }
-                $result = $this->cModel->validate(CONTROLLER_NAME.'.'.$fv)->allowField(true)->save($data, $data['id']);
-            } else {
-                $data['type'] = $type;
-                $result = $this->cModel->validate(CONTROLLER_NAME.'.edit')->allowField(true)->save($data, $data['id']);
-            }
-            if (false !== $result) {
-                write_log(lang('edit_success_ad'));
-                $page = !empty(input('page'))?input('page'):'';
-                return ajaxReturn(lang('action_success'), url($type)."?page=".input('page'));
-            } else {
-                write_log(lang('edit_error_ad'));
-                return ajaxReturn($this->cModel->getError());
-            }
-        } else {
-            if ($id > 0) {
-                $data = $this->cModel->get($id);
-                $ad = config('ad_'.$type.'_list');
-                $this->setPageBtn(lang('show_title_ad_'.$type), lang('show_title_edit_ad'));               
-                $this->assign('ad',$ad);                 
-                $this->assign('data', $data);
-                return $this->fetch('edit');
-            }
-        }
-    }
+ 
+    
     /**
      * [delete_index 删除首页广告]
      */
     public function delete_index()
     {
-        if (request()->isPost()) {
-            $id = input('id');
-            if (isset($id) && !empty($id)) {
-                try{
+        try {
+            if (request()->isPost()) {
+                $id = input('id');
+                if (isset($id) && !empty($id)) {
                     $id_arr = explode(',', $id);                        //用户数据
                     $where = [ 'id' => ['in', $id_arr] ];
                     $data = $this->cModel->field('img')->where($where)->select(); 
                     $result = $this->cModel->where($where)->delete();   //删除主表数据                   
                     if ($result !== false ) {                        
                         foreach ($data as $k => $v){
-                            if ($v['img'] != '/cn/static/global/face/default.png'){
+                            if ($v['img'] != '/static/global/face/default.png'){
                                 @unlink(WEB_PATH.$v['img']);          //删除头像文件
                             }
                         }
-                        write_log(lang('del_success_ad'));
-                        return ajaxReturn(lang('action_success'), url('index'));
-                    }else{
-                        write_log(lang('del_error_ad'));
-                        return ajaxReturn($this->cModel->getError());
+                        write_log();
+                        return ajaxReturn('操作成功！', url('index'));
+                    } else {
+                        exception($this->cModel->getError(),401);
                     }
-                } catch (\Exception $e) {                   
-                    write_log(lang('del_error_ad'));                 // 回滚事务
-                    return ajaxReturn($e->getMessage());
+                } else {
+                    exception('没有需要删除的ID！',401);
                 }
+            } else {
+                exception('传递参数错误！',401);
             }
+        } catch (\Exception $e) {                   
+            write_log($e->getMessage());
+            return ajaxReturn($e->getMessage());
         }
         
     }
-    /**
-     * [delete_recruit 删除招聘广告]
-     */
-    public function delete_recruit()
-    {
-        if (request()->isPost()) {
-            $id = input('id');
-            if (isset($id) && !empty($id)) {
-                try{
-                    $id_arr = explode(',', $id);                        //用户数据
-                    $where = [ 'id' => ['in', $id_arr] ];
-                    $data = $this->cModel->field('img')->where($where)->select(); 
-                    $result = $this->cModel->where($where)->delete();   //删除主表数据                   
-                    if ($result !== false ) {                        
-                        foreach ($data as $k => $v){
-                            if ($v['img'] != '/cn/static/global/face/default.png'){
-                                @unlink(WEB_PATH.$v['img']);          //删除头像文件
-                            }
-                        }
-                        write_log(lang('del_success_ad'));
-                        return ajaxReturn(lang('action_success'), url('recruit'));
-                    }else{
-                        write_log(lang('del_error_ad'));
-                        return ajaxReturn($this->cModel->getError());
-                    }
-                } catch (\Exception $e) {                   
-                    write_log(lang('del_error_ad'));                 // 回滚事务
-                    return ajaxReturn($e->getMessage());
-                }
-            }
-        }
-        
-    }
-    /**
-     * [delete_service 删除服务支持广告]
-     */
-    public function delete_service()
-    {
-        if (request()->isPost()) {
-            $id = input('id');
-            if (isset($id) && !empty($id)) {
-                try{
-                    $id_arr = explode(',', $id);                        //用户数据
-                    $where = [ 'id' => ['in', $id_arr] ];
-                    $data = $this->cModel->field('img')->where($where)->select(); 
-                    $result = $this->cModel->where($where)->delete();   //删除主表数据                   
-                    if ($result !== false ) {                        
-                        foreach ($data as $k => $v){
-                            if ($v['img'] != '/cn/static/global/face/default.png'){
-                                @unlink(WEB_PATH.$v['img']);          //删除头像文件
-                            }
-                        }
-                        write_log(lang('del_success_ad'));
-                        return ajaxReturn(lang('action_success'), url('service'));
-                    }else{
-                        write_log(lang('del_error_ad'));
-                        return ajaxReturn($this->cModel->getError());
-                    }
-                } catch (\Exception $e) {                   
-                    write_log(lang('del_error_ad'));                 // 回滚事务
-                    return ajaxReturn($e->getMessage());
-                }
-            }
-        }
-        
-    }
+
+
     /**
      * [delete_news 删除新闻广告]
      */
     public function delete_news()
     {
-        if (request()->isPost()) {
-            $id = input('id');
-            if (isset($id) && !empty($id)) {
-                try{
+        try {
+            if (request()->isPost()) {
+                $id = input('id');
+                if (isset($id) && !empty($id)) {
                     $id_arr = explode(',', $id);                        //用户数据
                     $where = [ 'id' => ['in', $id_arr] ];
                     $data = $this->cModel->field('img')->where($where)->select(); 
                     $result = $this->cModel->where($where)->delete();   //删除主表数据                   
                     if ($result !== false ) {                        
                         foreach ($data as $k => $v){
-                            if ($v['img'] != '/cn/static/global/face/default.png'){
+                            if ($v['img'] != '/static/global/face/default.png'){
                                 @unlink(WEB_PATH.$v['img']);          //删除头像文件
                             }
                         }
-                        write_log(lang('del_success_ad'));
-                        return ajaxReturn(lang('action_success'), url('news'));
-                    }else{
-                        write_log(lang('del_error_ad'));
-                        return ajaxReturn($this->cModel->getError());
+                        write_log();
+                        return ajaxReturn('操作成功！', url('news'));
+                    } else { 
+                        exception($this->cModel->getError(),401);
                     }
-                } catch (\Exception $e) {                   
-                    write_log(lang('del_error_ad'));                 // 回滚事务
-                    return ajaxReturn($e->getMessage());
+                } else {
+                    exception('没有需要删除的ID！',401);
                 }
+            } else {
+                exception('传递参数错误！',401);
             }
-        }
-        
+        } catch (\Exception $e) {                   
+            write_log($e->getMessage());
+            return ajaxReturn($e->getMessage());
+        }           
     }
     /**
      * [delete_aboutus 删除关于我们广告]
      */
     public function delete_aboutus()
     {
-        if (request()->isPost()) {
-            $id = input('id');
-            if (isset($id) && !empty($id)) {
-                try{
+        try {
+            if (request()->isPost()) {
+                $id = input('id');
+                if (isset($id) && !empty($id)) {
                     $id_arr = explode(',', $id);                        //用户数据
                     $where = [ 'id' => ['in', $id_arr] ];
                     $data = $this->cModel->field('img')->where($where)->select(); 
                     $result = $this->cModel->where($where)->delete();   //删除主表数据                   
                     if ($result !== false ) {                        
-                        foreach ($data as $k => $v){
-                            if ($v['img'] != '/cn/static/global/face/default.png'){
+                        foreach ($data as $k => $v) {
+                            if ($v['img'] != '/static/global/face/default.png'){
                                 @unlink(WEB_PATH.$v['img']);          //删除头像文件
                             }
                         }
-                        write_log(lang('del_success_ad'));
-                        return ajaxReturn(lang('action_success'), url('aboutus'));
-                    }else{
-                        write_log(lang('del_error_ad'));
-                        return ajaxReturn($this->cModel->getError());
+                        write_log();
+                        return ajaxReturn('操作成功！', url('aboutus'));
+                    } else {
+                        exception($this->cModel->getError(),401);
                     }
-                } catch (\Exception $e) {                   
-                    write_log(lang('del_error_ad'));                 // 回滚事务
-                    return ajaxReturn($e->getMessage());
+                } else {
+                    exception('没有需要删除的ID！',401);
                 }
+            } else {
+                exception('传递参数错误！',401);
             }
-        }
-        
+         } catch (\Exception $e) {                   
+            write_log($e->getMessage());
+            return ajaxReturn($e->getMessage());
+        }        
     }
     /**
      * [delete_contactus 删除联系我们广告]
      */
     public function delete_contactus()
     {
-        if (request()->isPost()) {
-            $id = input('id');
-            if (isset($id) && !empty($id)) {
-                try{
+        try {
+            if (request()->isPost()) {
+                $id = input('id');
+                if (isset($id) && !empty($id)) {
                     $id_arr = explode(',', $id);                        //用户数据
                     $where = [ 'id' => ['in', $id_arr] ];
                     $data = $this->cModel->field('img')->where($where)->select(); 
                     $result = $this->cModel->where($where)->delete();   //删除主表数据                   
                     if ($result !== false ) {                        
-                        foreach ($data as $k => $v){
-                            if ($v['img'] != '/cn/static/global/face/default.png'){
+                        foreach ($data as $k => $v) {
+                            if ($v['img'] != '/static/global/face/default.png'){
                                 @unlink(WEB_PATH.$v['img']);          //删除头像文件
                             }
                         }
-                        write_log(lang('del_success_ad'));
-                        return ajaxReturn(lang('action_success'), url('contactus'));
-                    }else{
-                        write_log(lang('del_error_ad'));
-                        return ajaxReturn($this->cModel->getError());
+                        write_log();
+                        return ajaxReturn('操作成功！', url('contactus'));
+                    } else {
+                        exception($this->cModel->getError(),401);
                     }
-                } catch (\Exception $e) {                   
-                    write_log(lang('del_error_ad'));                 // 回滚事务
-                    return ajaxReturn($e->getMessage());
+                } else {
+                    exception('没有需要删除的ID！',401);
                 }
+            } else {
+                exception('传递参数错误！',401);
             }
+        } catch (\Exception $e) {                   
+            write_log($e->getMessage());
+            return ajaxReturn($e->getMessage());
         }        
     }
-    /**
-     * [delete_partner 删除合作伙伴广告]
-     */
-    public function delete_partner()
-    {
-        if (request()->isPost()) {
-            $id = input('id');
-            if (isset($id) && !empty($id)) {
-                try{
-                    $id_arr = explode(',', $id);                        //用户数据
-                    $where = [ 'id' => ['in', $id_arr] ];
-                    $data = $this->cModel->field('img')->where($where)->select(); 
-                    $result = $this->cModel->where($where)->delete();   //删除主表数据                   
-                    if ($result !== false ) {                        
-                        foreach ($data as $k => $v){
-                            if ($v['img'] != '/cn/static/global/face/default.png'){
-                                @unlink(WEB_PATH.$v['img']);          //删除头像文件
-                            }
-                        }
-                        write_log(lang('del_success_ad'));
-                        return ajaxReturn(lang('action_success'), url('partner'));
-                    }else{
-                        write_log(lang('del_error_ad'));
-                        return ajaxReturn($this->cModel->getError());
-                    }
-                } catch (\Exception $e) {                   
-                    write_log(lang('del_error_ad'));                 // 回滚事务
-                    return ajaxReturn($e->getMessage());
-                }
-            }
-        }       
-    }
+
     /**
      * [delete_product 删除产品广告]
      */
     public function delete_product()
     {
-        if (request()->isPost()) {
-            $id = input('id');
-            if (isset($id) && !empty($id)) {
-                try{
+        try {
+            if (request()->isPost()) {
+                $id = input('id');
+                if (isset($id) && !empty($id)) {
                     $id_arr = explode(',', $id);                        //用户数据
                     $where = [ 'id' => ['in', $id_arr] ];
                     $data = $this->cModel->field('img')->where($where)->select(); 
                     $result = $this->cModel->where($where)->delete();   //删除主表数据                   
                     if ($result !== false ) {                        
                         foreach ($data as $k => $v){
-                            if ($v['img'] != '/cn/static/global/face/default.png'){
+                            if ($v['img'] != '/static/global/face/default.png'){
                                 @unlink(WEB_PATH.$v['img']);          //删除头像文件
                             }
                         }
-                        write_log(lang('del_success_ad'));
-                        return ajaxReturn(lang('action_success'), url('product'));
-                    }else{
-                        write_log(lang('del_error_ad'));
-                        return ajaxReturn($this->cModel->getError());
+                        write_log();
+                        return ajaxReturn('操作成功！', url('product'));
+                    } else {
+                        exception($this->cModel->getError(),401);
                     }
-                } catch (\Exception $e) {                   
-                    write_log(lang('del_error_ad'));                 // 回滚事务
-                    return ajaxReturn($e->getMessage());
+                } else {
+                    exception('没有需要删除的ID！',401);
                 }
+            } else {
+                exception('传递参数错误！',401);
             }
-        }
-        
+        } catch (\Exception $e) {                   
+            write_log($e->getMessage());
+            return ajaxReturn($e->getMessage());
+        } 
     }
-    /**
-     * [delete_solution 删除解决方案广告]
-     */
-    public function delete_solution()
-    {
-        if (request()->isPost()) {
-            $id = input('id');
-            if (isset($id) && !empty($id)) {
-                try{
-                    $id_arr = explode(',', $id);                        //用户数据
-                    $where = [ 'id' => ['in', $id_arr] ];
-                    $data = $this->cModel->field('img')->where($where)->select(); 
-                    $result = $this->cModel->where($where)->delete();   //删除主表数据                   
-                    if ($result !== false ) {                        
-                        foreach ($data as $k => $v){
-                            if ($v['img'] != '/cn/static/global/face/default.png'){
-                                @unlink(WEB_PATH.$v['img']);          //删除头像文件
-                            }
-                        }
-                        write_log(lang('del_success_ad'));
-                        return ajaxReturn(lang('action_success'), url('solution'));
-                    }else{
-                        write_log(lang('del_error_ad'));
-                        return ajaxReturn($this->cModel->getError());
-                    }
-                } catch (\Exception $e) {                   
-                    write_log(lang('del_error_ad'));                 // 回滚事务
-                    return ajaxReturn($e->getMessage());
-                }
-            }
-        }
-        
-    }
-    /**
-     * [delete_online_store 删除如何购买广告]
-     */
-    public function delete_online_store()
-    {
-        if (request()->isPost()) {
-            $id = input('id');
-            if (isset($id) && !empty($id)) {
-                try{
-                    $id_arr = explode(',', $id);                        //用户数据
-                    $where = [ 'id' => ['in', $id_arr] ];
-                    $data = $this->cModel->field('img')->where($where)->select(); 
-                    $result = $this->cModel->where($where)->delete();   //删除主表数据                   
-                    if ($result !== false ) {                        
-                        foreach ($data as $k => $v){
-                            if ($v['img'] != '/cn/static/global/face/default.png'){
-                                @unlink(WEB_PATH.$v['img']);          //删除头像文件
-                            }
-                        }
-                        write_log(lang('del_success_ad'));
-                        return ajaxReturn(lang('action_success'), url('online_store'));
-                    }else{
-                        write_log(lang('del_error_ad'));
-                        return ajaxReturn($this->cModel->getError());
-                    }
-                } catch (\Exception $e) {                   
-                    write_log(lang('del_error_ad'));                 // 回滚事务
-                    return ajaxReturn($e->getMessage());
-                }
-            }
-        }
-        
-    }
-  
 }
+ 

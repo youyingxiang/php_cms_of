@@ -31,13 +31,13 @@ class Nav extends Base
                 $data = input('post.');
                 $result = $this->cModel->allowField(true)->validate(CONTROLLER_NAME.'.add')->save($data);
                 if ($result) {
-                    write_log('增加导航成功！');             
+                    write_log();             
                     return ajaxReturn('操作成功！', url('lst'));
                 } else { 
                     exception($this->cModel->getError(),401);
                 }
             } catch (\Exception $e) { 
-                write_log('增加导航失败的原因：'.$e->getMessage());               
+                write_log($e->getMessage());               
                 return ajaxReturn($e->getMessage());   
             }
         }
@@ -62,13 +62,13 @@ class Nav extends Base
                     $result = $this->cModel->validate(CONTROLLER_NAME.'.edit')->allowField(true)->save($data, $data['id']);
                 }
                 if (FALSE !== $result) {
-                    write_log('编辑导航成功！');
+                    write_log();
                     return ajaxReturn('操作成功！', url('lst'));
                 } else {
                     exception($this->cModel->getError(),401);
                 }
             } catch (\Exception $e) { 
-                write_log('编辑导航失败的原因：'.$e->getMessage());               
+                write_log($e->getMessage());               
                 return ajaxReturn($e->getMessage());   
             }
         } else {
@@ -92,7 +92,7 @@ class Nav extends Base
                     $id_arr = $this->cModel->getChildren($id);
                     $result = $this->cModel->destroy($id_arr);
                     if (FALSE !== $result) {
-                        write_log('删除导航成功！');
+                        write_log();
                         return ajaxReturn('操作成功！', url('lst'));
                     } else {
                         exception($this->cModel->getError(),401);
@@ -104,7 +104,7 @@ class Nav extends Base
                 exception('传递参数错误！',401);
             }
         } catch (\Exception $e) {                   
-            write_log('删除导航失败！原因：'.$e->getMessage());
+            write_log($e->getMessage());
             return ajaxReturn($e->getMessage());
         }      
     } 

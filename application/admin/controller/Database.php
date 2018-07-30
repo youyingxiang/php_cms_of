@@ -42,7 +42,7 @@ class Database extends Base
                     $table_arr = explode(',', $id);   //备份数据表
                     $sql = new \expand\Baksql(\think\Config::get("database"));
                     $res = $sql->backup($table_arr);
-                    write_log("备份成功！");
+                    write_log();
                     return ajaxReturn($res, url('lst'));
                 } else {
                     exception('没有选择的备份文件!',401);
@@ -51,7 +51,7 @@ class Database extends Base
                 exception('请求方式不正确！',401);
             }
         } catch (\Exception $e) {
-            write_log('备份数据库文件；错误：'.$e->getMessage());
+            write_log($e->getMessage());
             return ajaxReturn($e->getMessage());
         }
     }
@@ -88,14 +88,14 @@ class Database extends Base
                     $sql = new \expand\Baksql(\think\Config::get("database"));
                     $res = $sql->restore($name);
                     clear_auth();
-                    write_log('还原备份成功！');
+                    write_log();
                     return ajaxReturn($res, url('reduction'));
                 } else {
                     exception('没有选择还原的文件!',401);
                 }
             }
         } catch (\Exception $e) {
-            write_log('还原数据库文件；错误：'.$e->getMessage());
+            write_log($e->getMessage());
             return ajaxReturn($e->getMessage());
         }
     }
@@ -113,13 +113,13 @@ class Database extends Base
             $table = input('table');
             if (isset($table) && !empty($table)) {
                 $sql = new \expand\Baksql(\think\Config::get("database"));
-                write_log("下载备份成功");
+                write_log();
                 $sql->downloadFile($table);
             } else {
                 exception('没有选择文件!',401);
             }
         } catch (\Exception $e) {
-            write_log('下载备份文件；错误：'.$e->getMessage());
+            write_log($e->getMessage());
             return $this->notFound();
         }
     }
@@ -139,7 +139,7 @@ class Database extends Base
                 if (isset($name) && !empty($name)) {
                     $sql = new \expand\Baksql(\think\Config::get("database"));
                     $res = $sql->delfilename($name);
-                    write_log('删除备份文件成功！');
+                    write_log();
                     return ajaxReturn($res, url('reduction'));
                 } else {
                     exception('未选择删除的文件!',401);
@@ -148,7 +148,7 @@ class Database extends Base
                 exception('请求方式不正确！',401);
             } 
         } catch (\Exception $e) {
-            write_log('删除备份文件；错误：'.$e->getMessage());
+            write_log($e->getMessage());
             return $this->notFound();
         }
     }

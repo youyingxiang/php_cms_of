@@ -39,13 +39,13 @@ class ConfigField extends Base
                 $data = input('post.');
                 $result = $this->cModel->validate(CONTROLLER_NAME.'.add')->allowField(true)->save($data);
                 if ($result) {
-                    write_log('增加配置字段成功！');
+                    write_log();
                     return ajaxReturn('操作成功！', url('lst'));
                 } else {
                     exception($this->cModel->getError(),401);
                 }
             } catch (\Exception $e) { 
-                write_log('增加配置字段失败的原因：'.$e->getMessage());               
+                write_log($e->getMessage());               
                 return ajaxReturn($e->getMessage());   
             }
         }else{
@@ -68,14 +68,14 @@ class ConfigField extends Base
                     $result = $this->cModel->validate(CONTROLLER_NAME.'.edit')->allowField(true)->save($data, $data['id']);
                 }
                 if ($result !== false) {
-                    write_log('删除配置字段成功！');
+                    write_log();
                     $page = !empty(input('page'))?input('page'):'';
                     return ajaxReturn('操作成功！', url('lst')."?page=".input('page'));
                 } else {
                     exception($this->cModel->getError(),401);
                 }
             } catch (\Exception $e) { 
-                write_log('编辑配置字段失败的原因：'.$e->getMessage());               
+                write_log($e->getMessage());               
                 return ajaxReturn($e->getMessage());
             }
         } else {
@@ -97,7 +97,7 @@ class ConfigField extends Base
                     $where = ['id' => ['in', $id_arr]];
                     $result = $this->cModel->where($where)->delete();   //删除主表数据                   
                     if ($result !== false ) { 
-                        write_log('删除配置字段成功！');
+                        write_log();
                         return ajaxReturn('操作成功！', url('lst'));
                     } else {
                         exception($this->cModel->getError(),401);
@@ -109,7 +109,7 @@ class ConfigField extends Base
                 exception('传递参数错误！',401);
             }
         } catch (\Exception $e) {                   
-            write_log('删除配置字段失败！原因：'.$e->getMessage());
+            write_log($e->getMessage());
             return ajaxReturn($e->getMessage());
         }  
     }
@@ -130,7 +130,7 @@ class ConfigField extends Base
                             $where = array('type' => $type, 'k'=>$k);
                             $this->cModel->where($where)->update(['v' => $val]);
                         }
-                        write_log('保存配置成功！');
+                        write_log();
                         return ajaxReturn('操作成功！', url('ConfigField/'.$type));
                     } else {
                         exception('要保存的数据为空！',401);
@@ -142,7 +142,7 @@ class ConfigField extends Base
                 exception('传递参数错误！',401);
             }
         } catch (\Exception $e) {                   
-            write_log('保存配置失败！原因：'.$e->getMessage());
+            write_log($e->getMessage());
             return ajaxReturn($e->getMessage());
         }  
     }

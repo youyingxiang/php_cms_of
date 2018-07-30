@@ -33,11 +33,11 @@ class Privilege extends Base
 	            if (empty($result)) {
 	            	exception($this->cModel->getError(),401);
 	            } else {
-	            	write_log('增加权限成功！');
+	            	write_log();
 	            	return ajaxReturn('操作成功', url('lst'));
 	            } 
 	        } catch (\Exception $e) {
-	        	write_log('增加权限失败！原因：'.$e->getMessage());
+	        	write_log($e->getMessage());
 	        	return ajaxReturn($e->getMessage());     	
 	        }
 		}
@@ -61,13 +61,13 @@ class Privilege extends Base
 	                $result = $this->cModel->validate(CONTROLLER_NAME.'.edit')->allowField(true)->save($data, $data['id']);
 	            }
 	            if ($result !== FALSE) {
-	            	write_log('编辑权限成功！');
+	            	write_log();
 	            	return ajaxReturn('操作成功', url('lst'));
 	            } else {
 	                exception($this->cModel->getError(),401);
 	            }
 	        } catch (\Exception $e) {
-	        	write_log('编辑权限失败！原因：'.$e->getMessage());
+	        	write_log($e->getMessage());
 	        	return ajaxReturn($e->getMessage());
 	        }
         } else {
@@ -90,7 +90,7 @@ class Privilege extends Base
 					$id_arr = $this->cModel->getChildren($id);
 					$result = $this->cModel->destroy($id_arr);
 					if (FALSE !== $result) {
-						write_log("删除权限成功！");
+						write_log();
 	                    return ajaxReturn("操作成功", url('lst'));
 					} else {
 		                exception($this->cModel->getError(),401);
@@ -102,7 +102,7 @@ class Privilege extends Base
 				exception('传递参数错误！',401);
 			}
 		} catch (\Exception $e) {
-        	write_log('删除权限失败！原因：'.$e->getMessage());
+        	write_log($e->getMessage());
         	return ajaxReturn($e->getMessage());
         }
     }     

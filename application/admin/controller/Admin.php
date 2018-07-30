@@ -36,13 +36,13 @@ class Admin extends Base
                 $data = input('post.');
                 $result = $this->cModel->validate(CONTROLLER_NAME.'.add')->allowField(true)->save($data);             
                 if ($result) {
-                    write_log('增加操作员成功！');             
+                    write_log();             
                     return ajaxReturn('操作成功！', url('lst'));
                 } else {
                     exception($this->cModel->getError(),401);
                 }
             } catch (\Exception $e) { 
-                write_log('增加管理员失败的原因：'.$e->getMessage());               
+                write_log($e->getMessage());               
                 return ajaxReturn($e->getMessage());   
             }
         } else {
@@ -66,23 +66,23 @@ class Admin extends Base
                     $result = $this->cModel->validate(CONTROLLER_NAME.'.edit')->allowField(true)->save($data, $data['id']);
                 }
                 if (false !== $result) {
-                    write_log('编辑操作员成功！');
+                    write_log();
                     return ajaxReturn('操作成功！', url('lst'));
                 } else {
                     exception($this->cModel->getError(),401);
                 }
             } catch (\Exception $e) { 
-                write_log('编辑管理员失败的原因：'.$e->getMessage());               
+                write_log($e->getMessage());               
                 return ajaxReturn($e->getMessage());   
             }
         } else {
-                $this->setPageBtn();
-                $data = $this->cModel->get($id);
-                if (empty($data)) return $this->notFound();
-                $roleData = db('Role')->field('id,role_name')->select();                
-                $this->assign('roleData',$roleData);
-                $this->assign('data', $data);
-                return $this->fetch();
+            $this->setPageBtn();
+            $data = $this->cModel->get($id);
+            if (empty($data)) return $this->notFound();
+            $roleData = db('Role')->field('id,role_name')->select();
+            $this->assign('roleData',$roleData);
+            $this->assign('data', $data);
+            return $this->fetch();
         }
     }
 	public function delete()
@@ -101,7 +101,7 @@ class Admin extends Base
                                 @unlink(WEB_PATH.$v['img']);          //删除头像文件
                             }
                         }
-                        write_log('删除管理员成功！');
+                        write_log();
                         return ajaxReturn('操作成功！', url('lst'));
                     } else {
                         exception($this->cModel->getError(),401);
@@ -113,7 +113,7 @@ class Admin extends Base
                 exception('传递参数错误！',401);
             }
         } catch (\Exception $e) {                   
-            write_log('删除管理员失败！原因：'.$e->getMessage());
+            write_log($e->getMessage());
             return ajaxReturn($e->getMessage());
         }		
 	}

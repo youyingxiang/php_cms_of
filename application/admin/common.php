@@ -101,7 +101,7 @@ function table_sort($param)
  {   
         $log = new \app\admin\model\Log();
         $data['log_type'] = request()->action();
-        $data['log_detail'] = $log_detail?PAGE_BTM.'失败的原因：'.$log_detail:PAGE_BTM.'成功';
+        $data['log_detail'] = $log_detail?PAGE_BTM.'失败的原因：'.$log_detail:PAGE_BTM.'成功!';
         // $data['admin_id'] = session('admin')['id'];
         $data['admin_id'] = session('adminId');
         $data['ip'] = $_SERVER['REMOTE_ADDR'];

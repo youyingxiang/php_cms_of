@@ -32,7 +32,8 @@ class Login extends Controller
                     $where = ['id' => $adminData['id']];
                     $this->cModel->where($where)->setField('last_time',time());
                     session('adminId', $adminData['id']);
-                    write_log('用户登录成功！');  
+                    define('PAGE_BTM','用户登录');
+                    write_log();  
                     return ajaxReturn('操作成功', url('Index/lst'));
                 }
             } else{

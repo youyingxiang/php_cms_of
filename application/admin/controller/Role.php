@@ -41,14 +41,14 @@ class Role extends Base
                 $data['role_pri'] = !empty($data['role_pri']) ? implode(',', $data['role_pri']) : '';
                 $result = $this->cModel->validate(CONTROLLER_NAME.'.add')->allowField(true)->save($data);
                 if ($result) {
-                    write_log('增加角色成功！');
+                    write_log();
                     clear_auth();
                     return ajaxReturn('操作成功', url('lst'));
                 } else {
                     exception($this->cModel->getError(),401);
                 }
             } catch (\Exception $e) { 
-                write_log('增加角色失败的原因：'.$e->getMessage());               
+                write_log($e->getMessage());               
                 return ajaxReturn($e->getMessage());   
             }
         } else {
@@ -80,13 +80,13 @@ class Role extends Base
                 }
                 if ($result !== false) {
                     clear_auth();
-                    write_log('编辑角色成功！');
+                    write_log();
                     return ajaxReturn('操作成功！', url('lst'));
                 } else {
                     exception($this->cModel->getError(),401);
                 }
             } catch (\Exception $e) { 
-                write_log('编辑角色失败的原因：'.$e->getMessage());               
+                write_log($e->getMessage());               
                 return ajaxReturn($e->getMessage());
             }
         } else {
@@ -101,7 +101,6 @@ class Role extends Base
             $this->assign('data', $data);         
             return $this->fetch();
         }       
-
     }
     
     public function delete()
@@ -114,7 +113,7 @@ class Role extends Base
                     $where = ['id' => ['in', $id_arr]];
                     $result = $this->cModel->where($where)->delete();               
                     if ($result !== false) {
-                        write_log('删除角色成功！');
+                        write_log();
                         return ajaxReturn('操作成功！', url('lst'));
                     } else {
                         exception($this->cModel->getError(),401);
@@ -126,7 +125,7 @@ class Role extends Base
                 exception('传递参数错误！',401);
             }
         } catch (\Exception $e) {                   
-            write_log('删除角色失败！原因：'.$e->getMessage());
+            write_log($e->getMessage());
             return ajaxReturn($e->getMessage());
         }   
     }   
