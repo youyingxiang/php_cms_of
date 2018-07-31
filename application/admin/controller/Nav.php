@@ -90,6 +90,7 @@ class Nav extends Base
                 $id = input('id');
                 if (isset($id) && !empty($id) ) {
                     $id_arr = $this->cModel->getChildren($id);
+                    $id_arr[] = $id;
                     $result = $this->cModel->destroy($id_arr);
                     if (FALSE !== $result) {
                         write_log();

@@ -125,6 +125,45 @@ $(function(){
         autoHeightMode: false,   //开启自动高度模式
         afterBlur: function () { this.sync(); }   //同步编辑器数据
     });
+    var val       = $("select[name='display_position']").val();
+    var chart     = new Array('首页-下文字','关于我们-文字介绍');
+    var img_chart = new Array('首页-轮播图','首页-中图文','关于我们-图文介绍','新闻列表-banner','新闻详情-banner','关于我们-banner','联系我们-banner');
+    var img       = new Array('首页-合作伙伴');
+    
+
+
+
+    /**
+     * 选择框改变的时候隐藏或者显示
+     * @author 游兴祥
+    **/
+    function changeShowHidden(val) {
+        var flag_c    = jQuery.inArray(val,chart);
+        var flag_ic   = jQuery.inArray(val,img_chart);
+        var flag_i    = jQuery.inArray(val,img);
+        if (flag_c > -1) {
+            $('#img_').hide();
+            $('#url_').hide();
+            $('#content_').show();
+        } else if (flag_ic > -1) {
+            $('#content_').hide();
+            $('#img_').show();
+            $('#url_').show();
+        } else if (flag_i > -1) {
+            $('#content_').hide();
+            $('#img_').show();
+            $('#url_').hide();
+        } else {
+            $('#content_').show();
+            $('#img_').show();
+            $('#url_').show();
+        }
+    }
+    changeShowHidden(val);
+    $("select[name='display_position']").on('change',function() {
+        var val2 = $(this).val();
+        changeShowHidden(val2);
+    })
 })
 </script>
 {/block}
