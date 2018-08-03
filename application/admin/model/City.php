@@ -52,9 +52,9 @@ class City extends Model
 		return $ret;
 	}
 
-	protected function getUrlTitleAttr($value,$data) {
-		$result = db('url_simplify')->where(['other_id'=>$data['id'],'table_name' => CONTROLLER_NAME])->find();
-		return $result['url_title'];
-	}
+	public function urlSimplify()
+    {
+        return $this->hasOne('urlSimplify','other_id','id')->where('table_name','City');
+    }
 
 }

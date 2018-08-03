@@ -2,7 +2,7 @@
 namespace app\admin\model;
 use think\Model;
 
-class UrlSimplify extends Model
+class urlSimplify extends Model
 {
 	protected $updateTime = false;
 	protected $autoWriteTimestamp = true;

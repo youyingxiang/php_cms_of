@@ -32,11 +32,11 @@ class City extends Base
                 $data = input('post.');
                 $result = $this->cModel->allowField(true)->validate(CONTROLLER_NAME.'.add')->save($data);
                 if ($result) {
-                    $UsMode = new us_m;
-                    $usData['url_title']  = $data['url_title'];
-                    $usData['table_name'] = CONTROLLER_NAME;
-                    $usData['other_id']   = $this->cModel->id;
-                    $UsMode->save($usData);
+                    if (!empty($data['url_title'])) {
+                        $usData['url_title']  = $data['url_title'];
+                        $usData['table_name'] = CONTROLLER_NAME;
+                        $this->cModel->urlSimplify()->save($usData);
+                    }
                     write_log();             
                     return ajaxReturn('操作成功！', url('lst'));
                 } else { 
@@ -69,16 +69,9 @@ class City extends Base
                 }
                 if (FALSE !== $result) {
                     if (!empty($data['url_title'])) {
-                        $UsMode = new us_m;
                         $usData['url_title']  = $data['url_title'];
                         $usData['table_name'] = CONTROLLER_NAME;
-                        $usData['other_id']   = $data['id'];
-                        $UsModeInfo = us_m::get([
-                                'table_name'=> $usData['table_name'],
-                                'other_id'  => $usData['other_id']
-                            ]);
-                        if($UsModeInfo) $insertData = ['id'=>$UsModeInfo['id']];else '';
-                        $UsMode->save($usData,$insertData);
+                        $this->cModel->urlSimplify->save($usData);
                     }
                     write_log();
                     return ajaxReturn('操作成功！', url('lst'));
