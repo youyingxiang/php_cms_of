@@ -20,6 +20,7 @@ function authAction($rule, $cationType='create', $param='')
     if($cationType == 'disagree') $result = "<a class=\"btn btn-danger btn-xs\" href=\"".url($rule, $param)."\"><i class=\"fa fa-undo\"></i> ".lang('disagree')."</a>";
     if($cationType == 'backup') $result = "<a class=\"btn btn-primary btn-sm delete-all\" href=\"javascript:void(0);\" data-url=\"".url($rule)."\" data-title=‘备份’><i class=\"fa fa-save\"></i> 备份</a>";
     if($cationType == 'restore') $result = "<a class=\"btn btn-primary btn-xs delete-one\" href=\"javascript:void(0);\" data-url=\"".url($rule)."\" data-id=\"".$param."\" data-title=’还原‘><i class=\"fa fa-rotate-left\"></i> 还原</a>";
+    if($cationType == 'relation_s') $result = "<a class=\"btn btn-primary btn-xs relation_s\" data-p=\"".$param."\" href=\"javascript:void(0)\"><i class=\"fa fa-building-o\"></i> 相关楼盘</a>";
     if($cationType == 'dowonload') $result = "<a class=\"btn btn-warning btn-xs\" href=\"".url($rule, $param)."\"><i class=\"fa fa-download\"></i> 下载</a>";
     $res = cache(session('adminId'));
     $rule2 = explode('/',$rule);

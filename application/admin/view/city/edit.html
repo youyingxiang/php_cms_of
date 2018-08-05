@@ -20,7 +20,7 @@
                                      <select class="form-control select2" name="parent_id" style="width:100%;">
                                         <option value="0">无</option>
                                         {volist name="$parentData" id="vo"}
-                                        <option value="{$vo.id}" level='{$vo.level}'  {if condition="$vo.level eq '1'"}disabled="disabled"{/if} {if condition="$data.parent_id eq $vo.id"}selected="selected"{/if} >
+                                        <option value="{$vo.id}" level='{$vo.level}'  {if condition="$vo.level eq '2'"}disabled="disabled"{/if} {if condition="$data.parent_id eq $vo.id"}selected="selected"{/if} >
                                             {eq name="vo.level" value="2"}　　│　　├{/eq}
                                             {eq name="vo.level" value="1"}　　├{/eq}
                                             {$vo.name}
@@ -36,13 +36,29 @@
 
                             <div class="form-group" id="url_title">
                                 <label class="col-sm-2 control-label">url别名</label>
-                                <div class="col-sm-7"><input class="form-control" name="url_title" value="{$data->urlSimplify->url_title}" placeholder="用于url优化"></div>
+                                <div class="col-sm-7"><input class="form-control" name="url_title" value='{if condition="!empty($data->urlSimplify->url_title)"}{$data->urlSimplify->url_title}{/if}' placeholder="用于url优化"></div>
                             </div> 
-                         
+                            <div class="form-group" id="is_hot">
+                                <label class="col-sm-2 control-label">是否热门</label>
+                                <div class="col-sm-7">
+                                    <select class="form-control select2" name="is_hot" style="width:100%;">
+                                        <option {if condition="$data.is_hot == 0"}selected="selected"{/if} value="0" >否</option>
+                                        <option {if condition="$data.is_hot == 1"}selected="selected"{/if} value="1" >是</option>
+                                    </select>
+                                </div>
+                            </div> 
                             
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">排序</label>
                                 <div class="col-sm-7"><input class="form-control" name="order_key" value="{$data.order_key}" placeholder="排序"></div>
+                            </div>
+                            <div class="form-group" id="st">
+                                <label class="col-sm-2 control-label">seo标题</label>
+                                <div class="col-sm-7"><input class="form-control" name="seo_title" value="{$data.seo_title}" placeholder="seo标题"></div>
+                            </div>  
+                            <div class="form-group" id="sd">
+                                <label class="col-sm-2 control-label">seo描述</label>
+                                <div class="col-sm-7"><textarea class="form-control" style="resize:none;height:155px;" name="seo_des" placeholder="seo描述">{$data.seo_des}</textarea></div>
                             </div>
                         </div>
                     </div>
@@ -80,9 +96,15 @@ $(function(){
     function change_(obj){
         var level = obj.find("option:selected").attr('level');
         if (!level) {
-            $("#url_title").show();
+            // $("#url_title").show();
+            $("#is_hot").show();
+            // $("#st").show();
+            // $("#sd").show();
         } else {
-            $("#url_title").hide();
+            // $("#url_title").hide();
+            $("#is_hot").hide();
+            // $("#st").hide();
+            // $("#sd").hide();
         }
     }
 

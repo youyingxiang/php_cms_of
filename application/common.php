@@ -74,7 +74,7 @@ function ajaxReturn($info='', $url='', $status='', $data = '')
     if(!empty($info)){$result['info'] = $info;}
     if(!empty($status)){$result['status'] = $status;}
     if(!empty($data)){$result['data'] = $data;}
-    echo json_encode($result);
+    echo json_encode($result,JSON_UNESCAPED_UNICODE);
     exit();
 }
 /**

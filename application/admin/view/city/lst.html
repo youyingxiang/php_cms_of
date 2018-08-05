@@ -16,6 +16,7 @@
                         <tr>
                             <th>名称{:table_sort('name')}</th>
                             <th>url别名</th>
+                            <th>是否热门</th>
                             <th>排序{:table_sort('order_key')}</th>
                             <th width="204">操作</th>
                         </tr>
@@ -26,7 +27,8 @@
                                 {eq name="vo['level']" value="1"}　　　├{/eq}
                                 <span class="editable" data-pk="{$vo.id}" data-name="name" data-url="{:url(CONTROLLER_NAME.'/edit', 'id='.$vo['id'])}" >{$vo.name}</span>
                             </td>
-                            <td>{if condition="empty($vo->urlSimplify->url_title)"}无{else/}{$vo->urlSimplify->url_title}{/if}</td>                     
+                            <td>{if condition="empty($vo->urlSimplify->url_title)"}无{else/}{$vo->urlSimplify->url_title}{/if}</td>     
+                            <td>{if condition="$vo.is_hot"}是{else/}否{/if}</td>                
                             <td><span class="editable" data-pk="{$vo.id}" data-name="order_key" data-url="{:url(CONTROLLER_NAME.'/edit', 'id='.$vo['id'])}" >{$vo.order_key}</span></td>
                             <td> {:authAction(CONTROLLER_NAME.'/edit', 'edit', ['id' => $vo.id])} {:authAction(CONTROLLER_NAME.'/delete', 'delete', $vo.id)} </td>
                         </tr>

@@ -1,0 +1,341 @@
+{extend name="layout/admin_base"/}
+{block name='title'}{$_page_title}{/block}
+{block name="content"}
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <form class="form-horizontal" method="POST" action="" onsubmit="return false" >
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab1" data-toggle="tab">基本参数</a></li>
+                        <li ><a href="#tab2" data-toggle="tab">高级参数</a></li>
+                        <li><a href="#tab4" data-toggle="tab">seo管理</a></li>
+                        <li class="pull-right"><a href="javascript:history.back(-1)" class="btn btn-sm" style="padding:10px 2px;"><i class="fa fa-list"></i> 返回</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab1">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">名称</label>
+                                <div class="col-sm-7"><input class="form-control" name="name" value="{$data.name}" placeholder="名称"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">url别名</label>
+                                <div class="col-sm-7"><input class="form-control" name="url_title" value="{$data->urlSimplify->url_title}" placeholder="用于url优化"></div>
+                            </div>
+                            <input type="hidden" name="id" value="{$data.id}" />
+                           
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">城市</label>
+                                <div class="col-sm-7">
+                                    <select class="form-control select2" name="city_id">                             
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">区域</label>
+                                <div class="col-sm-7">
+                                    <select class="form-control select2" name="region_id">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">商圈</label>
+                                <div class="col-sm-7">
+                                    <select class="form-control select2" name="bs_id">                             
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">标签</label>
+                                <div class="col-sm-7"><input class="form-control" name="tag" value="{$data.tag}" placeholder="多个标签以,号隔开"></div>
+                            </div> 
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">租金</label>
+                                <div class="col-sm-7"><input class="form-control" name="rent" value="{$data.rent}" placeholder="单位：元起 每人每月"></div>
+                            </div> 
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">详细地址</label>
+                                <div class="col-sm-7"><input class="form-control" name="address" value="{$data.address}" placeholder="详细地址"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">地铁</label>
+                                <div class="col-sm-7"><input class="form-control" name="subway" value="{$data.subway}" placeholder="地铁"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">机场</label>
+                                <div class="col-sm-7"><input class="form-control" name="airport" value="{$data.airport}" placeholder="机场"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">百度地图经度</label>
+                                <div class="col-sm-7"><input class="form-control" name="lg" value="{$data.lg}" placeholder="百度地图经度"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">百度地图纬度</label>
+                                <div class="col-sm-7"><input class="form-control" name="lat" value="{$data.lat}" placeholder="百度地图纬度"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">是否推荐</label>
+                                <div class="col-sm-7">
+                                    <select class="form-control select2" name="flag" style="width:100%;">
+                                        <option {if condition="$data.flag == 0"}selected="selected"{/if} value="0" >否</option>
+                                        <option {if condition="$data.flag == 1"}selected="selected"{/if} value="1" >是</option>
+                                    </select>
+                                </div>
+                            </div> 
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">状态</label>
+                                <div class="col-sm-7">
+                                    <select class="form-control select2" name="state" style="width:100%;">
+                                        <option value="1" {if condition="$data.state == 1"}selected="selected"{/if} >正常</option>
+                                        <option value="0" {if condition="$data.state == 0"}selected="selected"{/if}  >停用</option>
+                                    </select>
+                                </div>
+                            </div> 
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">排序</label>
+                                <div class="col-sm-7"><input class="form-control" name="order_key" value="{$data.order_key}" placeholder="排序"></div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane" id="tab2">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">图像</label>
+                                <div class="col-sm-7">
+                                    <div class="input-group">
+                                        <input class="form-control" name="img" value="{$data.img}"  placeholder="图像" >
+                                        <span class="input-group-btn">
+                                        <a href="{$data.img|default='/static/global/face/no-image.png'}" target="_blank" >
+                                            <img src="{$data.img|default='/static/global/face/no-image.png'}" style="height:34px; width:68px;" />
+                                        </a>
+                                        <button class="btn btn-success btn-flat up_img" type="button">
+                                            <i class="fa fa-cloud-upload"> 上传</i>
+                                        </button></span>
+                                    </div>
+                                </div>
+                            </div> 
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">详情页图集(800*500)</label>
+                                <div class="col-sm-7">
+                                    {if condition="count($data->productImg) == 0"}
+                                    <div class="input-group" style="margin-bottom:10px">
+                                        <input class="form-control" name="product_img[]"  placeholder="详情页图集(800*500)" >
+                                        <span class="input-group-btn">
+                                            <a href="/static/global/face/no-image.png" target="_blank" >
+                                                <img src="/static/global/face/no-image.png" style="height:34px; width:68px;" />
+                                            </a>
+                                            <button class="btn btn-success btn-flat up_img" type="button"><i class="fa fa-cloud-upload"> 上传</i></button>
+                                        </span>
+                                        <span class="input-group-btn" onclick="add_self(this)"><button class="btn btn-success btn-flat btn-flag" type="button">+</button></span>
+                                    </div>
+                                    {else/}
+                                    {volist name='$data->productImg' id='vop' key="pc"}
+                                    <div class="input-group" style="margin-bottom:10px">
+                                        <input class="form-control" name="product_img[]" value='{$vop.product_img}'  placeholder="详情页图集(800*500)" >
+                                        <span class="input-group-btn">
+                                            <a href="{$vop.product_img|default='/static/global/face/no-image.png'}" target="_blank" >
+                                                <img src="{$vop.product_img|default='/static/global/face/no-image.png'}" style="height:34px; width:68px;" />
+                                            </a>
+                                            <button class="btn btn-success btn-flat up_img" type="button"><i class="fa fa-cloud-upload"> 上传</i></button>
+                                        </span>
+                                        <span class="input-group-btn" onclick="add_self(this)"><button class="btn btn-success btn-flat btn-flag" type="button">{if condition="$pc == 1"}+{else/}-{/if}</button></span>
+                                    </div>
+                                    {/volist}
+                                    {/if}
+                                </div>
+                            </div>
+                                                 
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">概括介绍</label>
+                                <div class="col-sm-9"><textarea class="form-control" name="summary" placeholder="概括介绍">{$data.summary}</textarea></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">房源面积与价格</label>
+                                <div class="col-sm-9"><textarea class="form-control" name="area" placeholder="房源面积与价格">{$data.area}</textarea></div>
+                            </div> 
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">设施与服务</label>
+                                <div class="col-sm-9"><textarea class="form-control" name="equipment" placeholder="设施与服务">{$data.equipment}</textarea></div>
+                            </div>                                  
+                        </div>
+
+                        <div class="tab-pane" id="tab4">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">seo标题</label>
+                                <div class="col-sm-7"><input class="form-control" name="seo_title" value="{$data.seo_title}" placeholder="seo标题"></div>
+                            </div>  
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">seo描述</label>
+                                <div class="col-sm-7"><textarea class="form-control" style="resize:none;height:155px;" name="seo_des" placeholder="seo描述">{$data.seo_des}</textarea></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-7">
+                            <div class="btn-group pull-right">
+                                <button type="submit" class="btn btn-info pull-right submits" data-loading-text="&lt;i class='fa fa-spinner fa-spin '&gt;&lt;/i&gt; 提交">提交</button>
+                            </div>
+                            <div class="btn-group pull-left">
+                                <button type="reset" class="btn btn-warning">重置</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<script type="text/javascript">
+$(function(){
+    /*ajax页面加载icheck，有该控件的页面才需要*/
+    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+        checkboxClass: 'icheckbox_minimal-blue',
+        radioClass: 'iradio_minimal-blue'
+    });
+    
+    /*ajax页面加载icheck，有该控件的页面才需要*/
+    $(".select2").select2({language:"zh-CN"});
+    $('.datepicker').datepicker();
+    KindEditor.create('textarea[name="summary"],textarea[name="area"],textarea[name="equipment"]',{
+        width : '100%',   //宽度
+        height : '500px',   //高度
+        resizeType : '0',   //禁止拖动
+        allowFileManager : true,   //允许对上传图片进行管理
+        uploadJson : '{:url("Uploads/upload")}',   //文件上传地址
+        fileManagerJson : '{:url("Uploads/manager")}',   //文件管理地址
+        //urlType : 'domain',   //带域名的路径
+        formatUploadUrl: true,   //自动格式化上传后的URL
+        autoHeightMode: false,   //开启自动高度模式
+        afterBlur: function () { this.sync(); }   //同步编辑器数据
+    });
+    $('#fileupload_').fileupload({
+        dataType: 'json',
+        done: function (e, data) {
+            if (data.result.error === 0) {
+                var up_url = data.result.url.trim();
+                obj.parent().prev().val(up_url);
+                if (obj.prev().children('img').length>0) {
+                    obj.prev().attr('href',up_url );
+                    obj.prev().find('img').attr('src',up_url );
+                    $.amaran({'message':'上次成功！'});
+                }
+            } else {
+                $.amaran({'message':data.result.info});
+            }
+        }
+    });
+    $(".up_img").on('click',function(){
+        obj = $(this);
+        $('#fileupload_').trigger('click');
+    });
+    var select_id = "{$data.city_id}";
+    getCity(select_id);
+    function getCity(id) {
+        $.ajax({
+                url: "{:url('City/getCity')}", 
+                type:'get', 
+                dataType: "json", 
+                error:function(data){
+                    showErrMsg("服务器错误！");
+                    return;
+                },  
+                success:function(result){
+                    var html = "";
+                    result.forEach(function(item,index){
+                        if (id == item['id']) {
+                            html += "<option selected='selected' value='"+item.id+"'>"+item.name+"</option>";
+                        } else {
+                            html += "<option value='"+item.id+"'>"+item.name+"</option>";
+                        }
+                    })
+                    $("select[name='city_id']").empty().html(html);
+                },
+        })
+    }
+    var region_id = "{$data.region_id}";
+    var bs_id = "{$data.bs_id}";
+    getRegion(select_id,region_id,bs_id);
+    $("select[name='city_id']").on('change',function(){
+        getRegion($(this).val(),'','');
+    })
+    function getRegion(parent_id,region_id,bs_id) {
+        $.ajax({
+                url: "{:url('City/getRegion')}", 
+                type:'get', 
+                data:{'parent_id':parent_id},
+                dataType: "json", 
+                error:function(data){
+                    showErrMsg("服务器错误！");
+                    return;
+                },
+                success:function(result){
+                    var html = "";
+                    result.forEach(function(item,index){
+                        if (region_id == item['id']) {
+                            html += "<option selected='selected' value='"+item.id+"'>"+item.name+"</option>";
+                        } else {
+                            html += "<option value='"+item.id+"'>"+item.name+"</option>";
+                        }
+                    })
+                    $("select[name='region_id']").empty().html(html);
+                    if (region_id>0) {
+                        getBs(region_id,bs_id);
+                    } else {
+                        getBs(result[0].id,'');
+                    }
+                },
+        })
+    }
+    $("select[name='region_id']").on('change',function(){
+        getBs($(this).val(),'');
+    })
+    function getBs(parent_id,bs_id) {
+        $.ajax({
+                url: "{:url('City/getBs')}", 
+                type:'get', 
+                data:{'parent_id':parent_id},
+                dataType: "json", 
+                error:function(data){
+                    showErrMsg("服务器错误！");
+                    return;
+                },
+                success:function(result){
+                    var html = "";
+                    result.forEach(function(item,index){
+                        if (bs_id == item['id']) {
+                            html += "<option selected='selected' value='"+item.id+"'>"+item.name+"</option>";
+                        } else {
+                            html += "<option value='"+item.id+"'>"+item.name+"</option>";
+                        }
+                    })
+                    $("select[name='bs_id']").empty().html(html);
+                },
+        })
+    }
+})
+    function add_self(a){
+        var flag = $(a).children(".btn-flat").html().trim();
+        if (flag == '+') {
+            var par_p = $(a).parent().clone(true);
+            $(par_p).find(".btn-flag").html('-');
+            $(a).parent().after(par_p);
+        } else if (flag == '-') {
+            $(a).parent().remove(); 
+        }
+    }
+    function add_self_2(a){
+        var flag = $(a).children(".btn-flat").html().trim();
+        if (flag == '+') {
+            var par_p = $(a).parent().parent().clone(true);
+            $(par_p).find(".btn-flag").html('-');
+            $(a).parent().parent().after(par_p);
+        } else if (flag == '-') {
+            $(a).parent().parent().remove(); 
+        }
+    } 
+</script>
+{/block}

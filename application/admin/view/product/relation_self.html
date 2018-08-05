@@ -1,0 +1,190 @@
+{extend name="layout/base"/}
+{block name='title'}后台登录{/block}
+{block name="body"}
+<style>
+.screen-box .box-tools .input-group .input-group-btn .btn{height:34px;}
+@media screen and (max-width:769px){
+    .screen-box > .box-tools{position:static;}
+    .screen-box > .pull-left{margin-bottom:10px;}
+    .screen-box .input-group{width:100% !important;}
+    .screen-box .select2-container{}
+    .screen-box .box-tools .input-group .pull-right{margin-bottom:10px;}
+    .screen-box .box-tools .input-group .pull-right,.screen-box .box-tools .input-group .pull-left,.screen-box .box-tools .input-group .pull-left .select2-container{width:100% !important;}
+    .screen-box .box-tools .input-group .input-group-btn{vertical-align:bottom;}
+}
+</style>
+<section class="content-header">
+  <h1>
+    {$_page_title}
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i>{$_page_btn_name}</a></li>
+  </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border screen-box">
+                    <h3 class="box-title"></h3>
+                    <div class="pull-left">
+                        <a class="btn btn-primary btn-xs" id='relation' href='javascript:void(0)'><i class="fa fa-hand-pointer-o"></i>{$_page_btn_name}</a>
+                    </div>
+                    <div class="box-tools" style="top:10px;">
+                        <form action="{:search_url('search')}" method="GET" pjax-search="">
+                            <div class="input-group input-group-sm" style="width:600px">
+                                <div class='pull-right' style="width:40%">
+                                    <input type="text" name="search" class="form-control" value="{:input('get.search')}" placeholder="搜索" />
+                                </div>
+                                <div class='pull-left' style="width:60%">
+                                    <select name="city_id" class="form-control select2" placeholder="{$Think.lang.search}">
+                                        <option value="">不限</option>
+                                        {volist name="$cityData" id='vo'}
+                                            <option {if condition="input('get.city_id') == $vo.id"}selected='selected'{/if} value="{$vo.id}">
+                                                {$vo.name}
+                                            </option>
+                                        {/volist}
+                                    </select>
+                                </div>
+                                <div class="input-group-btn">
+                                    <button type="submit" class="btn btn-default sreachs"><i class="fa fa-search"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="box-body table-responsive">
+                    <table class="table table-bordered table-hover table-sort">
+                        <tr>
+                            <th width="35"><input type="checkbox" class="minimal checkbox-toggle"></th>
+                            <th>ID{:table_sort('id')}</th>
+                            <th>名称{:table_sort('name')}</th>
+                            <th>城市</th>
+                            <th>地区</th>
+                            <th>标签</th>
+                            <th>图片</th>
+                            <th>状态</th>
+                            <th>路由别名</th>
+                            <th>排序{:table_sort('order_key')}</th>
+                        </tr>
+                        {volist name="data" id="vo"}
+                        <tr>
+                            <td style="vertical-align:middle"><input type="checkbox" name="id[]" {if condition="in_array($vo.id,$data_f)"}checked='checked'{/if} value="{$vo.id}" class="minimal check_c"></td>
+                            <td style="vertical-align:middle">{$vo.id}</td>
+                            <td style="vertical-align:middle"><span class="editable" data-pk="{$vo.id}" data-name="name" data-url="{:url(CONTROLLER_NAME.'/edit', 'id='.$vo['id'])}" >{$vo.name}</span></td>
+                            <td style="vertical-align:middle">{$vo->City->name}</td>
+                            <td style="vertical-align:middle">{$vo->Region->name}</td>
+                            <td style="vertical-align:middle">{$vo.tag}</td>
+                            <td style="vertical-align:middle"><img src="{$vo.img}" style="width:40px;border-radius:40%;" /></td>
+                            <td style="vertical-align:middle">
+                                <a href="javascript:void(0);" data-id="{$vo.id}" data-field="state" 
+                                data-value="{$vo.state}" data-url="{:url('edit', 'id='.$vo['id'])}" 
+                                class='editimg fa {if condition=" $vo.state == 1 "}fa-check-circle text-green{else /}fa-times-circle text-red{/if}'></a>
+                            </td>
+                            <td style="vertical-align:middle">{$vo->urlSimplify->url_title}</td>
+                             <td style="vertical-align:middle"><span class="editable" data-pk="{$vo.id}" data-name="order_key" data-url="{:url(CONTROLLER_NAME.'/edit', 'id='.$vo['id'])}" >{$vo.order_key}</span></td>
+                        </tr>
+                        {/volist}
+                    </table>
+                </div>
+                <div class="box-footer clearfix">
+                    {$data->render()}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script type="text/javascript" src="{$Think.GLOBAL_JS}/layui.js"></script>
+<script type="text/javascript" src="{$Think.GLOBAL_JS}/layer/layer.js"></script>
+<script type="text/javascript">
+$(function(){
+    /*ajax页面加载icheck，有该控件的页面才需要*/
+    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+        checkboxClass: 'icheckbox_minimal-blue',
+        radioClass: 'iradio_minimal-blue'
+    });
+    
+
+    /*ajax页面加载icheck，有该控件的页面才需要*/
+    $(".select2").select2({language:"zh-CN"});
+    
+    /*全选-反选*/
+    $('.checkbox-toggle').on('ifChecked', function(event){
+        var _this = $(this);
+        var _table = _this.closest('.table');
+        _table.find("tr td input[type='checkbox']").iCheck("check");
+    });
+    $('.checkbox-toggle').on('ifUnchecked', function(event){
+        var _this = $(this);
+        var _table = _this.closest('.table');
+        _table.find("tr td input[type='checkbox']").iCheck("uncheck");
+    });
+    var arr = '{:implode("-",$data_f)}';
+    if (arr.length > 0) {
+        arr = arr.split('-');     
+    } else {
+        arr = [];
+    }
+    $('.check_c').on('ifChecked',function(event){
+        var item = $(this).val();
+        arr.push(item);
+    })
+    $('.check_c').on('ifUnchecked',function(event){
+        var test = [];
+        var item = $(this).val();
+        arr.forEach(function(item_){
+            if (parseInt(item) !== parseInt(item_)) {
+                test.push(item_);
+            }
+            arr = test;
+        })
+    });
+    product_id = "{:input('id')}";
+    index = parent.layer.getFrameIndex(window.name);
+    $('#relation').on('click',function(){
+        if(product_id<1)
+            return;
+        if (arr.length<1)
+            var vals = '';
+        else 
+            var vals = arr.join('-');
+        $.ajax({
+            url: "{:url('Product/relation_self')}", 
+            data: {"ids":vals,'product_id':product_id},
+            type:'post', 
+            dataType: "json", 
+            error:function(data){
+            },  
+            success:function(result){
+                if (result.status == 1) {     
+                    showOkTime(result.info,3); 
+                } else {
+                    showErrMsg(result.info,3);      
+                }
+                setTimeout(function () { close_(); }, 1000); 
+            }
+        })
+    })
+    $('.editable').editable({
+        emptytext: "empty",
+        params: function(params) {      //参数
+            var data = {};
+            data['id'] = params.pk;
+            data[params.name] = params.value;
+            return data;
+        },
+        success: function(response, newValue) {
+            var res = $.parseJSON( response );
+            if(res.status == 1){
+            }else{
+                return res.info;
+            }
+        }
+    });
+})
+function close_()
+{
+  parent.layer.close(index);
+}
+</script>
+{/block}

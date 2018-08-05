@@ -26,5 +26,7 @@ define('HOME_JS','/static/home/js');
 define('HOME_CSS','/static/home/css');
 define('HOME_IMG','/static/home/img');
 define('HOME_IMGS','/static/home/images');
+
+define('GLOBAL_JS','/static/global');
 // 加载框架引导文件
 require __DIR__ . '/../thinkphp/start.php';

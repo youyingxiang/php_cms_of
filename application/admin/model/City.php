@@ -57,4 +57,19 @@ class City extends Model
         return $this->hasOne('urlSimplify','other_id','id')->where('table_name','City');
     }
 
+    public function getCityAll()
+    {
+    	return $this->where(['parent_id'=>['eq',0]])->order('order_key asc')->select();
+    }
+
+    public function getRegionByParentId($parent_id)
+    {
+    	return $this->where(['parent_id'=>['eq',$parent_id]])->order('order_key asc')->select();
+    }
+
+    public function getBsByParentId($parent_id)
+    {
+    	return $this->where(['parent_id'=>['eq',$parent_id]])->order('order_key asc')->select();
+    }
+
 }

@@ -25,8 +25,8 @@
                                 <label class="col-sm-2 control-label">状态</label>
                                 <div class="col-sm-7">
                                     <select class="form-control select2" name="state" style="width:100%;">
-                                        <option value="1" {if condition="$data.state eq 1"}selected{/if}>正常</option>
-                                        <option value="0" {if condition="$data.state eq 0"}selected{/if}>停用</option>
+                                        <option value="1" {if condition="$data.state eq 1"}selected="selected"{/if}>正常</option>
+                                        <option value="0" {if condition="$data.state eq 0"}selected="selected"{/if}>停用</option>
                                     </select>
                                 </div>
                             </div>
@@ -34,8 +34,8 @@
                                 <label class="col-sm-2 control-label">是否推荐</label>
                                 <div class="col-sm-7">
                                     <select class="form-control select2" name="flag" style="width:100%;">
-                                        <option value="1" {if condition="$data.flag eq 1"}selected{/if}>是</option>
-                                        <option value="0" {if condition="$data.flag eq 0"}selected{/if}>否</option>
+                                        <option value="0" {if condition="$data.flag eq 0"}selected="selected"{/if}>否</option>
+                                        <option value="1" {if condition="$data.flag eq 1"}selected="selected"{/if}>是</option>
                                     </select>
                                 </div>
                             </div>

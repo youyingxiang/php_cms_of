@@ -71,7 +71,7 @@ class City extends Base
                     if (!empty($data['url_title'])) {
                         $usData['url_title']  = $data['url_title'];
                         $usData['table_name'] = CONTROLLER_NAME;
-                        $this->cModel->urlSimplify->save($usData);
+                        count($this->cModel->urlSimplify) === 1 ?$this->cModel->urlSimplify->save($usData):$this->cModel->urlSimplify()->save($usData);
                     }
                     write_log();
                     return ajaxReturn('操作成功！', url('lst'));
@@ -120,5 +120,24 @@ class City extends Base
             write_log($e->getMessage());
             return ajaxReturn($e->getMessage());
         }      
+    }
+
+    public function getCity()
+    {
+        $data = $this->cModel->getCityAll();
+        return json_encode($data,JSON_UNESCAPED_UNICODE);
+    }
+
+    public function getRegion()
+    {
+        $parent_id = input('get.parent_id');
+        $data = $this->cModel->getRegionByParentId($parent_id);
+        return json_encode($data,JSON_UNESCAPED_UNICODE);
+    }
+    public function getBs()
+    {
+        $parent_id = input('get.parent_id');
+        $data = $this->cModel->getBsByParentId($parent_id);
+        return json_encode($data,JSON_UNESCAPED_UNICODE);
     } 
 }

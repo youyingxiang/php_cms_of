@@ -1,0 +1,257 @@
+{extend name="layout/base"/}
+{block name='seo_title'}{$seo_title}{/block}
+{block name='seo_des'}{$seo_des}{/block}
+{block name="body"}
+<div class="contact-model-bg"></div>
+<div class="contact-model tran300">
+    <div class="w1200">
+        <div class="close"></div>
+        <div class="right fr">
+            <div class="title">租赁热线</div>
+            <div class="contxt">
+                <span class="font-en">OfficeBC</span>是专业的服务式办公室租赁顾问<br/>帮您快捷地找到理想的办公室。
+            </div>
+            <div class="tel">400 803 2900</div>
+            <ul>
+                <li class="address">上海市静安区延安中路829号达安广场西楼4层D室</li>
+                <li class="email">365@officebc.com </li>
+            </ul>
+        </div>
+        <div class="left fl">
+            <div class="title">留言反馈</div>
+            <div class="list"><input type="text" placeholder="姓名"></div>
+            <div class="list"><input type="text" placeholder="电话"></div>
+            <div class="list"><input type="text" placeholder="城市"></div>
+            <div class="list"><textarea placeholder="其它"></textarea></div>
+            <div class="list"><input type="button" value="发送"></div>
+        </div>
+    </div>
+</div>
+<div class="swiper-container banner-container">
+    <div class="swiper-wrapper">
+        {volist name="ad['首页-轮播图']" id="vo"}
+        <div class="swiper-slide" style="background:url({$vo.img}) no-repeat center center/cover">
+            <div class="w1200">
+                <div class="box">
+                    <div class="title">{$vo.title}</div>
+                 <!--    <div class="ms">{$vo.content}</div> -->
+                    <a href="{$vo.url}">更多</a>
+                </div>
+            </div>
+        </div>
+        {/volist}
+    </div>
+    <div class="arrow tran300">
+        <div class="swiper-button-next banner-next"></div>
+        <div class="swiper-button-prev banner-prev"></div>
+    </div>
+    <div class="swiper-pagination"></div>
+</div>
+<div class="index-item01 clearfix">
+    <div class="w1200">
+        <h1 class="title">为您精选的办公室</h1>
+        <ul class="index-item01-tab">
+        {volist name="pcKeys" id="vo"}<li {if condition="$key == 0"}class="active"{/if}>{$vo}</li>{/volist}
+        </ul>
+        <?php $vi=0;?>
+        {volist name="pcData" id="vo"}
+        <?php $vi++;?>
+        <div class="index-item01-tab-con tab-con clearfix" {if condition="$vi == 1"}style="display:block;"{/if}>
+            {volist name="vo" id="voo"}
+            <div class="list">
+                <div class="box">
+                    <div class="img"><a href="" style="background:url({$voo.img}) no-repeat center center/cover;"></a></div>
+                    <div class="contxt clearfix">
+                        <div class="l">
+                            <h3 class="tit textHidden"><a href="{:of_url($voo->urlSimplify->url_title)}">{$voo.name}</a></h3>
+                            <div class="address textHidden">{$voo.address}</div>
+                        </div>
+                        <div class="r"><span>{$voo.rent}</span>起元人/月</div>
+                    </div>
+                </div>
+            </div>
+            {/volist}
+        </div>
+        {/volist}
+        <div class="bottom-btn">
+            <h2><a class="black" href="">上海服务式办公室列表</a></h2>
+            <h2><a class="white" href="javascript:" onclick="contactModel()">联系我们</a></h2>
+        </div>
+    </div>
+</div>
+<div class="index-item02 clearfix">
+    <div class="w1200">
+        <div class="swiper-container index-item02-container">
+            <div class="swiper-wrapper">
+                {volist name="$ad['首页-中图文']" id="vo"}
+                <div class="swiper-slide">
+                    <div class="right fr"><a style="background:url({$vo.img}) no-repeat center center/cover;" href="{$vo.url}"></a></div>
+                    <div class="left fl">
+                        <div class="title">{$vo.title}</div>
+                        <div class="line"></div>
+                        <div class="ms">
+                            {$vo.content}
+                        </div>
+                    </div>
+                </div>
+                {/volist}
+            </div>
+            <div class="arrow clearfix">
+                <div class="index-item02-prev fl"></div>
+                <div class="index-item02-next fl"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="index-item01 clearfix">
+    <div class="w1200">
+        <div class="title">全国办公室推荐</div>
+        <ul class="index-item03-tab">
+            {volist name="prKeys" id="vo"}<li {if condition="$key == 0"}class="active"{/if}>{$vo}</li>{/volist}
+        </ul>
+        <!--上面有多少个li，下面就有多少个index-item01-tab 默认第一个 display:block-->
+        <?php $vi=0;?>
+        {volist name="prData" id="vo"}
+        <?php $vi++;?>
+        <div class="index-item03-tab-con tab-con clearfix"  {if condition="$vi == 1"}style="display:block;"{/if}>
+            {volist name="vo" id="voo"}
+            <div class="list">
+                <div class="box">
+                    <div class="img"><a href="" style="background:url({$voo.img}) no-repeat center center/cover;"></a></div>
+                    <div class="contxt clearfix">
+                        <div class="l">
+                            <div class="tit textHidden"><a href="{:of_url($voo->urlSimplify->url_title)}">{$voo.name}</a></div>
+                            <div class="address textHidden">{$voo.address}</div>
+                        </div>
+                        <div class="r"><span>{$voo.rent}</span>起元人/月</div>
+                    </div>
+                </div>
+            </div>
+            {/volist}
+        </div>
+        {/volist}
+        <div class="bottom-btn">
+            <h2><a class="white" href="javascript:">全国服务式办公室列表</a></h2>
+        </div>
+    </div>
+</div>
+<div class="index-item04">
+    <div>
+        <h2>{$ad['首页-下文字'][0]['title']}</h2>
+        <div class="subtit">{$ad['首页-下文字'][0]['content']}</div>
+    </div>
+</div>
+<div class="index-item05 clearfix">
+    <div class="w1200">
+        <h2 class="fl">新闻咨询</h2>
+        <div class="fr clearfix">
+            <div class="index-item05-prev fl"></div>
+            <div class="index-item05-pagination fl"></div>
+            <div class="index-item05-next fl"></div>
+        </div>
+        <div class="clear"></div>
+        <div class="swiper-container index-item05-container">
+            <div class="swiper-wrapper">
+                {volist name="newsData" id="vo"}
+                <div class="swiper-slide">
+                    <div class="box">
+                        <div>
+                            <div class="top">
+                                <div class="date">{:date('Y-m-d',$vo.update_time)}</div>
+                                <h2><a href="{:of_url($vo.url_title,'news')}">{$vo.title}</a></h2>
+                            </div>
+                            <div class="line"></div>
+                            <div class="ms">
+                                {$vo.abstract}
+                            </div>
+                            <a class="more" href="{:of_url($vo.url_title,'news')}">了解更多</a>
+                        </div>
+                    </div>
+                </div>
+                {/volist}
+            </div>
+        </div>
+        <div class="bottom-btn"><a href="/news.html">查看全部新闻</a></div>
+    </div>
+</div>
+<div class="index-item06 clearfix">
+    <div class="w1200">
+        <h2>合作客户</h2>
+        <ul class="clearfix">
+            {volist name="$ad['首页-合作伙伴']" id="vo"}
+            <li><img src="{$vo.img}" alt="{$vo.title}"></li>
+            {/volist}       
+        </ul>
+    </div>
+</div>
+{/block}
+{block name="js"}
+<script>
+    var swiper = new Swiper('.banner-container', {
+        pagination: {
+            el: '.swiper-pagination'
+        },
+        navigation: {
+            nextEl: '.banner-next',
+            prevEl: '.banner-prev',
+        },
+        speed: 600,
+        loop: true,
+        autoplay: {
+            delay: 9000
+        }
+    });
+
+    $(".m-box ul.l li").tab({
+        thisTabcon:'.m-box ul.r'
+    })
+
+    $("ul.index-item01-tab li").tab({
+      thisTabcon:'.index-item01-tab-con'
+    })
+    $("ul.index-item03-tab li").tab({
+        thisTabcon:'.index-item03-tab-con'
+    })
+
+    var swiper = new Swiper('.index-item02-container', {
+      simulateTouch: false,
+      speed: 800,
+      navigation: {
+        nextEl: '.index-item02-next',
+        prevEl: '.index-item02-prev',
+      },
+      breakpoints: {
+        1025: {
+          simulateTouch: true
+        }
+      }
+    });
+
+    var swiper = new Swiper('.index-item05-container', {
+        speed: 800,
+        simulateTouch: false,
+        slidesPerView: 3,
+        loop: true,
+        pagination: {
+            el: '.index-item05-pagination',
+            type: 'fraction',
+            renderFraction: function (currentClass, totalClass) {
+                return '<span class="' + currentClass + '"></span>' +
+                    ' - ' +
+                    '<span class="' + totalClass + '"></span>';
+            }
+        },
+        navigation: {
+            nextEl: '.index-item05-next',
+            prevEl: '.index-item05-prev',
+        },
+        breakpoints: {
+            1025: {
+                slidesPerView: 'auto',
+                spaceBetween: 10
+            }
+        }
+    });
+
+</script>
+{/block}
