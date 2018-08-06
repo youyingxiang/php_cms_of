@@ -48,5 +48,8 @@ return [
     ],
     'ad_contactus_list' => [
       '联系我们-banner' => '联系我们-banner 483*74',
+    ],
+    'ad_product_list' => [
+      '楼盘列表-banner' => '楼盘列表-banner 886*137',
     ]
 ];

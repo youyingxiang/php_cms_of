@@ -26,4 +26,9 @@ class Product extends aProduct
    		$pData = dataMerage($pData,'name','Region');
       	return $pData;
    }
+
+   public function getTagAttr($value)
+   {
+      return explode(",", $value);
+   }
 }

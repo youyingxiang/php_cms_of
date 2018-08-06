@@ -9,20 +9,24 @@
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 
-// use think\Route;
-// $custom_route = [
-// 		'mdb' => 'index/index/index',
-// 		'cnm_123' => 'index/index/test1',
-// 		'zzz_123' => 'index/index/test2',
-// 		'test4' => 'index/index/test4'
-// 	];
-// $url = substr($_SERVER['PATH_INFO'],1);
-// $url = explode('/', $url)[0];
-// if (array_key_exists($url,$custom_route)) {
-// 	if ($url === 'test4')
-// 		Route::get(':id',$custom_route[$url]);
-// 	else	
-// 		Route::rule($url,$custom_route[$url]);	
-// }
+use think\Route;
+$pathInfo  = substr($_SERVER['PATH_INFO'],1);
+$pathcount = count(explode('/', $pathInfo));
+$pathInfo  = explode('/', $pathInfo)[0];
+if ($pathcount === 1) {
+	$isHtml	   = strstr($pathInfo,'.html');
+	if ($isHtml) {
+		$pathInfo = explode('.', $pathInfo)[0];
+	}
+	$usData = db('url_simplify')->where(['url_title'=>['eq',$pathInfo]])->find();
+	$class  = $usData['table_name'];
+	if ($class === 'City') {
+		Route::rule(':city','index/index/city');
+	} else if($class === 'Product') {
+		Route::rule(':product','index/index/product');
+	}
+} else if($pathInfo === 'tag') {
+	Route::rule('tag/:city','index/index/city');
+}
 
 

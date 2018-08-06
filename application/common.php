@@ -52,6 +52,9 @@ function page_param(){
     if (isset($param['_pjax'])){
         unset($param['_pjax']);
     }
+    if (isset($param['city'])){
+        unset($param['city']);
+    }
     $res['query'] = $param;
     return $res;
 }

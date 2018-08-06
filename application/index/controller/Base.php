@@ -47,4 +47,8 @@ class Base extends Controller
         $this->assign('page_js', $js);
     }
 
+
+    protected function notFound() {
+        return response($this->fetch('layout/404'),404);
+    }
 }
