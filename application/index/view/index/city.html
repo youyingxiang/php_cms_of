@@ -52,11 +52,11 @@
                 <span class="result"><span class="result-txt">价格</span><i></i></span>
                 <div class="select-box">
                     <ul class="select">
-                        <li>番禺区</li>
-                        <li>天河区</li>
-                        <li>越秀区</li>
-                        <li>番禺区</li>
-                        <li>番禺区</li>
+                        <li>1000以下</li>
+                        <li>1000-3000</li>
+                        <li>3000-6000</li>
+                        <li>6000-10000</li>
+                        <li>10000以上</li>
                     </ul>
                 </div>
             </li>
@@ -72,27 +72,31 @@
         </ul>
     </div>
     <div class="tab-con grid-content clearfix" style="display:block;">
-            <div class="w1200 clearfix">
-            	{volist name="pData" id="vo"}
-                <div class="list">
-                    <div class="box">
-                        <div class="img"><a href="{:of_url($vo->urlSimplify->url_title)}"}" style="background:url({$vo.img}) no-repeat center center/cover;"></a></div>
-                        <div class="contxt clearfix">
-                            <div class="l">
-                                <h3 class="tit textHidden"><a href="{:of_url($vo->urlSimplify->url_title)}">{$vo.name}</a></h3>
-                                <div class="address textHidden">{$vo.address}</div>
-                            </div>
-                            <div class="r"><span>{$vo.rent}</span>起元人/月</div>
+        <div class="w1200 clearfix">
+        	{volist name="pData" id="vo"}
+            <div class="list">
+                <div class="box">
+                    <div class="img"><a href="{:of_url($vo->urlSimplify->url_title)}"}" style="background:url({$vo.img}) no-repeat center center/cover;"></a></div>
+                    <div class="contxt clearfix">
+                        <div class="l">
+                            <h3 class="tit textHidden"><a href="{:of_url($vo->urlSimplify->url_title)}">{$vo.name}</a></h3>
+                            <div class="address textHidden">{$vo.address}</div>
                         </div>
+                        <div class="r"><span>{$vo.rent}</span>起元人/月</div>
                     </div>
                 </div>
-                {/volist}
-                
-                <div class="clear"></div>
-                {$pData->render()}
-                <div class="load-more"></div>
             </div>
+            {/volist}
+            <div class="clear"></div>
+            {if condition="$pData->render()"}
+                {$pData->render()}
+            {else/}
+                <div class="page"> 
+                </div>
+            {/if}
+            <div class="load-more"></div>
         </div>
+    </div>
     <div class="tab-con list-content clearfix">
         <div class="w1200 clearfix">
         	{volist name="pData" id="vo"}
@@ -108,8 +112,7 @@
                     <div class="tag-box clearfix">
                     	{volist name="vo.tag" id="vt"}
                         <span>{$vt}</span>
-                    	{/volist}
-                        
+                    	{/volist}                
                     </div>
                     <div class="price">
                         <sup>￥</sup>{$vo.rent}
@@ -119,15 +122,23 @@
             </div>
             {/volist}
             <div class="clear"></div>
-            {$pData->render()}
+            <div>
+            {if condition="$pData->render()"}
+                {$pData->render()}
+            {else/}
+                <div class="page"> 
+                </div>
+            {/if}
+            </div>
         </div>
     </div>
     <div class="tab-con map-content clearfix">
-        <img src="skin/images/map-img.jpg" width="100%" alt="">
+        
     </div>
 </div>
 {/block}
 {block name="js"}
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=hpoiNMgGQoC7EjfFQSkgcA3ceFxqbKA6"></script>
 <script>
 	$(".product-item03 ul.tab li").tab({
         thisTabcon:'.tab-con'
@@ -177,6 +188,12 @@ $(function(){
                 },
         })
     }
+    var pInfo   = {:json_encode($pData,JSON_UNESCAPED_UNICODE)};
+    pInfo       = pInfo.data;
+    map = new BMap.Map("allmap");
+
+    // map.centerAndZoom(new BMap.Point(121.456091,31.230261), 18);
+    // console.log(pInfo);
 })
 </script>
 {/block}

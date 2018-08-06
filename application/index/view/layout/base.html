@@ -16,10 +16,10 @@
     <link rel="stylesheet" type="text/css" href="{$Think.HOME_CSS}/public.css">
     <link rel="stylesheet" type="text/css" href="{$Think.HOME_CSS}/page.css">
 </head>
-
 <body>
-<div class="header index-header">
-    <div class="logo fl"><a href="/"><img src="{$conf['blogo']['v']}" alt=""></a></div>
+{if condition="!empty($indexProduct)"}<div class="product-detail-main">{/if}
+<div {if condition="empty($indexProduct)"}class="header index-header"{else/}class="header product-header"{/if}>
+    <div class="logo fl"><a href="/"><img {if condition="empty($indexProduct)"}src="{$conf['blogo']['v']}"{else/}src="{$conf['tlogo']['v']}"{/if} alt=""></a></div>
     <div class="city-box fl">
         <span class="tag"><span class="txt">上海</span><i></i></span>
         <div class="pc-box">
@@ -107,6 +107,7 @@
         </div>
     </div>
 </div>
+{if condition="!empty($indexProduct)"}</div>{/if}
 <script type="text/javascript" src="{$Think.HOME_JS}/jquery-1.8.2.min.js"></script>
 <script type="text/javascript" src="{$Think.HOME_JS}/swiper.min.js"></script>
 <script type="text/javascript" src="{$Think.HOME_JS}/page.js"></script>

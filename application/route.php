@@ -10,23 +10,24 @@
 // +----------------------------------------------------------------------
 
 use think\Route;
-$pathInfo  = substr($_SERVER['PATH_INFO'],1);
-$pathcount = count(explode('/', $pathInfo));
-$pathInfo  = explode('/', $pathInfo)[0];
-if ($pathcount === 1) {
-	$isHtml	   = strstr($pathInfo,'.html');
-	if ($isHtml) {
-		$pathInfo = explode('.', $pathInfo)[0];
+Route::rule('tag/:city','index/index/city');
+if (!empty($_SERVER['PATH_INFO'])) {
+	$pathInfo  = substr($_SERVER['PATH_INFO'],1);
+	$pathcount = count(explode('/', $pathInfo));
+	$pathInfo  = explode('/', $pathInfo)[0];
+	if ($pathcount === 1) {
+		$isHtml	   = strstr($pathInfo,'.html');
+		if ($isHtml) {
+			$pathInfo = explode('.', $pathInfo)[0];
+		}
+		$usData = db('url_simplify')->where(['url_title'=>['eq',$pathInfo]])->find();
+		$class  = $usData['table_name'];
+		if ($class === 'City') {
+			Route::rule(':city','index/index/city');
+		} else if($class === 'Product') {
+			Route::rule(':product','index/index/product');
+		}
 	}
-	$usData = db('url_simplify')->where(['url_title'=>['eq',$pathInfo]])->find();
-	$class  = $usData['table_name'];
-	if ($class === 'City') {
-		Route::rule(':city','index/index/city');
-	} else if($class === 'Product') {
-		Route::rule(':product','index/index/product');
-	}
-} else if($pathInfo === 'tag') {
-	Route::rule('tag/:city','index/index/city');
 }
 
 

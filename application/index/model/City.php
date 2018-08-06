@@ -36,17 +36,17 @@ class City extends aCity
 
     public function getCityProductByUrltitle($url_title)
     {
-        $cityId = db('url_simplify')->where(['url_title'=>$url_title])->value('id');
+        $cityId = db('url_simplify')->where(['url_title'=>$url_title])->value('other_id');
         $ProductModel = new Product;
         $where['city_id|region_id|bs_id'] = ['eq',$cityId];
         $where['state'] = 1;
-        $data = $ProductModel->where($where)->order('order_key asc')->paginate('', false, page_param());
+        $data = $ProductModel->field('lat,lg,name,tag,rent,address,img,airport,subway,city_id,id')->where($where)->order('order_key asc')->paginate('', false, page_param());
         return $data;
     }
 
     public function getCityInfoByUrltitle($url_title)
     {
-        $cityId = db('url_simplify')->where(['url_title'=>$url_title])->value('id');
+        $cityId = db('url_simplify')->where(['url_title'=>$url_title])->value('other_id');
         return $this->get($cityId);
     }
 

@@ -45,12 +45,21 @@ class Index extends Base
                 $cData['seo_des']
             );
         $this->assign('pData',$pData);
-        $this->assign('cityId',$cData['id']);
+        $this->assign('cityId',$pData[0]['city_id']);
         return $this->fetch();
     }
 
     public function product($product) {
-
+        $productMode = new productMode;
+        $pData = $productMode->getProductInfo($product);
+        $this->setPageInfo(
+                $pData['name'],
+                $pData['seo_title'],
+                $pData['seo_des']
+            );
+        $this->assign('pData',$pData);
+        $this->assign('indexProduct','indexProduct');
+        return $this->fetch();
     }
 
 

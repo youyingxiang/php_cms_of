@@ -31,4 +31,10 @@ class Product extends aProduct
    {
       return explode(",", $value);
    }
+
+   public function getProductInfo($url_title)
+   {
+      $pId = db('url_simplify')->where(['url_title'=>$url_title])->value('other_id');
+      return $this->get($pId);
+   }
 }

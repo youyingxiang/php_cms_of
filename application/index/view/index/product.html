@@ -1,0 +1,141 @@
+{extend name="layout/base"/}
+{block name='seo_title'}{$seo_title}{/block}
+{block name='seo_des'}{$seo_des}{/block}
+{block name="body"}
+<div class="w1200 clearfix">
+    <div class="l fr fixed tran300">
+        <div class="contact-box">
+            <div class="tit">获取优惠报价，或预约参观<br/>请拨打免费电话</div>
+            <div class="line"></div>
+            <div class="tel">{$conf['tel']['v']}</div>
+            <div class="email">365@officebc.com </div>
+        </div>
+        <div class="form-data">
+            <div class="title">留言反馈</div>
+            <div class="list"><input type="text" placeholder="姓名"></div>
+            <div class="list"><input type="text" placeholder="电话"></div>
+            <div class="list"><input type="text" placeholder="城市"></div>
+            <div class="list" style="width:100%;"><textarea placeholder="其它"></textarea></div>
+            <div class="list"><input type="button" value="发送"></div>
+        </div>
+    </div>
+    <div class="r">
+        <div class="position">
+            <a href="">首页</a><span>-</span><a href="">城市列表</a><span>-</span><span>{$pData['name']}</span>
+        </div>
+        <div class="item02">
+            <div class="swiper-container item02-container">
+                <div class="swiper-wrapper">
+                	{if condition="count($pData->productImg)>0"}
+                	{volist name="pData->productImg" id="vo"}
+                    <div class="swiper-slide"><div class="img"><img src="{$vo.product_img}" alt="{$pData['name']}"></div></div>
+                    {/volist}
+                    {/if}
+                </div>
+                <div class="swiper-button-prev item02-prev"></div>
+                <div class="swiper-button-next item02-next"></div>
+                <div class="item02-pagination"></div>
+            </div>
+        </div>
+        <div class="item01">
+            <h1>{$pData['name']}</h1>
+            <div class="address">{$pData['address']}</div>
+            <div class="merte">{$pData['subway']}</div>
+            <div class="ship">{$pData['airport']}</div>
+            <div class="price">
+                <sup>￥</sup>{$pData['rent']}<span>起人/月起</span>
+                <!-- <div class="sale">最新优惠：免租一个月</div> -->
+            </div>
+        </div>
+        <div class="item-list">
+            <div class="title">概括介绍</div>
+            <div class="contxt">
+                {$pData['summary']}
+            </div>
+        </div>
+        <div class="item-list">
+            <div class="title">房源面积与价格</div>
+            <ul class="ul-item01">
+               {$pData['area']}
+            </ul>
+        </div>
+        <div class="item-list">
+            <div class="title">设施与服务</div>
+            <ul class="ul-item02">
+               {$pData['equipment']}
+            </ul>
+        </div>
+        <div class="item-list">
+            <div class="title">位置</div>
+            <div class="img-box"><div style="width:100%;height:398px;border:#ccc solid 1px;" id="allmap"></div>
+</div>
+        </div>
+        <div class="about-list item-list">
+            <div class="title">相关楼盘</div>
+            {if condition="count($pData->productSelf)>0"}
+            {volist name="$pData->productSelf" id="vo"}
+            <div class="list clearfix">
+                <div class="img fl"><a href="{:of_url($vo->urlSimplify->url_title)}" style="background:url({$vo.img}) no-repeat center center/cover;"></a></div>
+                <div class="right">
+                    <div class="price">
+                        <sup>￥</sup>{$vo.rent}
+                        <span>起人/月</span>
+                    </div>
+                    <h2 class="title textHidden"><a href="{:of_url($vo->urlSimplify->url_title)}">{$vo.name}</a></h2>
+                    <div class="address textHidden fl">{$vo.subway}</div>
+                </div>
+                <div class="tag-box clearfix">
+                    {volist name="vo.tag" id="vt"}
+                    <span>{$vt}</span>
+                    {/volist}
+                </div>
+            </div>
+            {/volist}
+            {/if}
+            <a href="{:of_url('shanghai')}">查看所有楼盘</a>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="js"}
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=hpoiNMgGQoC7EjfFQSkgcA3ceFxqbKA6"></script>
+<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+
+<script>
+    var swiper = new Swiper('.item02-container', {
+        speed: 800,
+        simulateTouch: false,
+        slidesPerView: 1,
+        loop: true,
+        pagination: {
+            el: '.item02-pagination'
+        },
+        navigation: {
+            nextEl: '.item02-next',
+            prevEl: '.item02-prev',
+        },
+        breakpoints: {
+            1025: {
+                simulateTouch: true,
+                slidesPerView: 'auto'
+            }
+        }
+    });
+    // 百度地图API功能
+        var map = new BMap.Map("allmap");
+        var point = new BMap.Point({$pData.lg},{$pData.lat});
+        map.centerAndZoom(point, 16);
+        var marker = new BMap.Marker(point);  // 创建标注
+        map.addOverlay(marker);              // 将标注添加到地图中
+        var opts = {
+            width : 200,     // 信息窗口宽度
+            height: 50,     // 信息窗口高度
+            title : "{$pData.name}" , // 信息窗口标题
+            enableMessage:true,//设置允许信息窗发送短息
+            message:"{$pData.name}"
+        }
+        var infoWindow = new BMap.InfoWindow("地址：{$pData.address}", opts);  // 创建信息窗口对象
+        map.openInfoWindow(infoWindow,point); //开启信息窗口
+        map.enableScrollWheelZoom(true);
+</script>
+{/block}
