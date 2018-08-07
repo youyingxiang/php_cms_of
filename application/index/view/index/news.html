@@ -1,0 +1,59 @@
+{extend name="layout/base"/}
+{block name='seo_title'}{$seo_title}{/block}
+{block name='seo_des'}{$seo_des}{/block}
+{block name="body"}
+<div class="page-banner" style="background:url({$ad['新闻列表-banner'][0]['img']}) no-repeat center center/cover;">
+    <div class="w1200">
+        <div class="tit">资讯<span class="font-en">INFORMATION</span></div>
+    </div>
+</div>
+<div class="news-content">
+    <div class="w1200 clearfix">
+        <div class="right fr">
+            <div class="contact-box">
+                <div class="tit">服务电话</div>
+                <div class="tel">{$conf['tel']['v']}</div>
+                <div class="email">{$conf['recipients']['v']} </div>
+            </div>
+            <div class="hot">
+                <div class="title">热门地点推荐</div>
+                <ul>
+                {volist name="pData" id="vo"}
+                <li><a class="textHidden" href="{:of_url($vo->urlSimplify->url_title)}">{$vo->name}</a></li>
+                {/volist}    
+                </ul>
+            </div>
+        </div>
+        <div class="left">
+            <div class="top clearfix">
+                <h1 class="title fl">新闻资讯</h1>
+                <div class="select fr">
+                    <span class="txt">{:date('Y')}</span>
+                    <ul>
+                        <a href="{:search_where(['year'=>date('Y',strtotime('-1 year'))])}"><li>{:date('Y',strtotime("-1 year"))}</li></a>
+                        <a href="{:search_where(['year'=>date('Y',strtotime('-2 year'))])}"><li>{:date('Y',strtotime("-2 year"))}</li></a>
+                        <a href="{:search_where(['year'=>date('Y',strtotime('-3 year'))])}"><li>{:date('Y',strtotime("-3 year"))}</li></a>
+                    </ul>
+                </div>
+            </div>
+            {volist name="newsList" id="vo"}
+            <div class="list tran300">
+                <div class="date tran300">{$vo.update_time}</div>
+                <h2 class="textHidden"><a href="{:of_url($vo.url_title,'news')}">{$vo.title}</a></h2>
+                <div class="line tran300"></div>
+                <div class="ms tran300">
+                   {$vo.abstract}
+                </div>
+            </div>
+            {/volist}
+            <div class="clear"></div>
+            {if condition="$newsList->render()"}
+                {$newsList->render()}
+            {else/}
+                <div class="page"> 
+                </div>
+            {/if}
+        </div>
+    </div>
+</div>
+{/block}

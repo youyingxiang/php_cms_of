@@ -11,6 +11,7 @@ class Base extends Controller
     {
         $cModel = new cModel;
         //整个网站以上海城市为主 上海在城市表的id 为2
+        visitors();
         define('SH_CITY_ID',2);
     	$this->ad   = adModel::getAdCache();
         $this->link = navModel::getLinkCache();

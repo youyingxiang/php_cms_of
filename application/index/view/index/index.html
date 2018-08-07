@@ -14,7 +14,7 @@
             <div class="tel">400 803 2900</div>
             <ul>
                 <li class="address">上海市静安区延安中路829号达安广场西楼4层D室</li>
-                <li class="email">365@officebc.com </li>
+                <li class="email">{$conf['recipients']['v']} </li>
             </ul>
         </div>
         <div class="left fl">
@@ -60,7 +60,7 @@
             {volist name="vo" id="voo"}
             <div class="list">
                 <div class="box">
-                    <div class="img"><a href="" style="background:url({$voo.img}) no-repeat center center/cover;"></a></div>
+                    <div class="img"><a href="{:of_url($voo->urlSimplify->url_title)}" style="background:url({$voo.img}) no-repeat center center/cover;"></a></div>
                     <div class="contxt clearfix">
                         <div class="l">
                             <h3 class="tit textHidden"><a href="{:of_url($voo->urlSimplify->url_title)}">{$voo.name}</a></h3>
@@ -117,7 +117,7 @@
             {volist name="vo" id="voo"}
             <div class="list">
                 <div class="box">
-                    <div class="img"><a href="" style="background:url({$voo.img}) no-repeat center center/cover;"></a></div>
+                    <div class="img"><a href="{:of_url($voo->urlSimplify->url_title)}" style="background:url({$voo.img}) no-repeat center center/cover;"></a></div>
                     <div class="contxt clearfix">
                         <div class="l">
                             <div class="tit textHidden"><a href="{:of_url($voo->urlSimplify->url_title)}">{$voo.name}</a></div>

@@ -1,0 +1,51 @@
+{extend name="layout/base"/}
+{block name='seo_title'}{$seo_title}{/block}
+{block name='seo_des'}{$seo_des}{/block}
+{block name="body"}
+<div class="page-banner" style="background:url({$ad['关于我们-banner'][0]['img']}) no-repeat center center/cover;">
+    <div class="w1200">
+        <div class="tit">关于<span class="font-en">ABOUT</span></div>
+    </div>
+</div>
+<div class="about-item01">
+    <div class="w1200 clearfix">
+        <h1 class="title">{$ad['关于我们-文字介绍'][0]['title']}</h1>
+        <div class="line"></div>
+        <div class="contxt">
+            {$ad['关于我们-文字介绍'][0]['content']}
+        </div>
+        <ul class="clearfix">
+            <li>
+                <div class="icon"><img src="{$Think.HOME_IMGS}/about-item01-icon01.png" alt=""></div>
+                <div class="tit">现场带看</div>
+            </li>
+            <li>
+                <div class="icon"><img src="{$Think.HOME_IMGS}/about-item01-icon02.png" alt=""></div>
+                <div class="tit">租赁意向沟通 </div>
+            </li>
+            <li>
+                <div class="icon"><img src="{$Think.HOME_IMGS}/about-item01-icon03.png" alt=""></div>
+                <div class="tit">协助签约</div>
+            </li>
+            <li>
+                <div class="icon"><img src="{$Think.HOME_IMGS}/about-item01-icon04.png" alt=""></div>
+                <div class="tit">办公室搜寻</div>
+            </li>
+        </ul>
+    </div>
+</div>
+{volist name="$ad['关于我们-图文介绍']" id="vo"}
+<div class="about-item">
+    <div class="w1200 clearfix">
+        <div class='contxt {if condition="$key%2 == 0"}fl{else/}fr{/if}'>
+            <div class="title">{$vo.title}</div>
+            <div class="line"></div>
+            <div class="ms">
+                {$vo.content}
+            </div>
+        </div>
+        <div class='{if condition="$key%2 == 0"}fr{else/}fl{/if} img'><div class="image" style="background:url({$vo.img}) no-repeat center center/cover;"></div></div>
+    </div>
+</div>
+{/volist}
+{/block}

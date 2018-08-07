@@ -1,0 +1,53 @@
+{extend name="layout/base"/}
+{block name='seo_title'}{$seo_title}{/block}
+{block name='seo_des'}{$seo_des}{/block}
+{block name="body"}
+<div class="page-banner" style="background:url({$ad['联系我们-banner'][0]['img']}) no-repeat center center/cover;">
+    <div class="w1200">
+        <div class="tit">联系<span class="font-en">CONTACT</span></div>
+    </div>
+</div>
+<div class="contact-item01">
+    <div class="w1200 clearfix">
+        <h1>联系方式</h1>
+        <ul class="clearfix">
+            <li class="tel">
+                <div class="icon"><img src="{$Think.HOME_IMGS}/icon05.png" alt="电话"></div>
+                <div class="tit">电话</div>
+                <div class="contxt">{$conf['tel']['v']}</div>
+            </li>
+            <li class="email">
+                <div class="icon"><img src="{$Think.HOME_IMGS}/icon06.png" alt="邮箱"></div>
+                <div class="tit">邮箱</div>
+                <div class="contxt">{$conf['recipients']['v']} </div>
+            </li>
+            <li class="address">
+                <div class="icon"><img src="{$Think.HOME_IMGS}/icon07.png" alt="地址"></div>
+                <div class="tit">地址</div>
+                <div class="contxt">{$conf['address']['v']}</div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="contact-item02">
+    <div class="w1200 clearfix">
+        <div class="fl">
+            <h2>留言反馈</h2>
+            <div class="contxt">
+                一次留言或许正是成就<br/>
+                一个合作的开端。
+            </div>
+        </div>
+        <div class="fr">
+            <div class="form-data">
+                <div class="title">填写您的信息</div>
+                <div class="list"><input type="text" placeholder="姓名"></div>
+                <div class="list"><input type="text" placeholder="电话"></div>
+                <div class="list"><input type="text" placeholder="城市"></div>
+                <div class="list"><textarea placeholder="其它"></textarea></div>
+                <div class="list"><input type="button" value="发送"></div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

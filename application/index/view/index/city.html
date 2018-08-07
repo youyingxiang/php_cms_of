@@ -10,7 +10,7 @@
                 <div class="tit">获取优惠报价，或预约参观<br/>请拨打免费电话</div>
                 <div class="line"></div>
                 <div class="tel">{$conf['tel']['v']}</div>
-                <div class="email">365@officebc.com </div>
+                <div class="email">{$conf['recipients']['v']} </div>
             </div>
         </div>
         <div class="left">
@@ -52,11 +52,10 @@
                 <span class="result"><span class="result-txt">价格</span><i></i></span>
                 <div class="select-box">
                     <ul class="select">
-                        <li>1000以下</li>
-                        <li>1000-3000</li>
-                        <li>3000-6000</li>
-                        <li>6000-10000</li>
-                        <li>10000以上</li>
+                        <a href="{:search_where(['price'=>'0-999'])}"><li>0-999</li></a>
+                        <a href="{:search_where(['price'=>'1000-2999'])}"><li>1000-2999</li></a>
+                        <a href="{:search_where(['price'=>'3000-5999'])}"><li>3000-5999</li></a>
+                        <a href="{:search_where(['price'=>'6000-9999'])}"><li>6000-9999</li></a>
                     </ul>
                 </div>
             </li>
@@ -132,8 +131,8 @@
             </div>
         </div>
     </div>
-    <div class="tab-con map-content clearfix">
-        
+    <<div class="tab-con map-content clearfix">
+        <div id="allmap" style="width: 100%;height: 500px"></div>
     </div>
 </div>
 {/block}
@@ -161,7 +160,7 @@ $(function(){
                     var html = "";
                     result.forEach(function(item,index){
                         array_str[index] = item.id
-                        html += "<li><a href='"+item.of_url+"'>"+item.name+"</a></option>";
+                        html += "<li><a href='"+item.of_url+"'>"+item.name+"</a></li>";
                     })
                     $("#region").empty().html(html);
                     array_str = array_str.join(',')
@@ -182,7 +181,7 @@ $(function(){
                 success:function(result){
                     var html = "";
                     result.forEach(function(item,index){
-                        html += "<li><a href='"+item.of_url+"'>"+item.name+"</a></option>";
+                        html += "<a href='"+item.of_url+"'><li>"+item.name+"</li></a>";
                     })
                     $("#bs").empty().html(html);
                 },
@@ -191,9 +190,22 @@ $(function(){
     var pInfo   = {:json_encode($pData,JSON_UNESCAPED_UNICODE)};
     pInfo       = pInfo.data;
     map = new BMap.Map("allmap");
-
-    // map.centerAndZoom(new BMap.Point(121.456091,31.230261), 18);
-    // console.log(pInfo);
+    map.centerAndZoom(new BMap.Point(pInfo[0].lg,pInfo[0].lat), 18);
+    var opts = {
+            width : 250,     // 信息窗口宽度
+            height: 80,     // 信息窗口高度
+            title : "" , // 信息窗口标题
+            enableMessage:true//设置允许信息窗发送短息
+        };
+    pInfo.forEach(function(item,index){
+        var point = new BMap.Point(item.lg,item.lat);
+        var marker = new BMap.Marker(point);  // 创建标注
+        var content = item.name;
+        var infoWindow = new BMap.InfoWindow(content,opts);
+        map.addOverlay(marker);
+        map.openInfoWindow(infoWindow,point); //开启信息窗口
+        map.enableScrollWheelZoom(true);
+    })
 })
 </script>
 {/block}

@@ -36,6 +36,14 @@ class City extends aCity
 
     public function getCityProductByUrltitle($url_title)
     {
+        if (!empty(input('get.price'))) {
+            $rentArray = explode("-",input('get.price'));
+            if (count($rentArray) == 2) {
+                $where['rent'] = ['between',$rentArray];
+            } else if (count($rentArray) == 1) {
+                $where['rent'] = ['>',$rentArray[0]];
+            }
+        }
         $cityId = db('url_simplify')->where(['url_title'=>$url_title])->value('other_id');
         $ProductModel = new Product;
         $where['city_id|region_id|bs_id'] = ['eq',$cityId];
@@ -54,4 +62,14 @@ class City extends aCity
     {
         return $this->where(['parent_id'=>['in',$parentIds]])->order('order_key asc')->select();
     }
+
+    public function getParentIsCity($id) {
+        $data = $this->get($id);
+        if ($data['parent_id'] != 0) {
+            return $this->getParentIsCity($data['parent_id']);
+        } else {
+            return $data['id'];
+        }
+    }
+
 }

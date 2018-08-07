@@ -1,0 +1,135 @@
+{extend name="layout/base"/}
+{block name='seo_title'}{$seo_title}{/block}
+{block name='seo_des'}{$seo_des}{/block}
+{block name="body"}
+<div class="page-banner" style="background:url({$ad['新闻详情-banner'][0]['img']}) no-repeat center center/cover;">
+    <div class="w1200">
+        <div class="tit">资讯<span class="font-en">INFORMATION</span></div>
+    </div>
+</div>
+<div class="news-content news-detail">
+    <div class="w1200 clearfix">
+        <div class="right fr">
+            <div class="contact-box">
+                <div class="tit">服务电话</div>
+                <div class="tel">{$conf['tel']['v']}</div>
+                <div class="email">{$conf['recipients']['v']} </div>
+            </div>
+            <div class="hot">
+                <div class="title">热门地点推荐</div>
+                <ul>
+                    {volist name="pData" id="vo"}
+                    <li><a class="textHidden" href="{:of_url($vo->urlSimplify->url_title)}">{$vo->name}</a></li>
+                    {/volist}   
+                </ul>
+            </div>
+        </div>
+        <div class="left">
+            <div class="position">
+                <a href="">首页</a><span>-</span><a href="">新闻列表</a><span>-</span><span>香港兴业中心服务式办公室出租介绍</span>
+            </div>
+            <h1>{$cityData.title}</h1>
+            <div class="date">{$cityData.update_time}</div>
+            <div class="contxt">
+                {$cityData.content}
+            </div>
+            <div class="tab clearfix">
+                {if condition="$prev"}
+                <a class="prev textHidden" href="{:of_url($prev.url_title,'news')}"><i></i>{$prev.title}</a>
+                {/if}
+                <a class="back-list" href="{:of_url('news')}"><span>返回列表</span></a>
+                {if condition="$next"}
+                <a class="next textHidden" href="{:of_url($next.url_title,'news')}">{$next.title}<i></i></a>
+                {/if}
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="about-news">
+            <h2 class="fl">相关新闻</h2>
+            <div class="fr clearfix">
+                <div class="about-news-prev fl"></div>
+                <div class="about-news-pagination fl"></div>
+                <div class="about-news-next fl"></div>
+            </div>
+            <div class="clear"></div>
+            <div class="swiper-container about-news-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="box">
+                            <div>
+                                <div class="top">
+                                    <div class="date">2018 01 30</div>
+                                    <h2><a href="">2017上海商务中心的发展和变化</a></h2>
+                                </div>
+                                <a class="more" href="">了解更多</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="box">
+                            <div>
+                                <div class="top">
+                                    <div class="date">2018 02 30</div>
+                                    <h2><a href="">2017上海商务中心的发展和变化</a></h2>
+                                </div>
+                                <a class="more" href="">了解更多</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="box">
+                            <div>
+                                <div class="top">
+                                    <div class="date">2018 03 30</div>
+                                    <h2><a href="">2017上海商务中心的发展和变化</a></h2>
+                                </div>
+                                <a class="more" href="">了解更多</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="box">
+                            <div>
+                                <div class="top">
+                                    <div class="date">2018 04 30</div>
+                                    <h2><a href="">2017上海商务中心的发展和变化</a></h2>
+                                </div>
+                                <a class="more" href="">了解更多</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="js"}
+<script>
+    var swiper = new Swiper('.about-news-container', {
+        speed: 800,
+        simulateTouch: false,
+        slidesPerView: 3,
+        spaceBetween: 10,
+        loop: true,
+        pagination: {
+            el: '.about-news-pagination',
+            type: 'fraction',
+            renderFraction: function (currentClass, totalClass) {
+                return '<span class="' + currentClass + '"></span>' +
+                    ' - ' +
+                    '<span class="' + totalClass + '"></span>';
+            }
+        },
+        navigation: {
+            nextEl: '.about-news-next',
+            prevEl: '.about-news-prev',
+        },
+        breakpoints: {
+            1025: {
+                slidesPerView: 'auto'
+            }
+        }
+    });
+</script>
+{/block}

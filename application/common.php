@@ -49,11 +49,10 @@ function array_changekey($data,$k)
  */
 function page_param(){
     $param = request()->param();
-    if (isset($param['_pjax'])){
-        unset($param['_pjax']);
-    }
-    if (isset($param['city'])){
-        unset($param['city']);
+    foreach ($param as $k => $v) {
+        if (!in_array($k,['page','price'])) {
+            unset($param[$k]);
+        }
     }
     $res['query'] = $param;
     return $res;

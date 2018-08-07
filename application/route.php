@@ -11,6 +11,10 @@
 
 use think\Route;
 Route::rule('tag/:city','index/index/city');
+Route::rule('aboutus','index/index/aboutus');
+Route::rule('contactus','index/index/contactus');
+Route::rule('news/:url_title','index/index/news_detail');
+Route::rule('news','index/index/news');
 if (!empty($_SERVER['PATH_INFO'])) {
 	$pathInfo  = substr($_SERVER['PATH_INFO'],1);
 	$pathcount = count(explode('/', $pathInfo));

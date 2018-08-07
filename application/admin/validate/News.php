@@ -9,7 +9,7 @@ class News extends Validate
         'title'                 => 'require|max:200',
         'seo_title'             => 'max:200',
         'seo_des'               => 'max:500',
-        'url_title'             => 'max:255|unique:news',
+        'url_title'             => 'require|max:255|unique:news',
     ];
     protected $message = [
         'title.require'         => '标题不能为空！',
@@ -17,6 +17,7 @@ class News extends Validate
         'seo_title.max'         => 'seo标题最多200个字符！',
         'seo_des.max'           => 'seo描述最多500个字符！',
         'url_title.max'         => 'url别名最多255个字符！',
+        'url_title.require'     => '请输入url别名！',
         'url_title.unique'      => 'url别名已存在！',             
     ];
     protected $scene = [

@@ -45,7 +45,7 @@ class Index extends Base
                 $cData['seo_des']
             );
         $this->assign('pData',$pData);
-        $this->assign('cityId',$pData[0]['city_id']);
+        $this->assign('cityId',$cityMode->getParentIsCity($cData['id']));
         return $this->fetch();
     }
 
@@ -61,8 +61,22 @@ class Index extends Base
         $this->assign('indexProduct','indexProduct');
         return $this->fetch();
     }
-
-
+    public function aboutus() {
+        $this->setPageInfo(
+                '关于我们',
+                $this->conf['seo_title']['v'],
+                $this->conf['seo_des']['v']
+            );
+        return $this->fetch();
+    }
+    public function contactus() {
+        $this->setPageInfo(
+                '联系我们',
+                $this->conf['seo_title']['v'],
+                $this->conf['seo_des']['v']
+            );
+        return $this->fetch();
+    }
 
     public function ajaxGetRegin() {
         $cityMode = new cityModel;
@@ -82,6 +96,39 @@ class Index extends Base
             $data[$key]['of_url'] = of_url($value->urlSimplify->url_title,'tag');
         }
         return json_encode($data,JSON_UNESCAPED_UNICODE);
+    }
+    public function news() {
+        $newsMode = new newsMode();
+        $pMolde   = new productMode();
+        $newsList  = $newsMode->getNewsList();
+        $pData    = $pMolde->getProductList();
+        $this->setPageInfo(
+                '行业资讯',
+                $this->conf['seo_title']['v'],
+                $this->conf['seo_des']['v']
+            );
+        $this->assign('newsList',$newsList);
+        $this->assign('pData',$pData);
+        return $this->fetch();
+    }
+
+    public function news_detail($url_title) {
+        $newsMode = new newsMode();
+        $pMolde   = new productMode();
+        $cityData = $newsMode->getCityInfo($url_title);
+        $prev     = $newsMode->getPrev($cityData);
+        $next     = $newsMode->getNext($cityData);
+        $pData    = $pMolde->getProductList();
+        $this->setPageInfo(
+                $cityData['title'],
+                $cityData['seo_title'],
+                $cityData['seo_des']
+            );
+        $this->assign('prev',$prev);
+        $this->assign('next',$next);
+        $this->assign('pData',$pData);
+        $this->assign('cityData',$cityData);
+        return $this->fetch();
     }
 
 }
