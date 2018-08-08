@@ -131,4 +131,35 @@ class Index extends Base
         return $this->fetch();
     }
 
+    public function sendMail() {
+        $rule = [
+            'tel'       => 'require|length:4,25',
+            'name'      => 'require|max:255',
+            'other'     => 'max:500', 
+            'city'      => 'max:255'
+        ];
+        $msg = [
+            'tel.require'   => '电话号码不能为空',
+            'tel.length'    => '电话号码不符合长度范围4~25',
+            'name.require'  => '名称不能为空',
+            'name.max'      => '姓名过长',
+            'other.max'     => '其他输入过长',
+            'city'          => '城市输入过长',
+        ];
+        if ($this->checkToken(input('post.csrf_token')) === false) {
+            $this->error('请勿重复提交');
+        }
+        $validate = new \think\Validate($rule,$msg);
+        $result   = $validate->check(input('post.'),$rule,$msg);
+        if (!$result) {
+            $this->error($validate->getError());
+        } else {
+            $to      = $this->conf['email_to']['v'];
+            $title   = '网站用户提交';
+            $content = "<h4>姓名：".input('post.name')."</h4><h4>电话：".input('post.tel')."</h4><h4>城市：".input('post.city')."</h4><h4>其他：".input('post.other')."</h4>";
+            sendMail($to, $title, $content);
+            $this->success('提交成功！');
+        }
+    }
+
 }

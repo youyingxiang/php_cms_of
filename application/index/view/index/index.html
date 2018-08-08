@@ -18,12 +18,15 @@
             </ul>
         </div>
         <div class="left fl">
+            <form id="formid" action="{:url('sendMail')}" method="post" >
             <div class="title">留言反馈</div>
-            <div class="list"><input type="text" placeholder="姓名"></div>
-            <div class="list"><input type="text" placeholder="电话"></div>
-            <div class="list"><input type="text" placeholder="城市"></div>
-            <div class="list"><textarea placeholder="其它"></textarea></div>
-            <div class="list"><input type="button" value="发送"></div>
+            <div class="list"><input type="text" name="name" placeholder="姓名"></div>
+            <div class="list"><input type="text" name='tel' class="tel_check" placeholder="电话"></div>
+            <div class="list"><input type="text" name='city' placeholder="城市"></div>
+            <div class="list"><textarea name='other' placeholder="其它"></textarea></div>
+            <input type="hidden" name="csrf_token" value="{$token}" />
+            <div class="list"><input type="button" onclick="document.getElementById('formid').submit()" value="发送"></div>
+            </form>
         </div>
     </div>
 </div>

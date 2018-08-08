@@ -54,50 +54,21 @@
             <div class="clear"></div>
             <div class="swiper-container about-news-container">
                 <div class="swiper-wrapper">
+                    {if condition="count($cityData->newsSelf)>0"}
+                    {volist name="$cityData->newsSelf" id="vo"}
                     <div class="swiper-slide">
                         <div class="box">
                             <div>
                                 <div class="top">
-                                    <div class="date">2018 01 30</div>
-                                    <h2><a href="">2017上海商务中心的发展和变化</a></h2>
+                                    <div class="date">{$vo.update_time}</div>
+                                    <h2><a href="">{$vo.title}</a></h2>
                                 </div>
-                                <a class="more" href="">了解更多</a>
+                                <a class="more" href="{:of_url($vo.url_title,'news')}">了解更多</a>
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide">
-                        <div class="box">
-                            <div>
-                                <div class="top">
-                                    <div class="date">2018 02 30</div>
-                                    <h2><a href="">2017上海商务中心的发展和变化</a></h2>
-                                </div>
-                                <a class="more" href="">了解更多</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="box">
-                            <div>
-                                <div class="top">
-                                    <div class="date">2018 03 30</div>
-                                    <h2><a href="">2017上海商务中心的发展和变化</a></h2>
-                                </div>
-                                <a class="more" href="">了解更多</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="box">
-                            <div>
-                                <div class="top">
-                                    <div class="date">2018 04 30</div>
-                                    <h2><a href="">2017上海商务中心的发展和变化</a></h2>
-                                </div>
-                                <a class="more" href="">了解更多</a>
-                            </div>
-                        </div>
-                    </div>
+                    {/volist}
+                    {/if}
                 </div>
             </div>
         </div>

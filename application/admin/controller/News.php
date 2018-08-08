@@ -112,4 +112,44 @@ class News extends Base
             return ajaxReturn($e->getMessage());
         }   	
 	}
+
+    public function relation_news()
+    {
+        if (request()->isPost()) {
+            try {
+                $news_id = input('post.news_id');
+                $ids = input('post.ids');
+                $ids = explode('-', $ids);
+                $res = $this->cModel->Relation($news_id,$ids);
+                if (false !== $res) {
+                    write_log();
+                    return ajaxReturn('操作成功！',1);
+                } else {
+                    exception($this->cModel->getError(),401);
+                }
+            } catch (\Exception $e) {                   
+                write_log($e->getMessage());
+                return ajaxReturn($e->getMessage());
+            } 
+        } else { 
+            $where = [];
+            if (input('get.search')) {
+                $where['title|content'] = ['like', '%'.trim(input('get.search')).'%'];                   //搜索条件
+            }
+            if (input('get._sort')) {
+                $order = explode(',', input('get._sort'));
+                $order = $order[0].' '.$order[1];
+            } else {
+                $order = 'id desc';
+            }
+            if (empty(input('id'))) return $this->notFound(); 
+            $where['id'] = ['neq',input('id')];
+            $this->setPageBtn();
+            $data     = $this->cModel->where($where)->order($order)->paginate('', false, page_param());
+            $data_f   = $this->cModel->gerRelationSelfIds(input('id'));
+            $this->assign('data',$data);
+            $this->assign('data_f',$data_f);
+            return $this->fetch();
+        }
+    }
 }

@@ -1,5 +1,5 @@
 {extend name="layout/base"/}
-{block name='title'}关联商品{/block}
+{block name='title'}新闻关联{/block}
 {block name="body"}
 <style>
 .screen-box .box-tools .input-group .input-group-btn .btn{height:34px;}
@@ -36,16 +36,6 @@
                                 <div class='pull-right' style="width:40%">
                                     <input type="text" name="search" class="form-control" value="{:input('get.search')}" placeholder="搜索" />
                                 </div>
-                                <div class='pull-left' style="width:60%">
-                                    <select name="city_id" class="form-control select2" placeholder="{$Think.lang.search}">
-                                        <option value="">不限</option>
-                                        {volist name="$cityData" id='vo'}
-                                            <option {if condition="input('get.city_id') == $vo.id"}selected='selected'{/if} value="{$vo.id}">
-                                                {$vo.name}
-                                            </option>
-                                        {/volist}
-                                    </select>
-                                </div>
                                 <div class="input-group-btn">
                                     <button type="submit" class="btn btn-default sreachs"><i class="fa fa-search"></i></button>
                                 </div>
@@ -58,31 +48,25 @@
                         <tr>
                             <th width="35"><input type="checkbox" class="minimal checkbox-toggle"></th>
                             <th>ID{:table_sort('id')}</th>
-                            <th>名称{:table_sort('name')}</th>
-                            <th>城市</th>
-                            <th>地区</th>
-                            <th>标签</th>
-                            <th>图片</th>
+                            <th>标题{:table_sort('title')}</th>
+                            <th>是否推荐</th>
                             <th>状态</th>
-                            <th>路由别名</th>
-                            <th>排序{:table_sort('order_key')}</th>
+                            <th>修改时间{:table_sort('update_time')}</th>
+                            <th>页面显示地址</th>
                         </tr>
                         {volist name="data" id="vo"}
                         <tr>
                             <td style="vertical-align:middle"><input type="checkbox" name="id[]" {if condition="in_array($vo.id,$data_f)"}checked='checked'{/if} value="{$vo.id}" class="minimal check_c"></td>
                             <td style="vertical-align:middle">{$vo.id}</td>
-                            <td style="vertical-align:middle"><span class="editable" data-pk="{$vo.id}" data-name="name" data-url="{:url(CONTROLLER_NAME.'/edit', 'id='.$vo['id'])}" >{$vo.name}</span></td>
-                            <td style="vertical-align:middle">{$vo->City->name}</td>
-                            <td style="vertical-align:middle">{$vo->Region->name}</td>
-                            <td style="vertical-align:middle">{$vo.tag}</td>
-                            <td style="vertical-align:middle"><img src="{$vo.img}" style="width:40px;border-radius:40%;" /></td>
+                            <td style="vertical-align:middle"><span class="editable" data-pk="{$vo.id}" data-name="title" data-url="{:url(CONTROLLER_NAME.'/edit', 'id='.$vo['id'])}" >{$vo.title}</span></td>
+                            <td style="vertical-align:middle">{$vo.flag_name}</td>
                             <td style="vertical-align:middle">
                                 <a href="javascript:void(0);" data-id="{$vo.id}" data-field="state" 
                                 data-value="{$vo.state}" data-url="{:url('edit', 'id='.$vo['id'])}" 
                                 class='editimg fa {if condition=" $vo.state == 1 "}fa-check-circle text-green{else /}fa-times-circle text-red{/if}'></a>
                             </td>
-                            <td style="vertical-align:middle">{$vo->urlSimplify->url_title}</td>
-                             <td style="vertical-align:middle"><span class="editable" data-pk="{$vo.id}" data-name="order_key" data-url="{:url(CONTROLLER_NAME.'/edit', 'id='.$vo['id'])}" >{$vo.order_key}</span></td>
+                            <td style="vertical-align:middle">{$vo.update_time}</td>
+                            <td style="vertical-align:middle">{:url('/news/'.$vo.url_title)}</td>
                         </tr>
                         {/volist}
                     </table>
@@ -139,18 +123,18 @@ $(function(){
             arr = test;
         })
     });
-    product_id = "{:input('id')}";
+    news_id = "{:input('id')}";
     index = parent.layer.getFrameIndex(window.name);
     $('#relation').on('click',function(){
-        if(product_id<1)
+        if(news_id<1)
             return;
         if (arr.length<1)
             var vals = '';
         else 
             var vals = arr.join('-');
         $.ajax({
-            url: "{:url('Product/relation_self')}", 
-            data: {"ids":vals,'product_id':product_id},
+            url: "{:url('News/relation_news')}", 
+            data: {"ids":vals,'news_id':news_id},
             type:'post', 
             dataType: "json", 
             error:function(data){

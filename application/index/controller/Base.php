@@ -9,6 +9,7 @@ class Base extends Controller
 {
 	public function _initialize()
     {
+        header("Cache-control: private");
         $cModel = new cModel;
         //整个网站以上海城市为主 上海在城市表的id 为2
         visitors();
@@ -27,6 +28,7 @@ class Base extends Controller
         $this->assign('conf',$this->conf);
         $this->assign('hotc',$this->hotc);
         $this->assign('ordc',$this->ordc);
+        if (request()->isGet()) $this->assign('token',$this->createToken());
     }
 
     /**
@@ -48,6 +50,21 @@ class Base extends Controller
         $this->assign('page_js', $js);
     }
 
+    public function createToken() {
+        $token = md5(time().rand(10000,999999));
+        session('csrf_token',$token);
+        return $token;
+    }
+
+    public function checkToken($token) {
+        if ($token == session('csrf_token')) {
+            session('csrf_token','');
+            return true;
+        } else {
+            session('csrf_token','');
+            return false;
+        }
+    }
 
     protected function notFound() {
         return response($this->fetch('layout/404'),404);
