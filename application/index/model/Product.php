@@ -37,10 +37,15 @@ class Product extends aProduct
 
    public function getProductList()
    {
-      $pData = $this->where([
-            'state'=>['eq',1],
-            'flag'=>['eq',1]
-         ])->order('order_key asc')->select();
+      if (input('get.keyword')) {
+         $where['name|summary'] = ['like', '%'.trim(input('get.keyword')).'%'];
+      }
+      $where['state'] = 1;
+      $where['flag']  = 1;
+      if (input('get.keyword')) 
+         $pData = $this->where($where)->order('order_key asc')->paginate('', false, page_param());
+      else
+         $pData = $this->where($where)->order('order_key asc')->select();
       return $pData;
    }
 

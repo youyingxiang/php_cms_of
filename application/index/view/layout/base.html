@@ -61,7 +61,7 @@
         <a class="menu fl" href="javascript:"></a>
         <div class="search-box">
             <input type="text" placeholder="请输入大厦名称和地理位置">
-            <input type="button" value="">
+            <input type="button" id="keyword_search" value="">
         </div>
     </div>
     <div class="tel fr"><a href="tel:{$conf['tel']['v']}">{$conf['tel']['v']}</a></div>
@@ -118,6 +118,10 @@
         var res  = tel_check($(this).val().trim());
         var res_ = phone_check($(this).val().trim());
         if (res == false && res_ == false) alert('输入电话号码不正确！');
+    });
+    $('.commit_form ').on('click',function(){
+        $(this).attr('disabled','disabled');
+        $('#formid').submit();
     })
     function tel_check(tel) {
         var myreg = /^(([0\+]\d{2,3}-)?(0\d{2,3})-)(\d{7,8})(-(\d{3,}))?$/;
@@ -135,6 +139,10 @@
           return true;
         }
     }
+    $('#keyword_search').on('click',function(){
+        var keyword = $(this).prev().val();
+        window.location.href="/search?keyword="+keyword;
+    })
 </script>
 {block name="js"}{/block}
 </body>

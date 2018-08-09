@@ -41,11 +41,14 @@
         <div class="fr">
             <div class="form-data">
                 <div class="title">填写您的信息</div>
-                <div class="list"><input type="text" placeholder="姓名"></div>
-                <div class="list"><input type="text" placeholder="电话"></div>
-                <div class="list"><input type="text" placeholder="城市"></div>
-                <div class="list"><textarea placeholder="其它"></textarea></div>
-                <div class="list"><input type="button" value="发送"></div>
+                <form id="formid" action="{:url('sendMail')}" method="post">
+                <div class="list"><input type="text" name="name" placeholder="姓名"></div>
+                <div class="list"><input type="text" name="tel"  placeholder="电话"></div>
+                <div class="list"><input type="text" name="city" placeholder="城市"></div>
+                <div class="list"><textarea name="other" placeholder="其它"></textarea></div>
+                <input type="hidden" name="__token__" value="{$Request.token}" />
+                <div class="list"><input type="button" class="commit_form" value="发送"></div>
+                </form>
             </div>
         </div>
     </div>

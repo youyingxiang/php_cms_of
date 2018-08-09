@@ -38,14 +38,15 @@ class Index extends Base
         $cityMode = new cityModel;
         $pData    = $cityMode->getCityProductByUrltitle($city);
         if (empty($pData)) return $this->notFound();
-        $cData    = $cityMode->getCityInfoByUrltitle($city);
+        $cData      = $cityMode->getCityInfoByUrltitle($city);
+        $cityParent = $cityMode->get($cityMode->getParentIsCity($cData['id']));
         $this->setPageInfo(
                 $cData['name'],
                 $cData['seo_title'],
                 $cData['seo_des']
             );
         $this->assign('pData',$pData);
-        $this->assign('cityId',$cityMode->getParentIsCity($cData['id']));
+        $this->assign('cityParent',$cityParent);
         return $this->fetch();
     }
 
@@ -133,7 +134,7 @@ class Index extends Base
 
     public function sendMail() {
         $rule = [
-            'tel'       => 'require|length:4,25',
+            'tel'       => 'require|length:4,25|token',
             'name'      => 'require|max:255',
             'other'     => 'max:500', 
             'city'      => 'max:255'
@@ -146,9 +147,6 @@ class Index extends Base
             'other.max'     => '其他输入过长',
             'city'          => '城市输入过长',
         ];
-        if ($this->checkToken(input('post.csrf_token')) === false) {
-            $this->error('请勿重复提交');
-        }
         $validate = new \think\Validate($rule,$msg);
         $result   = $validate->check(input('post.'),$rule,$msg);
         if (!$result) {
@@ -160,6 +158,18 @@ class Index extends Base
             sendMail($to, $title, $content);
             $this->success('提交成功！');
         }
+    }
+
+    public function search() {
+        $pMolde   = new productMode();
+        $pData    = $pMolde->getProductList();
+        $this->setPageInfo(
+                '搜索结果',
+                $this->conf['seo_title']['v'],
+                $this->conf['seo_des']['v']
+            );
+        $this->assign('pData',$pData);
+        return $this->fetch();
     }
 
 }
