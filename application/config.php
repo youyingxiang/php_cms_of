@@ -184,58 +184,58 @@ return [
     // | 缓存设置
     // +----------------------------------------------------------------------
 
-     'cache'                  => [
+ //    'cache'                  => [
           // 驱动方式
-          'type'   => 'redis',
-          'select' => 1,
+//         'type'   => 'redis',
+//          'select' => 1,
           // 缓存保存目录
          // 'path'   => CACHE_PATH,
           // 缓存前缀
-          'prefix' => 'zk_',
-          'host'   => '127.0.0.1',
-          'port'   => '6379',
+  //        'prefix' => 'zk_',
+  //        'host'   => '127.0.0.1',
+  //        'port'   => '6379',
           // 缓存有效期 0表示永久缓存
-          'expire' => 0,
-      ],
+//          'expire' => 0,
+//      ],
 
-    // 'cache'                  => [
+     'cache'                  => [
     //     // 驱动方式
-    //     'type'   => 'File',
+         'type'   => 'File',
     //     // 缓存保存目录
-    //     'path'   => CACHE_PATH,
+         'path'   => CACHE_PATH,
     //     // 缓存前缀
-    //     'prefix' => '',
+        'prefix' => '',
     //     // 缓存有效期 0表示永久缓存
-    //     'expire' => 0,
-    // ],
+        'expire' => 0,
+     ],
 
     // +----------------------------------------------------------------------
     // | 会话设置
     // +----------------------------------------------------------------------
 
-    // 'session'                => [
+     'session'                => [
     //     'id'             => '',
     //     // SESSION_ID的提交变量,解决flash上传跨域
-    //     'var_session_id' => '',
+         'var_session_id' => '',
     //     // SESSION 前缀
-    //     'prefix'         => 'think',
+         'prefix'         => 'think',
     //     // 驱动方式 支持redis memcache memcached
-    //     'type'           => '',
+         'type'           => '',
     //     // 是否自动开启 SESSION
-    //     'auto_start'     => true,
-    // ],
-     'session' => [
-            'prefix'     => 'session_',
-            'type'       => 'redis',
-            'select'     => 2,
-            'auto_start' => true,
-            // redis主机
-            'host'       => '127.0.0.1',
-            // redis端口
-            'port'       => 6379,
-           // 密码
-            'password'   => '',
+         'auto_start'     => true,
      ],
+ //    'session' => [
+ //           'prefix'     => 'session_',
+ //           'type'       => 'redis',
+ //           'select'     => 2,
+ //           'auto_start' => true,
+            // redis主机
+ //           'host'       => '127.0.0.1',
+            // redis端口
+   //         'port'       => 6379,
+      //     // 密码
+        //    'password'   => '',
+    // ],
 
     // +----------------------------------------------------------------------
     // | Cookie设置

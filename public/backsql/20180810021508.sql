@@ -2,7 +2,7 @@
 MySQL Database Backup Tools
 Server:localhost:
 Database:of
-Data:2018-08-09 01:13:40
+Data:2018-08-10 02:15:08
 */
 SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
@@ -80,8 +80,8 @@ CREATE TABLE `of_admin` (
 -- ----------------------------
 -- Records of of_admin
 -- ----------------------------
-INSERT INTO `of_admin` (`id`,`admin_name`,`password`,`img`,`role_id`,`account`,`sex`,`state`,`add_time`,`last_time`) VALUES ('1','游兴祥','83da85fd821d97b07e11440269315151','/uploads/image/20180729/e7b33dcb33e958d25accac583ecb2400.jpeg','1','1365831278@qq.com','1','1','1505874617','1533745427');
-INSERT INTO `of_admin` (`id`,`admin_name`,`password`,`img`,`role_id`,`account`,`sex`,`state`,`add_time`,`last_time`) VALUES ('4','测试','83da85fd821d97b07e11440269315151','/uploads/image/20180729/c6286af775926d28d80cd3651fadb248.jpeg','2','123456','1','1','1532794210','1532966085');
+INSERT INTO `of_admin` (`id`,`admin_name`,`password`,`img`,`role_id`,`account`,`sex`,`state`,`add_time`,`last_time`) VALUES ('1','游兴祥','83da85fd821d97b07e11440269315151','/uploads/image/20180729/e7b33dcb33e958d25accac583ecb2400.jpeg','1','1365831278@qq.com','1','1','1505874617','1533838283');
+INSERT INTO `of_admin` (`id`,`admin_name`,`password`,`img`,`role_id`,`account`,`sex`,`state`,`add_time`,`last_time`) VALUES ('4','测试','83da85fd821d97b07e11440269315151','/uploads/image/20180729/c6286af775926d28d80cd3651fadb248.jpeg','2','123456','1','1','1532794210','1533838489');
 
 -- ----------------------------
 -- Table structure for of_city
@@ -190,7 +190,7 @@ CREATE TABLE `of_log` (
   `add_time` int(11) unsigned NOT NULL COMMENT '添加时间',
   PRIMARY KEY (`id`),
   KEY `admin_id` (`admin_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=631 DEFAULT CHARSET=utf8 COMMENT=' 操作日志表';
+) ENGINE=MyISAM AUTO_INCREMENT=646 DEFAULT CHARSET=utf8 COMMENT=' 操作日志表';
 -- ----------------------------
 -- Records of of_log
 -- ----------------------------
@@ -824,6 +824,21 @@ INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) V
 INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('628','relation_news','127.0.0.1','关联相关新闻成功!','1','1533738304');
 INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('629','login','127.0.0.1','用户登录成功!','1','1533745427');
 INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('630','add','127.0.0.1','增加配置字段成功!','1','1533745500');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('631','restore','111.63.3.191','成功!','1','1533834081');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('632','edit','111.63.3.191','修改角色成功!','1','1533835726');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('633','login','111.63.3.191','用户登录成功!','4','1533835763');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('634','edit','111.63.3.191','修改角色成功!','4','1533838197');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('635','login','111.63.3.191','用户登录成功!','1','1533838283');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('636','add','111.63.3.191','增加权限成功!','1','1533838367');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('637','add','111.63.3.191','增加权限成功!','1','1533838405');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('638','add','111.63.3.191','增加权限成功!','1','1533838446');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('639','edit','111.63.3.191','修改权限成功!','1','1533838455');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('640','edit','111.63.3.191','修改角色成功!','1','1533838466');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('641','login','111.63.3.191','用户登录成功!','4','1533838489');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('642','delete','111.63.3.191','删除备份成功!','4','1533838496');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('643','delete','111.63.3.191','删除备份成功!','4','1533838499');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('644','delete','111.63.3.191','删除备份成功!','4','1533838501');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('645','delete','111.63.3.191','删除备份成功!','4','1533838503');
 
 -- ----------------------------
 -- Table structure for of_nav
@@ -924,7 +939,7 @@ CREATE TABLE `of_privilege` (
   `add_time` int(11) unsigned NOT NULL COMMENT '增加时间',
   PRIMARY KEY (`id`),
   KEY `pri_name` (`pri_name`)
-) ENGINE=MyISAM AUTO_INCREMENT=75 DEFAULT CHARSET=utf8 COMMENT='权限表';
+) ENGINE=MyISAM AUTO_INCREMENT=78 DEFAULT CHARSET=utf8 COMMENT='权限表';
 -- ----------------------------
 -- Records of of_privilege
 -- ----------------------------
@@ -998,6 +1013,9 @@ INSERT INTO `of_privilege` (`id`,`pri_name`,`module_name`,`controller_name`,`act
 INSERT INTO `of_privilege` (`id`,`pri_name`,`module_name`,`controller_name`,`action_name`,`icon`,`parent_id`,`order_key`,`add_time`) VALUES ('72','修改产品碎片','admin','Ad','edit_product','','70','1','1533546544');
 INSERT INTO `of_privilege` (`id`,`pri_name`,`module_name`,`controller_name`,`action_name`,`icon`,`parent_id`,`order_key`,`add_time`) VALUES ('73','删除产品碎片','admin','Ad','delete_product','','70','1','1533546592');
 INSERT INTO `of_privilege` (`id`,`pri_name`,`module_name`,`controller_name`,`action_name`,`icon`,`parent_id`,`order_key`,`add_time`) VALUES ('74','关联相关新闻','admin','News','relation_news','','57','1','1533737343');
+INSERT INTO `of_privilege` (`id`,`pri_name`,`module_name`,`controller_name`,`action_name`,`icon`,`parent_id`,`order_key`,`add_time`) VALUES ('75','还原数据库','admin','Database','restore','','21','1','1533838367');
+INSERT INTO `of_privilege` (`id`,`pri_name`,`module_name`,`controller_name`,`action_name`,`icon`,`parent_id`,`order_key`,`add_time`) VALUES ('76','下载备份','admin','Database','dowonload','','21','1','1533838405');
+INSERT INTO `of_privilege` (`id`,`pri_name`,`module_name`,`controller_name`,`action_name`,`icon`,`parent_id`,`order_key`,`add_time`) VALUES ('77','删除备份','admin','Database','delete','','21','1','1533838446');
 
 -- ----------------------------
 -- Table structure for of_product
@@ -1274,7 +1292,7 @@ CREATE TABLE `of_role` (
 -- Records of of_role
 -- ----------------------------
 INSERT INTO `of_role` (`id`,`role_name`,`role_type`,`describe`,`role_pri`,`add_time`) VALUES ('1','超级管理员','1','最高管理员',' ','1528632337');
-INSERT INTO `of_role` (`id`,`role_name`,`role_type`,`describe`,`role_pri`,`add_time`) VALUES ('2','普通管理员','2','管理网站','16,17,18,19,20,22,26,27,1,2,4,5','1528633466');
+INSERT INTO `of_role` (`id`,`role_name`,`role_type`,`describe`,`role_pri`,`add_time`) VALUES ('2','普通管理员','2','管理网站','16,17,18,19,20,21,75,76,77,22,23,24,25,35,36,44,45,46,37,47,48,49,38,50,51,52,39,41,42,43,70,71,72,73,56,57,58,59,60,74,61,62,63,64,65,66,67,68,69,1,2,3,4,5,10,11,12,13,14,15','1528633466');
 
 -- ----------------------------
 -- Table structure for of_url_simplify

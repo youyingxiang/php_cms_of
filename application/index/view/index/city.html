@@ -10,7 +10,7 @@
                 <div class="tit">获取优惠报价，或预约参观<br/>请拨打免费电话</div>
                 <div class="line"></div>
                 <div class="tel">{$conf['tel']['v']}</div>
-                <div class="email">{$conf['recipients']['v']} </div>
+                <div class="email">{$conf['email_to']['v']} </div>
             </div>
         </div>
         <div class="left">
@@ -55,10 +55,11 @@
                 <span class="result"><span class="result-txt">价格</span><i></i></span>
                 <div class="select-box">
                     <ul class="select">
-                        <a href="{:search_where(['price'=>'0-999'])}"><li>0-999</li></a>
-                        <a href="{:search_where(['price'=>'1000-2999'])}"><li>1000-2999</li></a>
-                        <a href="{:search_where(['price'=>'3000-5999'])}"><li>3000-5999</li></a>
-                        <a href="{:search_where(['price'=>'6000-9999'])}"><li>6000-9999</li></a>
+                        <a href="{:search_where(['price'=>'1000-1999'])}"><li>1000-1999</li></a>
+                        <a href="{:search_where(['price'=>'2000-2999'])}"><li>2000-2999</li></a>
+                        <a href="{:search_where(['price'=>'3000-3999'])}"><li>3000-3999</li></a>
+                        <a href="{:search_where(['price'=>'4000-4999'])}"><li>4000-4999</li></a>
+			<a href="{:search_where(['price'=>'5000'])}"><li>5000以上</li></a>
                     </ul>
                 </div>
             </li>
