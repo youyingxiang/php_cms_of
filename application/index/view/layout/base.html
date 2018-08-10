@@ -26,13 +26,13 @@
             <div class="box-list clearfix">
                 <div class="tit">热门</div>
                 {volist name="hotc" id="vo"}
-                <a href="{:of_url($vo->urlSimplify->url_title)}">{$vo.name}</a>
+                <a href="/{$vo->urlSimplify->url_title}">{$vo.name}</a>
                 {/volist}
             </div>
             <div class="box-list clearfix">
                 <div class="tit">其它</div>
                 {volist name="ordc" id="vo"}
-                <a href="{:of_url($vo->urlSimplify->url_title)}">{$vo.name}</a>
+                <a href="/{$vo->urlSimplify->url_title}">{$vo.name}</a>
                 {/volist}
             </div>
         </div>

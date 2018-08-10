@@ -17,7 +17,7 @@ Route::rule('news/:url_title','index/index/news_detail');
 Route::rule('news','index/index/news');
 Route::rule('search','index/index/search');
 if (!empty($_SERVER['PATH_INFO'])) {
-	$_SERVER['PATH_INFO'] = substr($_SERVER['PATH_INFO'],1);
+//	$_SERVER['PATH_INFO'] = substr($_SERVER['PATH_INFO'],1);
 	$pathInfo  = substr($_SERVER['PATH_INFO'],1);
 	$pathcount = count(explode('/', $pathInfo));
 	$pathInfo  = explode('/', $pathInfo)[0];
