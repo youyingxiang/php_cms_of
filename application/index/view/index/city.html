@@ -71,7 +71,6 @@
         <ul class="tab clearfix">
             <li class="grid active"><i></i>网格</li>
             <li class="list"><i></i>列表</li>
-            <li class="map"><i></i>地图</li>
         </ul>
     </div>
     <div class="tab-con grid-content clearfix" style="display:block;">
@@ -135,13 +134,9 @@
             </div>
         </div>
     </div>
-    <div class="tab-con map-content clearfix">
-        <div id="allmap" style="width: 100%;height: 500px"></div>
-    </div>
 </div>
 {/block}
 {block name="js"}
-<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=hpoiNMgGQoC7EjfFQSkgcA3ceFxqbKA6"></script>
 <script>
 	$(".product-item03 ul.tab li").tab({
         thisTabcon:'.tab-con'
@@ -191,25 +186,6 @@ $(function(){
                 },
         })
     }
-    var pInfo   = {:json_encode($pData,JSON_UNESCAPED_UNICODE)};
-    pInfo       = pInfo.data;
-    map = new BMap.Map("allmap");
-    map.centerAndZoom(new BMap.Point(pInfo[0].lg,pInfo[0].lat), 18);
-    var opts = {
-            width : 250,     // 信息窗口宽度
-            height: 80,     // 信息窗口高度
-            title : "" , // 信息窗口标题
-            enableMessage:true//设置允许信息窗发送短息
-        };
-    pInfo.forEach(function(item,index){
-        var point = new BMap.Point(item.lg,item.lat);
-        var marker = new BMap.Marker(point);  // 创建标注
-        var content = item.name;
-        var infoWindow = new BMap.InfoWindow(content,opts);
-        map.addOverlay(marker);
-        map.openInfoWindow(infoWindow,point); //开启信息窗口
-        map.enableScrollWheelZoom(true);
-    })
 })
 </script>
 {/block}
