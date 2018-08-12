@@ -87,7 +87,7 @@ class City extends Base
             $data = $this->cModel->get($id);
             if (empty($data)) return $this->notFound();
             $order = 'order_key asc';
-            $parentData = $this->cModel->getTree($order );
+            $parentData = $this->cModel->getTree($order);
             $this->assign('data', $data);                                        
             $this->assign('parentData', $parentData);
             return $this->fetch();

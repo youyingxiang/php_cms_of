@@ -1,5 +1,4 @@
 {extend name="layout/base"/}
-{block name='seo_title'}{$seo_title}{/block}
 {block name='seo_des'}{$seo_des}{/block}
 {block name="body"}
 <div class="page-banner" style="background:url({$ad['新闻详情-banner'][0]['img']}) no-repeat center center/cover;">
@@ -13,7 +12,7 @@
             <div class="contact-box">
                 <div class="tit">服务电话</div>
                 <div class="tel">{$conf['tel']['v']}</div>
-                <div class="email">{$conf['recipients']['v']} </div>
+                <div class="email">{$conf['tel']['v']} </div>
             </div>
             <div class="hot">
                 <div class="title">热门地点推荐</div>
@@ -26,7 +25,7 @@
         </div>
         <div class="left">
             <div class="position">
-                <a href="">首页</a><span>-</span><a href="">新闻列表</a><span>-</span><span>香港兴业中心服务式办公室出租介绍</span>
+                <a href="">首页</a><span>-</span><a href="/news.html">新闻列表</a><span>-</span><span>{$cityData.title}</span>
             </div>
             <h1>{$cityData.title}</h1>
             <div class="date">{$cityData.update_time}</div>

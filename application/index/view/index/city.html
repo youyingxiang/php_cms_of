@@ -1,8 +1,7 @@
 {extend name="layout/base"/}
-{block name='seo_title'}{$seo_title}{/block}
 {block name='seo_des'}{$seo_des}{/block}
 {block name="body"}
-<div class="page-banner" style="background:url({$ad['楼盘列表-banner'][0]['img']}) no-repeat center center/cover;"></div>
+<!-- <div class="page-banner" style="background:url({$ad['楼盘列表-banner'][0]['img']}) no-repeat center center/cover;"></div> -->
 <div class="product-item01">
     <div class="w1200 clearfix">
         <div class="right fr">
@@ -10,7 +9,7 @@
                 <div class="tit">获取优惠报价，或预约参观<br/>请拨打免费电话</div>
                 <div class="line"></div>
                 <div class="tel">{$conf['tel']['v']}</div>
-                <div class="email">{$conf['recipients']['v']} </div>
+                <div class="email">{$conf['email_to']['v']} </div>
             </div>
         </div>
         <div class="left">
@@ -55,10 +54,11 @@
                 <span class="result"><span class="result-txt">价格</span><i></i></span>
                 <div class="select-box">
                     <ul class="select">
-                        <a href="{:search_where(['price'=>'0-999'])}"><li>0-999</li></a>
-                        <a href="{:search_where(['price'=>'1000-2999'])}"><li>1000-2999</li></a>
-                        <a href="{:search_where(['price'=>'3000-5999'])}"><li>3000-5999</li></a>
-                        <a href="{:search_where(['price'=>'6000-9999'])}"><li>6000-9999</li></a>
+                        <a href="{:search_where(['price'=>'1000-1999'])}"><li>1000-1999</li></a>
+                        <a href="{:search_where(['price'=>'2000-2999'])}"><li>2000-2999</li></a>
+                        <a href="{:search_where(['price'=>'3000-3999'])}"><li>3000-3999</li></a>
+                        <a href="{:search_where(['price'=>'4000-4999'])}"><li>4000-4999</li></a>
+			<a href="{:search_where(['price'=>'5000'])}"><li>5000以上</li></a>
                     </ul>
                 </div>
             </li>
@@ -70,7 +70,6 @@
         <ul class="tab clearfix">
             <li class="grid active"><i></i>网格</li>
             <li class="list"><i></i>列表</li>
-            <li class="map"><i></i>地图</li>
         </ul>
     </div>
     <div class="tab-con grid-content clearfix" style="display:block;">
@@ -134,13 +133,9 @@
             </div>
         </div>
     </div>
-    <div class="tab-con map-content clearfix">
-        <div id="allmap" style="width: 100%;height: 500px"></div>
-    </div>
 </div>
 {/block}
 {block name="js"}
-<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=hpoiNMgGQoC7EjfFQSkgcA3ceFxqbKA6"></script>
 <script>
 	$(".product-item03 ul.tab li").tab({
         thisTabcon:'.tab-con'
@@ -190,25 +185,6 @@ $(function(){
                 },
         })
     }
-    var pInfo   = {:json_encode($pData,JSON_UNESCAPED_UNICODE)};
-    pInfo       = pInfo.data;
-    map = new BMap.Map("allmap");
-    map.centerAndZoom(new BMap.Point(pInfo[0].lg,pInfo[0].lat), 18);
-    var opts = {
-            width : 250,     // 信息窗口宽度
-            height: 80,     // 信息窗口高度
-            title : "" , // 信息窗口标题
-            enableMessage:true//设置允许信息窗发送短息
-        };
-    pInfo.forEach(function(item,index){
-        var point = new BMap.Point(item.lg,item.lat);
-        var marker = new BMap.Marker(point);  // 创建标注
-        var content = item.name;
-        var infoWindow = new BMap.InfoWindow(content,opts);
-        map.addOverlay(marker);
-        map.openInfoWindow(infoWindow,point); //开启信息窗口
-        map.enableScrollWheelZoom(true);
-    })
 })
 </script>
 {/block}

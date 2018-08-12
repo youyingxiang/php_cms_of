@@ -12,5 +12,5 @@ return [
     'paginate'               => [
                  'type'      => '\\expand\\Ofpage',
                  'var_page'  => 'page',
-                 'list_rows' => 4,]
+                 'list_rows' => 10,]
 ];

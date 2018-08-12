@@ -5,13 +5,12 @@
     <meta http-equiv="Window-target" content="_top">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
     <meta name="description" content="{block name='seo_des'}{/block}" />
-    <meta name="title" content="{block name='seo_title'}{/block}" />
+    <title>{$page_title}</title>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="format-detection" content="telephone=no">
     <meta name="format-detection" content="email=no">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <title>{$page_title}</title>
     <link rel="stylesheet" type="text/css" href="{$Think.HOME_CSS}/swiper.min.css">
     <link rel="stylesheet" type="text/css" href="{$Think.HOME_CSS}/public.css">
     <link rel="stylesheet" type="text/css" href="{$Think.HOME_CSS}/page.css">
@@ -21,18 +20,18 @@
 <div {if condition="empty($indexProduct)"}class="header index-header"{else/}class="header product-header"{/if}>
     <div class="logo fl"><a href="/"><img {if condition="empty($indexProduct)"}src="{$conf['blogo']['v']}"{else/}src="{$conf['tlogo']['v']}"{/if} alt=""></a></div>
     <div class="city-box fl">
-        <span class="tag"><span class="txt">上海</span><i></i></span>
+        <span class="tag"><span class="txt">{if condition="empty(cookie('city_name'))"}上海{else/}{:cookie('city_name')}{/if}</span><i></i></span>
         <div class="pc-box">
             <div class="box-list clearfix">
                 <div class="tit">热门</div>
                 {volist name="hotc" id="vo"}
-                <a href="{:of_url($vo->urlSimplify->url_title)}">{$vo.name}</a>
+                <a href="/{$vo->urlSimplify->url_title}/">{$vo.name}</a>
                 {/volist}
             </div>
             <div class="box-list clearfix">
                 <div class="tit">其它</div>
                 {volist name="ordc" id="vo"}
-                <a href="{:of_url($vo->urlSimplify->url_title)}">{$vo.name}</a>
+                <a href="/{$vo->urlSimplify->url_title}/">{$vo.name}</a>
                 {/volist}
             </div>
         </div>
@@ -67,7 +66,11 @@
     <div class="tel fr"><a href="tel:{$conf['tel']['v']}">{$conf['tel']['v']}</a></div>
     <ul class="nav fr">
         {volist name="tNav" id="vo"}
+        {if condition="$vo.id == 2 and !empty(cookie('city_url'))"}
+        <li><a href="/{:cookie('city_url')}/">{$vo.name}</a></li>
+        {else/}
         <li><a href="{$vo.url}">{$vo.name}</a></li>
+        {/if}
         {/volist}
         <li class="tel"><a href="tel:{$conf['tel']['v']}">联系我们</a></li>
         <li class="email"><a href="emailto:">发送邮件</a></li>

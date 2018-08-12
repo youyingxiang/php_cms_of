@@ -55,9 +55,12 @@ class Base extends Controller
 	private function check_pri()
 	{
 		if (CONTROLLER_NAME === 'Index')return true;
-		if ($this->role['role_type'] === 1)
+		if ($this->role['role_type'] === 1) {
 			$pri_ = 1;
-		else {
+		} else if(in_array(ACTION_NAME,['getcity','getregion','getbs'])) {
+		//	dd(ACTION_NAME);
+			$pri_ = 1;
+		} else {
 			$where['id'] = ['in',$this->role['role_pri']];
             $where['module_name'] = ['eq',MODULE_NAME];
             $where['controller_name'] = ['eq',CONTROLLER_NAME];

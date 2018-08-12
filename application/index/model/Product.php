@@ -9,7 +9,7 @@ class Product extends aProduct
    public function getProductRecom()
    {
    	$pData = $this->getProductList();
-   	$pData = dataMerage($pData,'name','City');
+   	$pData = dataMerageAlone($pData);
    	return $pData;
    }
 

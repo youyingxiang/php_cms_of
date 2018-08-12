@@ -45,6 +45,9 @@ class Index extends Base
                 $cData['seo_title'],
                 $cData['seo_des']
             );
+        cookie('city_url',$city);
+        cookie('city_name',$cityParent['name']);
+        $this->assign('city_url',$city);
         $this->assign('pData',$pData);
         $this->assign('cityParent',$cityParent);
         return $this->fetch();
@@ -58,6 +61,7 @@ class Index extends Base
                 $pData['seo_title'],
                 $pData['seo_des']
             );
+        $this->assign('city_url',$pData->City->urlSimplify->url_title);
         $this->assign('pData',$pData);
         $this->assign('indexProduct','indexProduct');
         return $this->fetch();

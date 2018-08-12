@@ -21,6 +21,16 @@ function dataMerage($data,$field,$class='') {
 	return $result;
 }
 
+function dataMerageAlone($data){
+    $result = [];
+    if (is_array($data)) {
+        foreach ($data as $key => $value) {
+            $result[$value->City->name.'<==>'.$value->City->UrlSimplify->url_title][] = $value;
+        }
+    }
+    return $result;
+}
+
 /**
  * [search_where 条件搜索]
  * @param  [type] $delparam [description]

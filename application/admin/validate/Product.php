@@ -16,6 +16,7 @@ class product extends Validate
         'address'               => 'max:255',
         'subway'                => 'max:255',
         'airport'               => 'max:255',
+        'discount'              => 'max:255',
         'lg'                    => 'float',
         'lat'                   => 'float',
         'tag'                   => 'max:255',
@@ -25,7 +26,8 @@ class product extends Validate
         'name.max'              => '名称最多255个字符！',
         'img.max'               => '图像最多255个字符！',
         'seo_title.max'         => 'seo标题最多200个字符！',
-        'seo_des.max'           => 'seo描述最多500个字符！', 
+        'seo_des.max'           => 'seo描述最多500个字符！',
+        'discount.max'          => '优惠信息字数不能超过255个字符!', 
         'order_key.require'     => '排序不能为空！',
         'order_key.integer'     => '排序必须是个整数！',
         'url_title.max'         => 'url别名做多128个字符！',
@@ -40,8 +42,8 @@ class product extends Validate
         'tag.max'               => '标签最多255个字符',
     ];
     protected $scene = [
-        'add'   => ['name','img','seo_keyword','seo_des','order_key','url_title','rent','address','subway','airport','lg','lat'],
-        'edit'  => ['name','img','seo_keyword','seo_des','order_key','url_title','rent','address','subway','airport','lg','lat'],
+        'add'   => ['name','img','seo_keyword','seo_des','order_key','url_title','rent','address','subway','airport','lg','lat','discount'],
+        'edit'  => ['name','img','seo_keyword','seo_des','order_key','url_title','rent','address','subway','airport','lg','lat','discount'],
         'name' => ['name'],
         'img' => ['img'],
         'rent' => ['rent'],

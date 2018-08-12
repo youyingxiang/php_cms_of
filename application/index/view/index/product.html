@@ -1,5 +1,4 @@
 {extend name="layout/base"/}
-{block name='seo_title'}{$seo_title}{/block}
 {block name='seo_des'}{$seo_des}{/block}
 {block name="body"}
 <div class="w1200 clearfix">
@@ -8,7 +7,7 @@
             <div class="tit">获取优惠报价，或预约参观<br/>请拨打免费电话</div>
             <div class="line"></div>
             <div class="tel">{$conf['tel']['v']}</div>
-            <div class="email">{$conf['recipients']['v']} </div>
+            <div class="email">{$conf['email_to']['v']} </div>
         </div>
         <div class="form-data">
             <div class="title">留言反馈</div>
@@ -21,7 +20,7 @@
     </div>
     <div class="r">
         <div class="position">
-            <a href="">首页</a><span>-</span><a href="">城市列表</a><span>-</span><span>{$pData['name']}</span>
+            <a href="">首页</a><span>-</span><a href="/{$city_url}/">城市列表</a><span>-</span><span>{$pData['name']}</span>
         </div>
         <div class="item02">
             <div class="swiper-container item02-container">
@@ -44,7 +43,9 @@
             <div class="ship">{$pData['airport']}</div>
             <div class="price">
                 <sup>￥</sup>{$pData['rent']}<span>起人/月起</span>
-                <!-- <div class="sale">最新优惠：免租一个月</div> -->
+                {if condition="!empty($pData['discount'])"}
+                <div class="sale">最新优惠：{$pData['discount']}</div>
+                {/if}
             </div>
         </div>
         <div class="item-list">

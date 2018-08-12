@@ -2,7 +2,7 @@
 MySQL Database Backup Tools
 Server:localhost:
 Database:of
-Data:2018-08-10 00:13:42
+Data:2018-08-12 23:55:15
 */
 SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
@@ -27,15 +27,17 @@ CREATE TABLE `of_ad` (
 -- ----------------------------
 -- Records of of_ad
 -- ----------------------------
-INSERT INTO `of_ad` (`id`,`title`,`content`,`type`,`display_position`,`img`,`url`,`order_key`,`state`,`create_time`) VALUES ('1','1OfficeBC是一家服务式办公专业顾问','<p>
+INSERT INTO `of_ad` (`id`,`title`,`content`,`type`,`display_position`,`img`,`url`,`order_key`,`state`,`create_time`) VALUES ('1','雷格斯上海中心大厦开业迎宾','<p>
 	是专业的服务式办公室及联合办公空间租赁平台
 </p>
 <p>
 	<span style=\"color:#222222;font-family:Menlo, monospace;font-size:11px;white-space:pre-wrap;background-color:#FFFFFF;\">展示全国主要城市的办公室地点等详尽信息</span>
-</p>','index','首页-轮播图','/uploads/image/20180731/fe2db00b5017b61f36c490a031d3a5f4.jpg','','1','1','1532968636');
-INSERT INTO `of_ad` (`id`,`title`,`content`,`type`,`display_position`,`img`,`url`,`order_key`,`state`,`create_time`) VALUES ('2','OfficeBC是一家服务式办公专业顾问','<span style=\"color:#2B2B2B;font-family:simsun, arial, helvetica, clean, sans-serif;font-size:14px;text-align:justify;text-indent:28px;white-space:normal;background-color:#FFFFFF;\">群众办事曾遭遇的“门难进、脸难看、话难听、事难办”在党</span>','index','首页-轮播图','/uploads/image/20180731/524f142f5a2d724767c792936c3f124d.jpg','','1','1','1532968681');
-INSERT INTO `of_ad` (`id`,`title`,`content`,`type`,`display_position`,`img`,`url`,`order_key`,`state`,`create_time`) VALUES ('3','OfficeBC是专业的服务式办公室及联合办公空间租赁平','<span style=\"color:#333333;font-family:微软雅黑, &quot;Microsoft YaHei&quot;, &quot;Helvetica Neue&quot;, Helvetica, STHeiTi, sans-serif;font-size:30px;white-space:normal;background-color:#FFFFFF;\"><span style=\"color:#666666;font-family:微软雅黑, &quot;Microsoft YaHei&quot;, &quot;Helvetica Neue&quot;, Helvetica, STHeiTi, sans-serif;font-size:16px;white-space:normal;background-color:#FFFFFF;\">OfficeBC是专业的服务式办公室及联合办公空间租赁平台，展示全国主要城市的办公室地点等详尽信息，免费为您提供租赁咨询、地点推荐、协助签约等相关服务，协助您找到最满意的办公场所，并获得租金折扣等优惠条件。</span></span>','index','首页-中图文','/uploads/image/20180731/189fa4713c09d1d2bdc21a198456ec03.jpg','','1','1','1532968741');
-INSERT INTO `of_ad` (`id`,`title`,`content`,`type`,`display_position`,`img`,`url`,`order_key`,`state`,`create_time`) VALUES ('4','亚东部发生5.4级地震 震源深10公里','<span style=\"color:#333333;font-family:Arial, 宋体;font-size:16px;white-space:normal;background-color:#FFFFFF;\">中新网7月30日电 据美国地质勘探局网站消息，北京时间30日15时46分，巴布亚新几内亚东部发生里氏5.4级地震，震源深度10公里。</span>','index','首页-中图文','/uploads/image/20180731/68252c17e04716d492f2dc1273a20734.jpg','','1','1','1532968800');
+</p>','index','首页-轮播图','/uploads/image/20180731/fe2db00b5017b61f36c490a031d3a5f4.jpg','http://www.officebc.com/news/098.html','1','1','1532968636');
+INSERT INTO `of_ad` (`id`,`title`,`content`,`type`,`display_position`,`img`,`url`,`order_key`,`state`,`create_time`) VALUES ('2','OfficeBC 最新优惠，惊喜多多！','<span style=\"color:#2B2B2B;font-family:simsun, arial, helvetica, clean, sans-serif;font-size:14px;text-align:justify;text-indent:28px;white-space:normal;background-color:#FFFFFF;\">群众办事曾遭遇的“门难进、脸难看、话难听、事难办”在党</span>','index','首页-轮播图','/uploads/image/20180731/524f142f5a2d724767c792936c3f124d.jpg','http://www.officebc.com/news/','1','1','1532968681');
+INSERT INTO `of_ad` (`id`,`title`,`content`,`type`,`display_position`,`img`,`url`,`order_key`,`state`,`create_time`) VALUES ('3','OfficeBC是专业的服务式办公室及联合办公空间租赁平','OfficeBC是专业的服务式办公室及联合办公空间租赁平台，展示全国主要城市的办公室地点等详尽信息，免费为您提供租赁咨询、地点推荐、协助签约等相关服务，协助您找到最满意的办公场所，并获得租金折扣等优惠条件。','index','首页-中图文','/uploads/image/20180731/189fa4713c09d1d2bdc21a198456ec03.jpg','','1','1','1532968741');
+INSERT INTO `of_ad` (`id`,`title`,`content`,`type`,`display_position`,`img`,`url`,`order_key`,`state`,`create_time`) VALUES ('4','亚东部发生5.4级地震 震源深10公里','
+                            提供精装修的独立办公室，配置成套的办公家具及通讯设施，提供公用的会议室、前台、茶水间、会客室等共享空间，有专人提供企业必须的相关服务，大幅提高您的商务效率。服务式办公室在面积及租期等方面有高度灵活性，十分适合小型团队或短租客户使用，并且多设立在中央商务区的高档写字楼内，有利于提升您的企业形象。
+                        ','index','首页-中图文','/uploads/image/20180731/68252c17e04716d492f2dc1273a20734.jpg','','1','1','1532968800');
 INSERT INTO `of_ad` (`id`,`title`,`content`,`type`,`display_position`,`img`,`url`,`order_key`,`state`,`create_time`) VALUES ('5','北京大都会社区 即将开业','CBD功能与美学合一的联合办公空间','index','首页-下文字','','','1','1','1532968874');
 INSERT INTO `of_ad` (`id`,`title`,`content`,`type`,`display_position`,`img`,`url`,`order_key`,`state`,`create_time`) VALUES ('7','','','index','首页-合作伙伴','/uploads/image/20180731/21db8fc01ac1b5eada552b2ae2629507.jpg','','1','1','1532968925');
 INSERT INTO `of_ad` (`id`,`title`,`content`,`type`,`display_position`,`img`,`url`,`order_key`,`state`,`create_time`) VALUES ('8','','','index','首页-合作伙伴','/uploads/image/20180731/3d3a23346631ab02506d8a942030b589.jpg','','1','1','1532968935');
@@ -57,7 +59,7 @@ INSERT INTO `of_ad` (`id`,`title`,`content`,`type`,`display_position`,`img`,`url
 <div class=\"fr img\" style=\"box-sizing:border-box;margin:0px;padding:0px 0px 0px 35px;border:0px;font-size:14px;vertical-align:baseline;float:right;width:600px;color:#333333;font-family:微软雅黑, &quot;Microsoft YaHei&quot;, &quot;Helvetica Neue&quot;, Helvetica, STHeiTi, sans-serif;white-space:normal;background-color:#FFFFFF;\">
 </div>','aboutus','关于我们-图文介绍','/uploads/image/20180731/ee9d600d85f4c76cd2b7ad69a2725a1b.jpg','','1','1','1533027767');
 INSERT INTO `of_ad` (`id`,`title`,`content`,`type`,`display_position`,`img`,`url`,`order_key`,`state`,`create_time`) VALUES ('18','','','contactus','联系我们-banner','/uploads/image/20180731/faad34fd84719606fcd30dbcc0c3a908.jpg','','1','1','1533028525');
-INSERT INTO `of_ad` (`id`,`title`,`content`,`type`,`display_position`,`img`,`url`,`order_key`,`state`,`create_time`) VALUES ('19','','','product','楼盘列表-banner','/uploads/image/20180806/dc8a1ae6da85aab690ee0926bce4e232.jpg','','1','1','1533546816');
+INSERT INTO `of_ad` (`id`,`title`,`content`,`type`,`display_position`,`img`,`url`,`order_key`,`state`,`create_time`) VALUES ('19','','','product','楼盘列表-banner','/uploads/image/20180806/dc8a1ae6da85aab690ee0926bce4e232.jpg','http://www.officebc.com/news/098.html','1','1','1533546816');
 
 -- ----------------------------
 -- Table structure for of_admin
@@ -80,8 +82,8 @@ CREATE TABLE `of_admin` (
 -- ----------------------------
 -- Records of of_admin
 -- ----------------------------
-INSERT INTO `of_admin` (`id`,`admin_name`,`password`,`img`,`role_id`,`account`,`sex`,`state`,`add_time`,`last_time`) VALUES ('1','游兴祥','83da85fd821d97b07e11440269315151','/uploads/image/20180729/e7b33dcb33e958d25accac583ecb2400.jpeg','1','1365831278@qq.com','1','1','1505874617','1533831099');
-INSERT INTO `of_admin` (`id`,`admin_name`,`password`,`img`,`role_id`,`account`,`sex`,`state`,`add_time`,`last_time`) VALUES ('4','测试','83da85fd821d97b07e11440269315151','/uploads/image/20180729/c6286af775926d28d80cd3651fadb248.jpeg','2','123456','1','1','1532794210','1532966085');
+INSERT INTO `of_admin` (`id`,`admin_name`,`password`,`img`,`role_id`,`account`,`sex`,`state`,`add_time`,`last_time`) VALUES ('1','游兴祥','83da85fd821d97b07e11440269315151','/uploads/image/20180811/6c9d228310c44b5be070737af6263d25.jpg','1','1365831278@qq.com','1','1','1505874617','1534087951');
+INSERT INTO `of_admin` (`id`,`admin_name`,`password`,`img`,`role_id`,`account`,`sex`,`state`,`add_time`,`last_time`) VALUES ('4','测试','83da85fd821d97b07e11440269315151','/uploads/image/20180811/c52fb7986c57e22c2f7b71790d38d1a2.jpg','2','123456','1','1','1532794210','1534053619');
 
 -- ----------------------------
 -- Table structure for of_city
@@ -97,22 +99,26 @@ CREATE TABLE `of_city` (
   `seo_title` varchar(255) NOT NULL DEFAULT '',
   `seo_des` varchar(500) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COMMENT='城市表';
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COMMENT='城市表';
 -- ----------------------------
 -- Records of of_city
 -- ----------------------------
 INSERT INTO `of_city` (`id`,`name`,`parent_id`,`order_key`,`create_time`,`is_hot`,`seo_title`,`seo_des`) VALUES ('1','北京','0','1','1533134287','0','','');
 INSERT INTO `of_city` (`id`,`name`,`parent_id`,`order_key`,`create_time`,`is_hot`,`seo_title`,`seo_des`) VALUES ('2','上海','0','1','1533134296','1','','');
 INSERT INTO `of_city` (`id`,`name`,`parent_id`,`order_key`,`create_time`,`is_hot`,`seo_title`,`seo_des`) VALUES ('3','静安区','2','1','1533134307','0','','');
-INSERT INTO `of_city` (`id`,`name`,`parent_id`,`order_key`,`create_time`,`is_hot`,`seo_title`,`seo_des`) VALUES ('4','陆家嘴','2','1','1533134508','0','','');
-INSERT INTO `of_city` (`id`,`name`,`parent_id`,`order_key`,`create_time`,`is_hot`,`seo_title`,`seo_des`) VALUES ('5','南京西路','2','1','1533134519','0','','');
-INSERT INTO `of_city` (`id`,`name`,`parent_id`,`order_key`,`create_time`,`is_hot`,`seo_title`,`seo_des`) VALUES ('6','海淀区','1','1','1533362379','0','','');
-INSERT INTO `of_city` (`id`,`name`,`parent_id`,`order_key`,`create_time`,`is_hot`,`seo_title`,`seo_des`) VALUES ('7','陆家嘴商务中心','4','1','1533458323','0','陆家嘴商务中心','陆家嘴商务中心');
-INSERT INTO `of_city` (`id`,`name`,`parent_id`,`order_key`,`create_time`,`is_hot`,`seo_title`,`seo_des`) VALUES ('8','测试商务中心1','4','1','1533459994','0','','');
-INSERT INTO `of_city` (`id`,`name`,`parent_id`,`order_key`,`create_time`,`is_hot`,`seo_title`,`seo_des`) VALUES ('9','静安区商务中心','3','1','1533460017','0','','');
-INSERT INTO `of_city` (`id`,`name`,`parent_id`,`order_key`,`create_time`,`is_hot`,`seo_title`,`seo_des`) VALUES ('10','商务中心2','3','1','1533460037','0','进入2017年，上海商务中心出租市场又迎来的新的发展和变化','1212');
-INSERT INTO `of_city` (`id`,`name`,`parent_id`,`order_key`,`create_time`,`is_hot`,`seo_title`,`seo_des`) VALUES ('11','测试购物中心','6','1','1533554614','0','测试购物中心','测试购物中心');
-INSERT INTO `of_city` (`id`,`name`,`parent_id`,`order_key`,`create_time`,`is_hot`,`seo_title`,`seo_des`) VALUES ('12','南京西路购物中心','5','1','1533565468','0','南京西路购物中心','南京西路购物中心南京西路购物中心');
+INSERT INTO `of_city` (`id`,`name`,`parent_id`,`order_key`,`create_time`,`is_hot`,`seo_title`,`seo_des`) VALUES ('4','浦东新区','2','1','1533134508','0','','');
+INSERT INTO `of_city` (`id`,`name`,`parent_id`,`order_key`,`create_time`,`is_hot`,`seo_title`,`seo_des`) VALUES ('5','黄浦区','2','1','1533134519','0','','');
+INSERT INTO `of_city` (`id`,`name`,`parent_id`,`order_key`,`create_time`,`is_hot`,`seo_title`,`seo_des`) VALUES ('7','陆家嘴','4','1','1533458323','0','陆家嘴商务中心','陆家嘴商务中心');
+INSERT INTO `of_city` (`id`,`name`,`parent_id`,`order_key`,`create_time`,`is_hot`,`seo_title`,`seo_des`) VALUES ('8','世纪大道','4','1','1533459994','0','','');
+INSERT INTO `of_city` (`id`,`name`,`parent_id`,`order_key`,`create_time`,`is_hot`,`seo_title`,`seo_des`) VALUES ('9','南京西路','3','1','1533460017','0','','');
+INSERT INTO `of_city` (`id`,`name`,`parent_id`,`order_key`,`create_time`,`is_hot`,`seo_title`,`seo_des`) VALUES ('10','静安寺','3','1','1533460037','0','进入2017年，上海商务中心出租市场又迎来的新的发展和变化','1212');
+INSERT INTO `of_city` (`id`,`name`,`parent_id`,`order_key`,`create_time`,`is_hot`,`seo_title`,`seo_des`) VALUES ('13','海淀区','1','2','1533992855','0','','');
+INSERT INTO `of_city` (`id`,`name`,`parent_id`,`order_key`,`create_time`,`is_hot`,`seo_title`,`seo_des`) VALUES ('12','人民广场','5','1','1533565468','0','人民广场商务中心','人民广场商务中心出租');
+INSERT INTO `of_city` (`id`,`name`,`parent_id`,`order_key`,`create_time`,`is_hot`,`seo_title`,`seo_des`) VALUES ('14','天河区','1','1','1533993199','1','','');
+INSERT INTO `of_city` (`id`,`name`,`parent_id`,`order_key`,`create_time`,`is_hot`,`seo_title`,`seo_des`) VALUES ('15','东城区','1','1','1533993229','0','','');
+INSERT INTO `of_city` (`id`,`name`,`parent_id`,`order_key`,`create_time`,`is_hot`,`seo_title`,`seo_des`) VALUES ('16','深圳','0','1','1533993245','0','','');
+INSERT INTO `of_city` (`id`,`name`,`parent_id`,`order_key`,`create_time`,`is_hot`,`seo_title`,`seo_des`) VALUES ('17','香港','0','1','1533993263','0','','');
+INSERT INTO `of_city` (`id`,`name`,`parent_id`,`order_key`,`create_time`,`is_hot`,`seo_title`,`seo_des`) VALUES ('18','体育中心','1','1','1533993371','0','','');
 
 -- ----------------------------
 -- Table structure for of_config_field
@@ -140,29 +146,29 @@ CREATE TABLE `of_config_field` (
 -- ----------------------------
 INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('1','title','OfficeBC是一家服务式办公专业顾问','web','网站标题','网站标题【title】','1','1','text','','1493863845','1532529833');
 INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('2','blogo','/uploads/image/20180805/ac9c7c799f87e924c1df04810bf7b376.png','web','网站底部logo(68*34)','网站LOGO，一般用于导航或底部的LOGO图片','2','1','image','','1493864083','1533471385');
-INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('3','person','邓志会','web','联系人','联系人','3','1','text','','1493864150','1533470245');
+INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('3','person','邓志会','web','联系人','联系人','3','0','text','','1493864150','1533913977');
 INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('4','address','上海市某某那地方','web','联系地址','联系地址','4','1','text','','1493864266','1493864485');
-INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('5','seo_title','OfficeBC是一家服务式办公专业顾问','web','网站关键字','网站关键字，网站首页的【keywords】','5','1','text','','1493864340','1533491003');
-INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('6','seo_des','OfficeBC是一家服务式办公专业顾问OfficeBC是一家服务式办公专业顾问','web','网站描述','网站描述，网站首页的【description】','6','1','textarea','','1493864454','1533491013');
+INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('5','seo_title','title---服务式办公专业顾问','web','网站关键字','网站关键字，网站首页的【keywords】','5','1','text','','1493864340','1533491003');
+INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('6','seo_des','des----一家服务式办公专业顾问OfficeBC是一家服务式办公专业顾问','web','网站描述','网站描述，网站首页的【description】','6','1','textarea','','1493864454','1533491013');
 INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('7','copyright','沪ICP备10218733号-5','web','网站备案号','网站备案号','7','1','text','','1493864547','1528351462');
 INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('10','image_format','jpg,gif,jpeg,png,bmp','up','上传图片格式','上传图片格式','1','1','text','','1494067463','1499080988');
 INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('11','image_size','10000000','up','上传图片大小','1024：1KB，1048576：1MB，5242880：5MB。建议不要超过1MB，避免图片上传失败','0','1','text','','1494067564','1516356830');
-INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('12','image_print','/cn/uploads/image/20170925/eb7918193891d8aec80ffa6e68c41249.png','up','水印图片','水印图片，可为上传的图片添加水印，开启了图片水印功能，请必须上传水印图片','8','0','image','','1494067681','1532794368');
+INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('12','image_print','/uploads/image/20180810/ca1a475ce1c11dfe428cb18acfb37d9a.png','up','水印图片','水印图片，可为上传的图片添加水印，开启了图片水印功能，请必须上传水印图片','8','1','image','','1494067681','1533913268');
 INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('13','file_format','doc,docx,xls,xlsx,ppt,htm,html,txt,rar,zip,mp4,pdf,pptx','up','上传文件格式','上传文件格式','2','1','text','','1495940879','1495941568');
 INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('16','upload_path','uploads','up','文件上传目录','文件上传目录','6','1','text','','1495942885','1495943186');
-INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('17','isprint','0','up','是否开启图片水印','是否开启图片水印','7','0','select','','1495943270','1532791620');
-INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('18','print_position','9','up','水印图片位置','水印图片位置','9','0','select','','1495996448','1532791617');
+INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('17','isprint','1','up','是否开启图片水印','是否开启图片水印','7','1','select','','1495943270','1533913269');
+INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('18','print_position','5','up','水印图片位置','水印图片位置','9','1','select','','1495996448','1533913267');
 INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('19','print_blur','70','up','水印图片透明度','水印图片透明度，取值范围【0-100】','10','0','text','','1495996522','1532791616');
 INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('25','image_url','','up','图片上传域名地址','图片上传域名地址，图片路径保存数据库是否带域名，不建议填写，除非很清楚怎么使用','11','0','text','','1496295604','1532794345');
 INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('27','tel','400 6900 999','web','联系电话','联系电话','50','1','text','','0','0');
-INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('28','work_time','周一至周六 9:00-18:00','web','正常工作时间','正常工作时间','50','1','text','','0','0');
+INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('28','work_time','周一至周六 9:00-18:00','web','正常工作时间','正常工作时间','50','0','text','','0','1533913974');
 INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('30','company_name','officebc.com','web','公司名称','公司名称','13','1','text','','0','1511408217');
-INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('31','email-from','info@zkteco.com','email','发件人邮箱地址','','1','1','text','','0','1527059707');
-INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('32','email_fromname','ZKTeco','email','发件人姓名','发件人姓名','1','1','text','','0','1513655914');
-INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('33','email_username','info@zkteco.com','email','邮箱帐号','邮箱帐号','1','1','text','','0','0');
-INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('34','email_pwd','Zhscb2018','email','邮箱密码','邮箱密码','1','1','password','','0','1527085385');
-INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('35','email_host','smtp.exmail.qq.com','email','邮箱服务器地址','smtp服务器地址','1','1','text','','0','1527059714');
-INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('36','recipients','info@zkteco.com','email','后台邮箱帐号','后台邮箱帐号 接受消息','1','1','text','','0','0');
+INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('31','email-from','you1365831278@163.com','email','发件人邮箱地址','','1','1','text','','0','1527059707');
+INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('32','email_fromname','网站提交','email','发件人姓名','发件人姓名','1','1','text','','0','1513655914');
+INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('33','email_username','you1365831278@163.com','email','邮箱帐号','邮箱帐号','1','1','text','','0','0');
+INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('34','email_pwd','you134223','email','邮箱密码','邮箱密码','1','1','password','','0','1527085385');
+INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('35','email_host','smtp.163.com','email','邮箱服务器地址','smtp服务器地址','1','1','text','','0','1527059714');
+INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('36','recipients','you1365831278@163.com','email','后台邮箱帐号','后台邮箱帐号 接受消息','1','1','text','','0','0');
 INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('39','legal_statement','<p style=\"text-align:center;\">
 	<br />
 </p>','web','法律声明','法律声明','12','0','content','','1511233647','1532791340');
@@ -175,7 +181,7 @@ INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`stat
 </div>','web','注册协议','注册协议','10','0','content','','1511233737','1532791337');
 INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('56','tlogo','/uploads/image/20180805/bdb88fbbe18bbc41326eaca917d67f4d.png','web','导航顶部logo(68*34)','导航顶部log','1','1','image','','1533471257','1533471395');
 INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('57','wximg','/uploads/image/20180805/e7be3d3dc033c3a94c1dd0573b6a190f.png','web','微信公众号图片(103*99)','微信公众号图片','1','1','image','','1533471748','1533471822');
-INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('58','email_to','1365831278@qq.com','email','收件人邮箱地址','收件人邮箱地址','1','1','text','','1533745500','1533745500');
+INSERT INTO `of_config_field` (`id`,`k`,`v`,`type`,`desc`,`prompt`,`sorts`,`status`,`texttype`,`textvalue`,`create_time`,`update_time`) VALUES ('58','email_to','365@officebc.com','email','收件人邮箱地址','收件人邮箱地址','1','1','text','','1533745500','1533745500');
 
 -- ----------------------------
 -- Table structure for of_log
@@ -190,7 +196,7 @@ CREATE TABLE `of_log` (
   `add_time` int(11) unsigned NOT NULL COMMENT '添加时间',
   PRIMARY KEY (`id`),
   KEY `admin_id` (`admin_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=633 DEFAULT CHARSET=utf8 COMMENT=' 操作日志表';
+) ENGINE=MyISAM AUTO_INCREMENT=789 DEFAULT CHARSET=utf8 COMMENT=' 操作日志表';
 -- ----------------------------
 -- Records of of_log
 -- ----------------------------
@@ -824,8 +830,164 @@ INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) V
 INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('628','relation_news','127.0.0.1','关联相关新闻成功!','1','1533738304');
 INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('629','login','127.0.0.1','用户登录成功!','1','1533745427');
 INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('630','add','127.0.0.1','增加配置字段成功!','1','1533745500');
-INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('631','backup','127.0.0.1','备份数据库成功!','1','1533748420');
-INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('632','login','127.0.0.1','用户登录成功!','1','1533831099');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('631','restore','111.63.3.191','成功!','1','1533834081');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('632','edit','111.63.3.191','修改角色成功!','1','1533835726');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('633','login','111.63.3.191','用户登录成功!','4','1533835763');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('634','edit','111.63.3.191','修改角色成功!','4','1533838197');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('635','login','111.63.3.191','用户登录成功!','1','1533838283');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('636','add','111.63.3.191','增加权限成功!','1','1533838367');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('637','add','111.63.3.191','增加权限成功!','1','1533838405');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('638','add','111.63.3.191','增加权限成功!','1','1533838446');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('639','edit','111.63.3.191','修改权限成功!','1','1533838455');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('640','edit','111.63.3.191','修改角色成功!','1','1533838466');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('641','login','111.63.3.191','用户登录成功!','4','1533838489');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('642','delete','111.63.3.191','删除备份成功!','4','1533838496');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('643','delete','111.63.3.191','删除备份成功!','4','1533838499');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('644','delete','111.63.3.191','删除备份成功!','4','1533838501');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('645','delete','111.63.3.191','删除备份成功!','4','1533838503');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('646','restore','113.45.86.107','成功!','1','1533913253');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('647','edit','113.45.86.107','修改配置字段成功!','1','1533913267');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('648','edit','113.45.86.107','修改配置字段成功!','1','1533913268');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('649','edit','113.45.86.107','修改配置字段成功!','1','1533913269');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('650','upload','113.45.86.107','上传文件成功!','1','1533913291');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('651','save','113.45.86.107','保存字段成功!','1','1533913299');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('652','edit','113.45.86.107','修改导航成功!','1','1533913648');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('653','login','101.224.174.252','用户登录成功!','4','1533913755');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('654','edit','101.224.174.252','编辑新闻成功!','4','1533913893');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('655','edit','113.45.86.107','修改配置字段成功!','1','1533913974');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('656','edit','113.45.86.107','修改配置字段成功!','1','1533913977');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('657','edit','113.45.86.107','修改角色成功!','1','1533915166');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('658','login','113.45.86.107','用户登录成功!','4','1533915196');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('659','save','101.224.174.252','保存字段成功!','4','1533915245');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('660','save','101.224.174.252','保存字段成功!','4','1533915513');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('661','delete','101.224.174.252','删除新闻成功!','4','1533915687');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('662','edit','101.224.174.252','编辑新闻成功!','4','1533915737');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('663','edit','101.224.174.252','编辑新闻成功!','4','1533915797');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('664','edit','101.224.174.252','编辑新闻成功!','4','1533915859');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('665','save','113.45.86.107','保存字段成功!','4','1533915907');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('666','save','113.45.86.107','保存字段成功!','4','1533916080');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('667','login','113.45.86.107','用户登录成功!','1','1533916227');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('668','edit','113.45.86.107','编辑新闻成功!','1','1533916514');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('669','edit','101.224.174.252','编辑楼盘成功!','4','1533916572');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('670','edit','101.224.174.252','编辑楼盘成功!','4','1533917094');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('671','edit','101.224.174.252','编辑楼盘成功!','4','1533917126');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('672','edit','101.224.174.252','编辑楼盘成功!','4','1533917147');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('673','login','113.45.86.107','用户登录成功!','4','1533917266');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('674','edit','101.224.174.252','编辑楼盘成功!','4','1533917293');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('675','edit','101.224.174.252','编辑楼盘成功!','4','1533917313');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('676','edit','101.224.174.252','编辑楼盘成功!','4','1533917464');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('677','edit','101.224.174.252','编辑楼盘成功!','4','1533917647');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('678','edit','101.224.174.252','编辑楼盘成功!','4','1533917694');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('679','edit','101.224.174.252','编辑楼盘成功!','4','1533917808');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('680','edit','101.224.174.252','编辑楼盘成功!','4','1533917836');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('681','edit','101.224.174.252','编辑楼盘成功!','4','1533917864');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('682','login','113.45.86.107','用户登录成功!','1','1533917979');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('683','edit','101.224.174.252','编辑新闻成功!','4','1533918468');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('684','edit','101.224.174.252','编辑新闻成功!','4','1533918480');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('685','upload','113.45.86.107','上传文件成功!','1','1533919999');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('686','edit','113.45.86.107','修改管理员失败的原因：密码不能为空！','1','1533920005');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('687','login','113.45.86.107','用户登录成功!','4','1533920047');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('688','upload','113.45.86.107','上传文件成功!','4','1533920086');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('689','edit','113.45.86.107','修改管理员失败的原因：密码不能为空！','4','1533920087');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('690','edit','113.45.86.107','修改管理员成功!','4','1533920096');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('691','upload','113.45.86.107','上传文件成功!','4','1533920104');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('692','edit','113.45.86.107','修改管理员成功!','4','1533920113');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('693','backup','113.45.86.107','备份数据库成功!','4','1533920206');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('694','login','101.224.174.252','用户登录成功!','4','1533950898');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('695','edit_index','101.224.174.252','修改首页碎片成功!','4','1533951433');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('696','edit_index','101.224.174.252','修改首页碎片成功!','4','1533951553');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('697','edit_product','101.224.174.252','修改产品碎片成功!','4','1533952208');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('698','add','101.224.174.252','增加新闻成功!','4','1533956234');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('699','add','101.224.174.252','增加新闻成功!','4','1533956305');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('700','login','101.224.174.252','用户登录成功!','4','1533992663');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('701','delete','101.224.174.252','删除城市成功!','4','1533992683');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('702','edit','101.224.174.252','修改城市成功!','4','1533992721');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('703','edit','101.224.174.252','修改城市成功!','4','1533992741');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('704','edit','101.224.174.252','修改城市成功!','4','1533992791');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('705','add','101.224.174.252','增加城市成功!','4','1533992855');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('706','edit','101.224.174.252','修改城市失败的原因：名称已经存在！','4','1533992881');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('707','edit','101.224.174.252','修改城市成功!','4','1533992913');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('708','edit','101.224.174.252','修改城市成功!','4','1533993020');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('709','edit','101.224.174.252','修改城市成功!','4','1533993036');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('710','edit','101.224.174.252','修改城市成功!','4','1533993057');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('711','edit','101.224.174.252','修改城市成功!','4','1533993069');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('712','edit','101.224.174.252','修改城市成功!','4','1533993099');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('713','edit','101.224.174.252','修改城市成功!','4','1533993110');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('714','edit','101.224.174.252','修改城市成功!','4','1533993125');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('715','edit','101.224.174.252','修改城市成功!','4','1533993156');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('716','add','101.224.174.252','增加城市成功!','4','1533993199');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('717','add','101.224.174.252','增加城市成功!','4','1533993229');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('718','add','101.224.174.252','增加城市成功!','4','1533993245');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('719','add','101.224.174.252','增加城市成功!','4','1533993263');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('720','edit','101.224.174.252','修改城市成功!','4','1533993335');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('721','add','101.224.174.252','增加城市成功!','4','1533993371');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('722','edit','101.224.174.252','修改城市成功!','4','1533993394');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('723','edit','101.224.174.252','修改城市成功!','4','1533993426');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('724','edit','101.224.174.252','修改城市失败的原因：名称已经存在！','4','1533993496');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('725','edit','101.224.174.252','修改城市成功!','4','1533993514');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('726','add','101.224.174.252','增加楼盘成功!','4','1533994109');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('727','upload','101.224.174.252','上传文件成功!','4','1533994131');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('728','upload','101.224.174.252','上传文件成功!','4','1533994138');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('729','edit','101.224.174.252','编辑楼盘成功!','4','1533994200');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('730','save','101.224.174.252','保存字段成功!','4','1533994267');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('731','upload','101.224.174.252','上传文件成功!','4','1533994875');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('732','upload','101.224.174.252','上传文件成功!','4','1533994878');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('733','add','101.224.174.252','增加楼盘成功!','4','1533994944');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('734','edit','101.224.174.252','编辑楼盘成功!','4','1533995013');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('735','edit','101.224.174.252','编辑楼盘成功!','4','1533995021');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('736','delete','101.224.174.252','删除楼盘成功!','4','1533995198');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('737','delete','101.224.174.252','删除楼盘成功!','4','1533995202');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('738','delete','101.224.174.252','删除楼盘成功!','4','1533995213');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('739','delete','101.224.174.252','删除楼盘成功!','4','1533995216');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('740','edit','101.224.174.252','编辑楼盘成功!','4','1533995355');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('741','upload','101.224.174.252','上传文件成功!','4','1533995639');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('742','upload','101.224.174.252','上传文件成功!','4','1533995643');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('743','add','101.224.174.252','增加楼盘成功!','4','1533995700');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('744','add','101.224.174.252','增加楼盘成功!','4','1533995880');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('745','upload','101.224.174.252','上传文件成功!','4','1533995899');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('746','upload','101.224.174.252','上传文件成功!','4','1533995901');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('747','edit','101.224.174.252','编辑楼盘成功!','4','1533995904');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('748','delete','101.224.174.252','删除楼盘成功!','4','1533995962');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('749','delete','101.224.174.252','删除楼盘成功!','4','1533995968');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('750','upload','101.224.174.252','上传文件成功!','4','1533996638');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('751','upload','101.224.174.252','上传文件成功!','4','1533996641');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('752','edit','101.224.174.252','编辑楼盘成功!','4','1533996644');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('753','login','101.224.174.252','用户登录成功!','4','1534045949');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('754','edit','101.224.174.252','编辑楼盘成功!','4','1534045966');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('755','edit','101.224.174.252','编辑楼盘成功!','4','1534045979');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('756','edit','101.224.174.252','编辑楼盘成功!','4','1534045987');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('757','edit','101.224.174.252','编辑楼盘成功!','4','1534045993');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('758','login','113.45.86.107','用户登录成功!','1','1534052513');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('759','edit','113.45.86.107','编辑楼盘成功!','1','1534052825');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('760','edit','113.45.86.107','编辑楼盘成功!','1','1534052839');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('761','edit','113.45.86.107','编辑楼盘成功!','1','1534052853');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('762','edit','113.45.86.107','编辑楼盘成功!','1','1534052864');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('763','edit','113.45.86.107','修改导航成功!','1','1534052962');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('764','edit','113.45.86.107','修改导航成功!','1','1534053334');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('765','login','101.224.174.252','用户登录成功!','4','1534053619');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('766','edit','113.45.86.107','修改角色成功!','1','1534056361');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('767','edit_index','113.45.86.107','修改首页碎片成功!','1','1534059272');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('768','edit_index','113.45.86.107','修改首页碎片成功!','1','1534059290');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('769','edit_index','113.45.86.107','修改首页碎片成功!','1','1534059438');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('770','edit_index','113.45.86.107','修改首页碎片成功!','1','1534059469');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('771','add','113.45.86.107','增加导航成功!','1','1534060128');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('772','edit','113.45.86.107','修改导航成功!','1','1534060201');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('773','edit','113.45.86.107','修改城市成功!','1','1534060703');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('774','restore','127.0.0.1','成功!','1','1534073388');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('775','edit','127.0.0.1','修改城市成功!','1','1534074297');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('776','login','127.0.0.1','用户登录成功!','1','1534087951');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('777','edit','127.0.0.1','编辑楼盘成功!','1','1534087965');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('778','edit','127.0.0.1','编辑楼盘成功!','1','1534088189');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('779','edit','127.0.0.1','编辑楼盘失败的原因：租金必须是个整数！','1','1534089063');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('780','edit','127.0.0.1','编辑楼盘失败的原因：租金必须是个整数！','1','1534089068');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('781','edit','127.0.0.1','编辑楼盘失败的原因：租金不能为空！','1','1534089104');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('782','edit','127.0.0.1','编辑楼盘失败的原因：租金不能为空！','1','1534089114');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('783','edit','127.0.0.1','编辑楼盘成功!','1','1534089205');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('784','edit','127.0.0.1','编辑楼盘成功!','1','1534089219');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('785','delete','127.0.0.1','删除备份成功!','1','1534089303');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('786','delete','127.0.0.1','删除备份成功!','1','1534089305');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('787','delete','127.0.0.1','删除备份成功!','1','1534089307');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('788','delete','127.0.0.1','删除备份成功!','1','1534089309');
 
 -- ----------------------------
 -- Table structure for of_nav
@@ -841,12 +1003,12 @@ CREATE TABLE `of_nav` (
   `create_time` int(11) unsigned NOT NULL COMMENT '增加时间',
   `update_time` int(11) unsigned NOT NULL COMMENT '修改时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='导航表';
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COMMENT='导航表';
 -- ----------------------------
 -- Records of of_nav
 -- ----------------------------
 INSERT INTO `of_nav` (`id`,`name`,`parent_id`,`url`,`show_position`,`order_key`,`create_time`,`update_time`) VALUES ('1','首页','0','/','1','1','1532942382','1532942382');
-INSERT INTO `of_nav` (`id`,`name`,`parent_id`,`url`,`show_position`,`order_key`,`create_time`,`update_time`) VALUES ('2','城市','0','/shanghai.html','1','1','1532942592','1533568478');
+INSERT INTO `of_nav` (`id`,`name`,`parent_id`,`url`,`show_position`,`order_key`,`create_time`,`update_time`) VALUES ('2','搜索办公室','0','/shanghai/','1','1','1532942592','1534053334');
 INSERT INTO `of_nav` (`id`,`name`,`parent_id`,`url`,`show_position`,`order_key`,`create_time`,`update_time`) VALUES ('3','关于我们','0','/aboutus.html','3','1','1532942682','1532943132');
 INSERT INTO `of_nav` (`id`,`name`,`parent_id`,`url`,`show_position`,`order_key`,`create_time`,`update_time`) VALUES ('4','联系我们','0','/contactus.html','3','1','1532942737','1532943104');
 INSERT INTO `of_nav` (`id`,`name`,`parent_id`,`url`,`show_position`,`order_key`,`create_time`,`update_time`) VALUES ('5','行业资讯','0','/news.html','3','1','1532942948','1533467507');
@@ -855,7 +1017,8 @@ INSERT INTO `of_nav` (`id`,`name`,`parent_id`,`url`,`show_position`,`order_key`,
 INSERT INTO `of_nav` (`id`,`name`,`parent_id`,`url`,`show_position`,`order_key`,`create_time`,`update_time`) VALUES ('8','写字楼租赁','0','http://www.loukee.com/','5','1','1532943621','1532943632');
 INSERT INTO `of_nav` (`id`,`name`,`parent_id`,`url`,`show_position`,`order_key`,`create_time`,`update_time`) VALUES ('9','南京房价','0','http://nj.58.com/fangjia/','5','1','1532943686','1532943686');
 INSERT INTO `of_nav` (`id`,`name`,`parent_id`,`url`,`show_position`,`order_key`,`create_time`,`update_time`) VALUES ('10','上海商铺','0','https://sh.sp.anjuke.com/','5','1','1532943756','1532943775');
-INSERT INTO `of_nav` (`id`,`name`,`parent_id`,`url`,`show_position`,`order_key`,`create_time`,`update_time`) VALUES ('11','百度','0','www.baidu.com','2','1','1533483278','1533483278');
+INSERT INTO `of_nav` (`id`,`name`,`parent_id`,`url`,`show_position`,`order_key`,`create_time`,`update_time`) VALUES ('11','热门城市','0','/shanghai/','2','1','1533483278','1534060201');
+INSERT INTO `of_nav` (`id`,`name`,`parent_id`,`url`,`show_position`,`order_key`,`create_time`,`update_time`) VALUES ('12','热门楼盘','0','/zhonghuan.html','2','1','1534060128','1534060128');
 
 -- ----------------------------
 -- Table structure for of_news
@@ -874,15 +1037,49 @@ CREATE TABLE `of_news` (
   `seo_title` varchar(200) NOT NULL DEFAULT '' COMMENT 'seo标题',
   `seo_des` varchar(500) NOT NULL DEFAULT '' COMMENT 'seo描叙',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='新闻表';
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='新闻表';
 -- ----------------------------
 -- Records of of_news
 -- ----------------------------
-INSERT INTO `of_news` (`id`,`title`,`url_title`,`flag`,`abstract`,`content`,`state`,`create_time`,`update_time`,`seo_title`,`seo_des`) VALUES ('1','香港兴业中心服务式办公室出租介绍1','news1','1','进入2017年，上海商务中心出租市场又迎来的新的发展和变化，现归纳要点如下：如雷格斯经营状况良好，并在国内二线三线城市不断开设新的商务中心网点。','内容','1','1533050952','1530633600','进入2017年，上海商务中心出租市场又迎来的新的发展和变化','海商务中心出租市场又迎来的新的发展和变化，现归纳要点如下：如雷格斯经营状况良好，并在国内二线三线城市不断开设新的商务中心网点。');
+INSERT INTO `of_news` (`id`,`title`,`url_title`,`flag`,`abstract`,`content`,`state`,`create_time`,`update_time`,`seo_title`,`seo_des`) VALUES ('1','香港兴业中心服务式办公室出租介绍1','news1','1','进入2017年，上海商务中心出租市场又迎来的新的发展和变化，现归纳要点如下：如雷格斯经营状况良好，并在国内二线三线城市不断开设新的商务中心网点。','内容121','1','1533050952','1530633600','进入2017年，上海商务中心出租市场又迎来的新的发展和变化','海商务中心出租市场又迎来的新的发展和变化，现归纳要点如下：如雷格斯经营状况良好，并在国内二线三线城市不断开设新的商务中心网点。');
 INSERT INTO `of_news` (`id`,`title`,`url_title`,`flag`,`abstract`,`content`,`state`,`create_time`,`update_time`,`seo_title`,`seo_des`) VALUES ('2','的风格为高端客户提供高配的办公空间','se2','1','香港兴业中心服务式办公室由上海德事商务中心运营，是德事最新最高端的商务中心地点，继承品牌一贯的风格为高端客户提供高配的办公空间，以及一些列精品服务如专业的来电应答、邮件收发、前台接','<span style=\"color:#666666;font-family:微软雅黑, &quot;Microsoft YaHei&quot;, &quot;Helvetica Neue&quot;, Helvetica, STHeiTi, sans-serif;font-size:16px;white-space:normal;background-color:#FFFFFF;\">香港兴业中心服务式办公室由上海德事商务中心运营，是德事最新最高端的商务中心地点，继承品牌一贯的风格为高端客户提供高配的办公空间，以及一些列精品服务如专业的来电应答、邮件收发、前台接待和优越的秘书服务等，全面提升您的企业形象。该地点的办公室有多种房型，可以满足1人至20人的团队使用，您可以根据自己的人数来选择适合的房间，还可以进行自由组合，灵活度很高，此外，您也可以选择租期长短，例如从6个月到1年，这些优势都是一般传统写字楼所不具备的。 香港兴业中心服务式办公室由上海德事商务中心运营，是德事最新最高端的商务中心地点，继承品牌一贯的风格为高端客户提供高配的办公空间，以及一些列精品服务如专业的来电应答、邮件收发、前台接待和优越的秘书服务等，全面提升您的企业形象。该地点的办公室有多种房型，可以满足1人至20人的团队使用，您可以根据自己的人数来选择适合的房间，还可以进行自由组合，灵活度很高，此外，您也可以选择租期长短，例如从6个月到1年，这些优势都是一般传统写字楼所不具备的。 香港兴业中心服务式办公室由上海德事商务中心运营，是德事最新最高端的商务中心地点，继承品牌一贯的风格为高端客户提供高配的办公空间，以及一些列精品服务如专业的来电应答、邮件收发、前台接待和优越的秘书服务等，全面提升您的企业形象。该地点的办公室有多种房型，可以满足1人至20人的团队使用，您可以根据自己的人数来选择适合的房间，还可以进行自由组合，灵活度很高，此外，您也可以选择租期长短，例如从6个月到1年，这些优势都是一般传统写字楼所不具备的。</span>','1','1533483683','1533398400','','');
 INSERT INTO `of_news` (`id`,`title`,`url_title`,`flag`,`abstract`,`content`,`state`,`create_time`,`update_time`,`seo_title`,`seo_des`) VALUES ('3','OfficeBC是一家服务式办公专业顾问','sa2','1','的风格为高端客户提供高配的办公空间','内容','1','1533483702','1533398400','','');
-INSERT INTO `of_news` (`id`,`title`,`url_title`,`flag`,`abstract`,`content`,`state`,`create_time`,`update_time`,`seo_title`,`seo_des`) VALUES ('4',' 香港兴业中心服务式办公室由上海德事商务中心运营，是德事最新最高端的商务中心地点，','sss22','1','人数来选择适合的房间，还可以进行自由组合，灵活度很高，此外，您也可以选择租期长短，例如从6个月到1年，这些优势都是一般传统写字楼所不具备的。 香港兴业中心服务式办公室由上海德事商务中心运营，是德事最新最高端的商务中心地点，继承品牌一贯的风格为高端客户提供高配的办公空间，以及一些列精品服务如专业的来电应答、邮件收发、前台接待和优越的秘书服务等，全面提升您的企业形象。该地点的办公室有多种房型，可以满足1人至20人的团队使用，您可以根据自己的人数来选择适合的房间，还可以进行自由组合，灵活度很高，此外，您也可以选择租期长短，例如从6个月到1年，这些','内容','1','1533483753','1533139200','人数来选择适合的房间，还可以进行自由组合，灵活度很高，此外，您也可以选择租期长短，例如从6个月到1年，这些优势都是一般传统写字楼所不具备的。 香港兴业中心服务式办公室由上海德事商务中心运营，是德事最新最高端的商务中心地点，继承品牌一贯的风格为高端客户提供高配的办公空间，以及一些列精品服务如专业的来电','应答、邮件收发、前台接待和优越的秘书服务等，全面提升您的企业形象。该地点的办公室有多种房型，可以满足1人至20人的团队使用，您可以根据自己的人数来选择适合的房间，还可以进行自由组合，灵活度很高，此外，您也可以选择租期长短，例如从6个月到1年，这些');
-INSERT INTO `of_news` (`id`,`title`,`url_title`,`flag`,`abstract`,`content`,`state`,`create_time`,`update_time`,`seo_title`,`seo_des`) VALUES ('5','12121','1212','0','121','内容','1','1533656239','1425484800','2s','sssa');
+INSERT INTO `of_news` (`id`,`title`,`url_title`,`flag`,`abstract`,`content`,`state`,`create_time`,`update_time`,`seo_title`,`seo_des`) VALUES ('4',' 香港123456','11','1','人数来选择适合的房间，还可以进行自由组合，灵活度很高，此外，您也可以选择租期长短，例如从6个月到1年，这些优势都是一般传统写字楼所不具备的。 香港兴业中心服务式办公室由上海德事商务中心运营，是德事最新最高端的商务中心地点，继承品牌一贯的风格为高端客户提供高配的办公空间，以及一些列精品服务如专业的来电应答、邮件收发、前台接待和优越的秘书服务等，全面提升您的企业形象。该地点的办公室有多种房型，可以满足1人至20人的团队使用，您可以根据自己的人数来选择适合的房间，还可以进行自由组合，灵活度很高，此外，您也可以选择租期长短，例如从6个月到1年，这些','<p>
+	人数来选择适合的房间，<a href=\"http://www.163.net\" target=\"_blank\">还可以进行</a>自由组合，灵活度很高，此外，您也可以选择租期长短，例如从6个月到1年，这些优势都是一般传统写字楼所不具备的。 香港兴业中心服务式办公室由上海德事商务中心运营，是德事最新最高端的商务中心地点，继承品牌一贯的风格为高端客户提供高配的办公空间，以及一些列精品服务如专业的来电应答、邮件收发、前台接待和优越的秘书服务等，全面提升您的企业形象。该地点的办公室有多种房型，可以满足1人至20人的团队使用，您可以根据自己的人数来选择适合的房间，还可以进行自由组合，灵活度很高，此外，您也可以选择租期长短，例如从6个月到1年
+</p>
+<p>
+	人数来选择适合的房间，还可以进行自由组合，灵活度很高，此外，您也可以选择租期长短，例如从6个月到1年，这些优势都是一般传统写字楼所不具备的。 香港兴业中心服务式办公室由上海德事商务中心运营，是德事最新最高端的商务中心地点，继承品牌一贯的风格为高端客户提供高配的办公空间，以及一些列精品服务如专业的来电应答、邮件收发、前台接待和优越的秘书服务等，全面提升您的企业形象。该地点的办公室有多种房型，可以满足1人至20人的团队使用，您可以根据自己的人数来选择适合的房间，还可以进行自由组合，灵活度很高，此外，您也可以选择租期长短，例如从6个月到1年
+</p>
+<p>
+	人数来选择适合的房间，还可以进行自由组合，灵活度很高，此外，您也可以选择租期长短，例如从6个月到1年，这些优势都是一般传统写字楼所不具备的。 香港兴业中心服务式办公室由上海德事商务中心运营，是德事最新最高端的商务中心地点，继承品牌一贯的风格为高端客户提供高配的办公空间，以及一些列精品服务如专业的来电应答、邮件收发、前台接待和优越的秘书服务等，全面提升您的企业形象。该地点的办公室有多种房型，可以满足1人至20人的团队使用，您可以根据自己的人数来选择适合的房间，还可以进行自由组合，灵活度很高，此外，您也可以选择租期长短，例如从6个月到1年
+</p>','1','1533483753','1313942400','人数来选择适合的房间，还可以进行自由组合，灵活度很高，此外，您也可以选择租期长短，例如从6个月到1年，这些优势都是一般传统写字楼所不具备的。 香港兴业中心服务式办公室由上海德事商务中心运营，是德事最新最高端的商务中心地点，继承品牌一贯的风格为高端客户提供高配的办公空间，以及一些列精品服务如专业的来电','应答、邮件收发、前台接待和优越的秘书服务等，全面提升您的企业形象。该地点的办公室有多种房型，可以满足1人至20人的团队使用，您可以根据自己的人数来选择适合的房间，还可以进行自由组合，灵活度很高，此外，您也可以选择租期长短，例如从6个月到1年，这些');
+INSERT INTO `of_news` (`id`,`title`,`url_title`,`flag`,`abstract`,`content`,`state`,`create_time`,`update_time`,`seo_title`,`seo_des`) VALUES ('6','雷格斯商务中心加强在上海等地的发展','15','0','大量的外资企业进入国内，带动了写字楼等市场的增长。有着多年服务式办公室运营经验的雷格斯商务中心，在上海北京等地的业务也在持续上升。','国最近一二十年的高速发展，令世界刮目相看，目前正在发展成为仅次于美国的全球第二大经济体。大量的外资企业进入国内，带动了写字楼等市场的增长。有着多年服务式办公室运营经验的雷格斯商务中心，在上海北京等地的业务也在持续上升。<br />
+<br />
+强大的客户需求，使中国成为雷格斯最主要的增长市场。雷格斯目前在大中华地区有近40家商务中心，其中有9个位于中国上海的浦江两岸，方便各公司在这个中国最国际化的大都市开展业务、会晤客户和树立卓越的公司形象。<br />
+<br />
+不久前，雷格斯在上海淮海中路的永银大厦，新开设了一家商务中心，配备有高速互联网连接、会议室、工作站以及视频会议设施。永银大厦靠近淮海路与西藏路的交界处，地段优越，出行方便，是一座比较优秀的甲级写字楼。<br />
+<br />
+这处新的雷格斯商务中心还配备了一个商务贵宾室，为中心的用户提供绝佳的交流机会，这也是雷格斯全球50万商务贵宾室客户可享受的最新网点。<br />
+<br />
+雷格斯东亚区总裁表示：“雷格斯是亚太地区最大的服务式办公室供应商，我们在这一地区的业务收入表现增长强劲。今年我们在中国市场的业务需求增长了40%。中国政府预计今年 GDP的实际增长将达到10.5%，所以我们预计雷格斯在中国的业务将继续增长。”<br />
+<br />
+中国市场存在巨大商机，然而想要瓜分这份市场蛋糕的公司也非常多。在这样的背景环境下，在上海新增一家雷格斯商务中心可以为任何寻求在中国市场获得成功的公司助一臂之力。<br />
+<br />
+这意味着这些公司可以在他们希望的任何时间和任何地点，比如说靠近他们的业务联系人、住宅或酒店的位置，选择品质卓越、经济实惠的办公场所开展业务。 www.officebc.com<br />
+<br />
+（完）<br />
+<br />','1','1533956234','1533916800','雷格斯商务中心加强在上海等地的发展','雷格斯商务中心加强在上海等地的发展');
+INSERT INTO `of_news` (`id`,`title`,`url_title`,`flag`,`abstract`,`content`,`state`,`create_time`,`update_time`,`seo_title`,`seo_des`) VALUES ('7','上海商务中心租赁需求将持续增长','16','0','商务中心又称“服务式办公室”，在全球范围来看并非新生事物，目前发展已经比较成熟。四十年前商务中心在欧美国家开始出现，是办公室出租的最高级形式，是以服务性为主的全新办公出租方式。','商务中心又称“服务式办公室”，在全球范围来看并非新生事物，目前发展已经比较成熟。四十年前商务中心在欧美国家开始出现，是办公室出租的最高级形式，是以服务性为主的全新办公出租方式。<br />
+<br />
+在经过长期的发展，商务中心目前已遍及世界各大重要城市。但在我国，商务中心则刚刚起步不久，市场发展潜力还比较大。如今，我国写字楼经济一度活跃，同时客户对服务式办公室需求也持续增加。<br />
+<br />
+调查统计，现在上海的商务中心主要分布于陆家嘴、淮海路、南京西路、静安寺、虹桥等CBD路段，有很大的供应面积，并且租赁情况非常良好。主要的商务中心品牌有雷格斯、ServCorp、德事商务中心、APBC商务中心、Office General商务中心、CEO Suite、艾比森商务中心、Oasis商务中心、阿波罗商务中心等等。不少商务中心品牌都经营着数家连锁。<br />
+<br />
+这些商务中心，为上海数千家中外企业提供了服务式办公室，市场基本供不应求。预计未来一段时间，商务中心需求还将持续增长。<br />
+<br />
+和传统写字楼里的办公室相比，商务中心的鲜明特点在于产品和服务的灵活，空间和时间上的弹性，满足各种差异化办公需求。服务式办公室的出现，一定程度上打开了甲级写字楼缺乏灵活办公的局面。<br />
+<br />
+尤其是在满足中低端客户个性化办公需求上面，这种灵活的办公面积和弹性的租期以及一站式办公服务在当今写字楼市场里，更显弥足珍贵。因此，这类商务中心在与传统写字楼的较量中往往更具魅力和优势，而越来越受到企业和商务人士的推崇和认可。www.officebc.com <br />','1','1533956305','1470844800','上海商务中心租赁需求将持续增长','上海商务中心租赁需求将持续增长');
 
 -- ----------------------------
 -- Table structure for of_news_self
@@ -926,7 +1123,7 @@ CREATE TABLE `of_privilege` (
   `add_time` int(11) unsigned NOT NULL COMMENT '增加时间',
   PRIMARY KEY (`id`),
   KEY `pri_name` (`pri_name`)
-) ENGINE=MyISAM AUTO_INCREMENT=75 DEFAULT CHARSET=utf8 COMMENT='权限表';
+) ENGINE=MyISAM AUTO_INCREMENT=78 DEFAULT CHARSET=utf8 COMMENT='权限表';
 -- ----------------------------
 -- Records of of_privilege
 -- ----------------------------
@@ -1000,6 +1197,9 @@ INSERT INTO `of_privilege` (`id`,`pri_name`,`module_name`,`controller_name`,`act
 INSERT INTO `of_privilege` (`id`,`pri_name`,`module_name`,`controller_name`,`action_name`,`icon`,`parent_id`,`order_key`,`add_time`) VALUES ('72','修改产品碎片','admin','Ad','edit_product','','70','1','1533546544');
 INSERT INTO `of_privilege` (`id`,`pri_name`,`module_name`,`controller_name`,`action_name`,`icon`,`parent_id`,`order_key`,`add_time`) VALUES ('73','删除产品碎片','admin','Ad','delete_product','','70','1','1533546592');
 INSERT INTO `of_privilege` (`id`,`pri_name`,`module_name`,`controller_name`,`action_name`,`icon`,`parent_id`,`order_key`,`add_time`) VALUES ('74','关联相关新闻','admin','News','relation_news','','57','1','1533737343');
+INSERT INTO `of_privilege` (`id`,`pri_name`,`module_name`,`controller_name`,`action_name`,`icon`,`parent_id`,`order_key`,`add_time`) VALUES ('75','还原数据库','admin','Database','restore','','21','1','1533838367');
+INSERT INTO `of_privilege` (`id`,`pri_name`,`module_name`,`controller_name`,`action_name`,`icon`,`parent_id`,`order_key`,`add_time`) VALUES ('76','下载备份','admin','Database','dowonload','','21','1','1533838405');
+INSERT INTO `of_privilege` (`id`,`pri_name`,`module_name`,`controller_name`,`action_name`,`icon`,`parent_id`,`order_key`,`add_time`) VALUES ('77','删除备份','admin','Database','delete','','21','1','1533838446');
 
 -- ----------------------------
 -- Table structure for of_product
@@ -1029,168 +1229,125 @@ CREATE TABLE `of_product` (
   `update_time` int(11) unsigned NOT NULL COMMENT '编辑时间',
   `tag` varchar(255) NOT NULL DEFAULT '',
   `bs_id` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '商圈id',
+  `discount` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   KEY `order_key` (`order_key`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='楼盘表';
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COMMENT='楼盘表';
 -- ----------------------------
 -- Records of of_product
 -- ----------------------------
-INSERT INTO `of_product` (`id`,`name`,`img`,`flag`,`rent`,`city_id`,`region_id`,`address`,`subway`,`airport`,`lg`,`lat`,`summary`,`area`,`equipment`,`seo_title`,`seo_des`,`order_key`,`state`,`create_time`,`update_time`,`tag`,`bs_id`) VALUES ('1','静安嘉里中心商务中心','/uploads/image/20180806/bafa50f2d1cd3f0c8fd71bd101828c16.jpg','1','8888','2','4','华夏路','2/7号线静安寺站，步行2分钟','距离机场30分','121.456091','31.230261','静安嘉里中心商务中心于2013年初开业，位于新建成的高档写字楼内，商业设施完善，拥有高档舒适的工作环境有国际水准的服务团队提供体贴、周到和有效的商务服务。静安嘉里中心为高标准的甲级写字楼，2013年建成交付位于南京西路CBD，紧邻静安寺静安公园、越洋广场等，地段一流，商务条件得天独厚。该大厦与地铁7号线静安寺站相连，出行快捷方便。','<ul class=\"ul-item01 list-paddingleft-2\" style=\"box-sizing:border-box;margin:0px;padding:0px 0px 0px 30px;border:0px;font-size:14px;vertical-align:baseline;list-style:none;width:782.797px;color:#333333;font-family:sans-serif;white-space:normal;\">
-	<li class=\"clearfix\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;clear:both;\">
-		<div class=\"fl\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;float:left;\">
+INSERT INTO `of_product` (`id`,`name`,`img`,`flag`,`rent`,`city_id`,`region_id`,`address`,`subway`,`airport`,`lg`,`lat`,`summary`,`area`,`equipment`,`seo_title`,`seo_des`,`order_key`,`state`,`create_time`,`update_time`,`tag`,`bs_id`,`discount`) VALUES ('10','中环广场商务中心','/uploads/image/20180811/656f4073c68f98ca0ab97138058fac8a.jpg','1','4000','2','3','静安区南京西路1266号','2号线静安寺站，步行3分钟。','距离虹桥机场约12公里，浦东机场约37公里','','','  云海大厦商务中心，提供全套的办公家具和设备，多种房型的办公室可供选择，精装修配套齐全，办公环境舒适，租期灵活即租即用，有效为企业节省运营成本。<br />
+<br />
+  位于淮海中路近常熟路，附近有多国领事馆，人文气息高尚优雅，临近ICC环贸广场、百盛商厦、希尔顿酒店、上海图书馆等知名地点，银行、餐饮、娱乐等设施一应俱全。','<ul class=\"ul-item01\">
+	<li class=\"clearfix\">
+		<div class=\"fl\">
 			1 Seats
 		</div>
-		<div class=\"fr\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;float:right;\">
+		<div class=\"fr\">
 			￥3400元
 		</div>
 	</li>
-	<li class=\"clearfix\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;clear:both;\">
-		<div class=\"fl\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;float:left;\">
+	<li class=\"clearfix\">
+		<div class=\"fl\">
 			2 Seats
 		</div>
-		<div class=\"fr\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;float:right;\">
+		<div class=\"fr\">
 			￥3400元
 		</div>
 	</li>
-	<li class=\"clearfix\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;clear:both;\">
-		<div class=\"fl\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;float:left;\">
+	<li class=\"clearfix\">
+		<div class=\"fl\">
 			3 Seats
 		</div>
-		<div class=\"fr\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;float:right;\">
+		<div class=\"fr\">
 			￥3400元
 		</div>
 	</li>
-	<li class=\"clearfix\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;clear:both;\">
-		<div class=\"fl\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;float:left;\">
+	<li class=\"clearfix\">
+		<div class=\"fl\">
 			4 Seats
 		</div>
-		<div class=\"fr\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;float:right;\">
+		<div class=\"fr\">
 			￥3400元
 		</div>
 	</li>
-	<li class=\"clearfix\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;clear:both;\">
-		<div class=\"fl\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;float:left;\">
+	<li class=\"clearfix\">
+		<div class=\"fl\">
 			5 Seats
 		</div>
-		<div class=\"fr\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;float:right;\">
+		<div class=\"fr\">
 			￥3400元
 		</div>
 	</li>
-	<li class=\"clearfix\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;clear:both;\">
-		<div class=\"fl\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;float:left;\">
+	<li class=\"clearfix\">
+		<div class=\"fl\">
 			6 Seats
 		</div>
-		<div class=\"fr\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;float:right;\">
+		<div class=\"fr\">
 			￥3400元
 		</div>
 	</li>
-</ul>','<ul class=\"ul-item02 list-paddingleft-2\" style=\"box-sizing:border-box;margin:0px;padding:0px 0px 0px 30px;border:0px;font-size:14px;vertical-align:baseline;list-style:none;width:782.797px;color:#333333;font-family:sans-serif;white-space:normal;\">
-	<li style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;clear:both;\">
-		<div class=\"tit\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;\">
-			1 便利的路段和舒适的办公环境
-		</div>
-		<div class=\"txt\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;\">
-			在商业最繁华的地段提供全配备的办公室不限时的出入带有安全可靠的门禁系统办公室；提供24小时照明、供电和供水设备的使用；办公室日常保洁和维护；开放式复印机、茶水和休息区域的使用。
-		</div>
+	<li class=\"clearfix\">
+		更多房型，请拨打服务电话 400-803-2900，获取最优报价
 	</li>
-	<li style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;clear:both;\">
-		<div class=\"tit\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;\">
-			2 便捷高效的通讯设施
-		</div>
-		<div class=\"txt\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;\">
-			使用您的公司名字接听所有来电；无限量的电话接听和呼叫转移功能；互联网的专线宽带接入；提供中心传真设备的使用；负责接收和分发客户的所有往来信件。
-		</div>
-	</li>
-	<li style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;clear:both;\">
-		<div class=\"tit\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;\">
-			3 其他免费设施
-		</div>
-		<div class=\"txt\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;\">
-			享受免费的现磨咖啡、茶和饮用水；享受各地同品牌商务中心会议室的免费使用；享受免费赠阅的报刊和杂志。
-		</div>
-	</li>
-</ul>','静安嘉里中心商务中心','静安嘉里中心商务中心','1','1','1533363241','1533652907','高档办公,cbd商圈,专业服务,非常不错','7');
-INSERT INTO `of_product` (`id`,`name`,`img`,`flag`,`rent`,`city_id`,`region_id`,`address`,`subway`,`airport`,`lg`,`lat`,`summary`,`area`,`equipment`,`seo_title`,`seo_des`,`order_key`,`state`,`create_time`,`update_time`,`tag`,`bs_id`) VALUES ('2','静安嘉里中心商务中心','/uploads/image/20180806/e692e418bd43f4fae221991fdc3e8fcf.jpg','1','777','2','3','华夏路','2/7号线静安寺站，步行2分钟','距离机场30分','121.460418','31.23','静安嘉里中心商务中心于2013年初开业，位于新建成的高档写字楼内，商业设施完善，拥有高档舒适的工作环境有国际水准的服务团队提供体贴、周到和有效的商务服务。静安嘉里中心为高标准的甲级写字楼，2013年建成交付位于南京西路CBD，紧邻静安寺静安公园、越洋广场等，地段一流，商务条件得天独厚。该大厦与地铁7号线静安寺站相连，出行快捷方便。','<ul class=\"ul-item01 list-paddingleft-2\" style=\"box-sizing:border-box;margin:0px;padding:0px 0px 0px 30px;border:0px;font-size:14px;vertical-align:baseline;list-style:none;width:782.797px;color:#333333;font-family:sans-serif;white-space:normal;\">
-	<li class=\"clearfix\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;clear:both;\">
-		<div class=\"fl\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;float:left;\">
-			1 Seats
-		</div>
-		<div class=\"fr\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;float:right;\">
-			￥3400元
-		</div>
-	</li>
-	<li class=\"clearfix\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;clear:both;\">
-		<div class=\"fl\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;float:left;\">
-			2 Seats
-		</div>
-		<div class=\"fr\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;float:right;\">
-			￥3400元
-		</div>
-	</li>
-	<li class=\"clearfix\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;clear:both;\">
-		<div class=\"fl\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;float:left;\">
-			3 Seats
-		</div>
-		<div class=\"fr\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;float:right;\">
-			￥3400元
-		</div>
-	</li>
-	<li class=\"clearfix\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;clear:both;\">
-		<div class=\"fl\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;float:left;\">
-			4 Seats
-		</div>
-		<div class=\"fr\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;float:right;\">
-			￥3400元
-		</div>
-	</li>
-	<li class=\"clearfix\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;clear:both;\">
-		<div class=\"fl\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;float:left;\">
-			5 Seats
-		</div>
-		<div class=\"fr\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;float:right;\">
-			￥3400元
-		</div>
-	</li>
-	<li class=\"clearfix\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;clear:both;\">
-		<div class=\"fl\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;float:left;\">
-			6 Seats
-		</div>
-		<div class=\"fr\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;float:right;\">
-			￥3400元
-		</div>
-	</li>
-</ul>','<ul class=\"ul-item02 list-paddingleft-2\" style=\"box-sizing:border-box;margin:0px;padding:0px 0px 0px 30px;border:0px;font-size:14px;vertical-align:baseline;list-style:none;width:782.797px;color:#333333;font-family:sans-serif;white-space:normal;\">
-	<li style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;clear:both;\">
-		<div class=\"tit\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;\">
-			1 便利的路段和舒适的办公环境
-		</div>
-		<div class=\"txt\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;\">
-			在商业最繁华的地段提供全配备的办公室不限时的出入带有安全可靠的门禁系统办公室；提供24小时照明、供电和供水设备的使用；办公室日常保洁和维护；开放式复印机、茶水和休息区域的使用。
-		</div>
-	</li>
-	<li style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;clear:both;\">
-		<div class=\"tit\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;\">
-			2 便捷高效的通讯设施
-		</div>
-		<div class=\"txt\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;\">
-			使用您的公司名字接听所有来电；无限量的电话接听和呼叫转移功能；互联网的专线宽带接入；提供中心传真设备的使用；负责接收和分发客户的所有往来信件。
-		</div>
-	</li>
-	<li style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;clear:both;\">
-		<div class=\"tit\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;\">
-			3 其他免费设施
-		</div>
-		<div class=\"txt\" style=\"box-sizing:border-box;margin:0px;padding:0px;border:0px;vertical-align:baseline;\">
-			享受免费的现磨咖啡、茶和饮用水；享受各地同品牌商务中心会议室的免费使用；享受免费赠阅的报刊和杂志。
-		</div>
-	</li>
-</ul>','静安嘉里中心商务中心于2013年初开业，位于新建成的高档写字楼内，商业设施完善，拥有高档舒适的工作环境有国际水准的服务团队提供体贴、周到和有效的商务服务。静安嘉里中心为高标准的甲级写字楼，2013年建成交付位于南京西路CBD，紧邻静安寺静安公园、越洋广场等，地段一流，商务条件得天独厚。该大厦与地铁7号线静安寺站相连，出行快捷方便。','静安嘉里中心商务中心于2013年初开业，位于新建成的高档写字楼内，商业设施完善，拥有高档舒适的工作环境有国际水准的服务团队提供体贴、周到和有效的商务服务。静安嘉里中心为高标准的甲级写字楼，2013年建成交付位于南京西路CBD，紧邻静安寺静安公园、越洋广场等，地段一流，商务条件得天独厚。该大厦与地铁7号线静安寺站相连，出行快捷方便。','1','1','1533363573','1533648097','专业,严谨','10');
-INSERT INTO `of_product` (`id`,`name`,`img`,`flag`,`rent`,`city_id`,`region_id`,`address`,`subway`,`airport`,`lg`,`lat`,`summary`,`area`,`equipment`,`seo_title`,`seo_des`,`order_key`,`state`,`create_time`,`update_time`,`tag`,`bs_id`) VALUES ('3','上海s','/uploads/image/20180806/3319d3a176a2e35822deb85766a84a05.jpg','1','1','1','6','dawsd','sad','dsa','121.30749','31.183053','','','','','','1','1','1533364251','1533648135','cbd商圈','11');
-INSERT INTO `of_product` (`id`,`name`,`img`,`flag`,`rent`,`city_id`,`region_id`,`address`,`subway`,`airport`,`lg`,`lat`,`summary`,`area`,`equipment`,`seo_title`,`seo_des`,`order_key`,`state`,`create_time`,`update_time`,`tag`,`bs_id`) VALUES ('5','测试','/uploads/image/20180805/c0aac6fd1781588c347a133f04a99aae.jpg','1','28000','1','6','华夏路','2/7号线静安寺站，步行2分钟','距离机场30分','121.24195','31.248279','asdasd','asd','das','das','dsa','1','1','1533400989','1533648188','非常不错,服务周到','11');
-INSERT INTO `of_product` (`id`,`name`,`img`,`flag`,`rent`,`city_id`,`region_id`,`address`,`subway`,`airport`,`lg`,`lat`,`summary`,`area`,`equipment`,`seo_title`,`seo_des`,`order_key`,`state`,`create_time`,`update_time`,`tag`,`bs_id`) VALUES ('6','深圳楼盘','/uploads/image/20180806/4dcc9daaf2127f3dc0e78598676166d2.jpg','1','2900','2','3','广东深圳','2/7号线静安寺站，步行2分钟','距离机场30分','121.159737','31.164268','sas','wq','wqw','wqw','wq','1','1','1533401206','1533648229','豪华,有档次','10');
-INSERT INTO `of_product` (`id`,`name`,`img`,`flag`,`rent`,`city_id`,`region_id`,`address`,`subway`,`airport`,`lg`,`lat`,`summary`,`area`,`equipment`,`seo_title`,`seo_des`,`order_key`,`state`,`create_time`,`update_time`,`tag`,`bs_id`) VALUES ('7','上海2','/uploads/image/20180806/5b70107057aa724e612fc848310b3803.jpg','1','121','2','5','121','1212','12','121.577413','31.073501','','','','','','1','1','1533444249','1533648266','价格实惠,服务周到','12');
-INSERT INTO `of_product` (`id`,`name`,`img`,`flag`,`rent`,`city_id`,`region_id`,`address`,`subway`,`airport`,`lg`,`lat`,`summary`,`area`,`equipment`,`seo_title`,`seo_des`,`order_key`,`state`,`create_time`,`update_time`,`tag`,`bs_id`) VALUES ('8','1212','/uploads/image/20180806/1dede29380fb2d9be9f542307d76e386.jpg','1','121','2','4','12','12','12','121.348597','31.196399','','','','','','1','1','1533449330','1533648300','位置好,离地铁进','7');
-INSERT INTO `of_product` (`id`,`name`,`img`,`flag`,`rent`,`city_id`,`region_id`,`address`,`subway`,`airport`,`lg`,`lat`,`summary`,`area`,`equipment`,`seo_title`,`seo_des`,`order_key`,`state`,`create_time`,`update_time`,`tag`,`bs_id`) VALUES ('9','上海','/uploads/image/20180806/76859d7b63bbfeb1f8adf3bf995e28f0.jpg','1','12','2','4','12','12','12','121.846474','31.045041','','','','','','1','1','1533462136','1533648323','12','7');
+</ul>','1、提供前台接待服务和全方位的秘书服务，IT技术管家式支持；<br />
+<br />
+2、大小、房型不同的房间，全装全配的办公设施，多功能会议室、休息室等；<br />
+<br />
+3、先进的网络系统、每日清洁服务和快递收发服务；<br />
+<br />
+4、完善的工商服务、法律、会计事务所服务；','中环广场商务中心出租-中环广场服务式办公室','位于淮海中路近常熟路，附近有多国领事馆，人文气息高尚优雅，临近ICC环贸广场、百盛商厦、希尔顿酒店','1','1','1533994109','1534089219','CBD地段,甲级大厦,一流品质','9','优惠一个月');
+INSERT INTO `of_product` (`id`,`name`,`img`,`flag`,`rent`,`city_id`,`region_id`,`address`,`subway`,`airport`,`lg`,`lat`,`summary`,`area`,`equipment`,`seo_title`,`seo_des`,`order_key`,`state`,`create_time`,`update_time`,`tag`,`bs_id`,`discount`) VALUES ('3','上海s','/uploads/image/20180806/3319d3a176a2e35822deb85766a84a05.jpg','1','1','1','18','dawsd','sad','dsa','121.30749','31.183053','','','','','','1','1','1533364251','1534088189','cbd商圈','11','');
+INSERT INTO `of_product` (`id`,`name`,`img`,`flag`,`rent`,`city_id`,`region_id`,`address`,`subway`,`airport`,`lg`,`lat`,`summary`,`area`,`equipment`,`seo_title`,`seo_des`,`order_key`,`state`,`create_time`,`update_time`,`tag`,`bs_id`,`discount`) VALUES ('5','测试','/uploads/image/20180805/c0aac6fd1781588c347a133f04a99aae.jpg','1','28000','2','3','华夏路','2/7号线静安寺站，步行2分钟','距离机场30分','121.24195','31.248279','asdasd','asd','das','das','dsa','1','1','1533400989','1534087965','非常不错,服务周到','9','');
+INSERT INTO `of_product` (`id`,`name`,`img`,`flag`,`rent`,`city_id`,`region_id`,`address`,`subway`,`airport`,`lg`,`lat`,`summary`,`area`,`equipment`,`seo_title`,`seo_des`,`order_key`,`state`,`create_time`,`update_time`,`tag`,`bs_id`,`discount`) VALUES ('12','香港广场商务中心','/uploads/image/20180811/65cbb3d81eecaa1fc8f93012afe23236.jpg','1','3500','2','5','黄浦区淮海中路128号','1号线黄陂北路站，步行2分钟。','距离虹桥机场约12公里，浦东机场约37公里','','','浦东金融广场商务中心，提供高规格的服务式办公室、会议室等商务空间，细致的商务支持，精装修、带家具，让您以较小的投入获得高档的办公环境。<br />
+<br />
+陆家嘴金融广场坐落于世纪大道与商城路交汇处，由3栋甲级写字楼、1座奢华购物中心、1个地面公交换乘枢纽站组成，周边环境非常优越，商业氛围浓厚，国际高端水准配置。','<ul class=\"ul-item01\">
+                    <li class=\"clearfix\"><div class=\"fl\">1 Seats</div><div class=\"fr\">￥3400元</div></li>
+                    <li class=\"clearfix\"><div class=\"fl\">2 Seats</div><div class=\"fr\">￥3400元</div></li>
+                    <li class=\"clearfix\"><div class=\"fl\">3 Seats</div><div class=\"fr\">￥3400元</div></li>
+                    <li class=\"clearfix\"><div class=\"fl\">4 Seats</div><div class=\"fr\">￥3400元</div></li>
+                    <li class=\"clearfix\"><div class=\"fl\">5 Seats</div><div class=\"fr\">￥3400元</div></li>
+                    <li class=\"clearfix\"><div class=\"fl\">6 Seats</div><div class=\"fr\">￥3400元</div></li>
+                    <li class=\"clearfix\">更多房型，请拨打服务电话 400-803-2900，获取最优报价</li>
+                </ul>','1、提供宽敞、高效和舒适的办公环境、高配置的办公设备和更优质的服务；<br />
+<br />
+2、含有LCD电视的会议室，茶水间及休息室，咖啡喝各类茶饮品；<br />
+<br />
+3、房间内有大量储物柜，隔音效果的分离强以及高质量的办公家具。<br />','香港广场商务中心出租—香港广场服务式办公室','提供高规格的服务式办公室、会议室等商务空间，细致的商务支持，精装修、带家具，让您以较小的投入获得高档的办公环境。','1','1','1533995700','1534052839','CBD地段, 专业度高','12','');
+INSERT INTO `of_product` (`id`,`name`,`img`,`flag`,`rent`,`city_id`,`region_id`,`address`,`subway`,`airport`,`lg`,`lat`,`summary`,`area`,`equipment`,`seo_title`,`seo_des`,`order_key`,`state`,`create_time`,`update_time`,`tag`,`bs_id`,`discount`) VALUES ('11','创智天地商务中心','/uploads/image/20180811/f9fc531b2c6ab66201143fe6ea9aafe3.jpg','1','2500','2','5','黄浦区延安东路550号','1/2/8号线人民广场站，步行5分钟。','距离虹桥机场约12公里，浦东机场约37公里','','','国际广场商务中心，提供高品质的服务式办公室，办公室以及洽谈室，建筑设计十分考究，装修精致优雅，提供全套的办公设备及品牌办公家具，让您可以在此轻松办公。<br />
+<br />
+位于十大商业中心之一的五角场，集五星级酒店、大型高端购物中心和甲级写字楼为一体，周边商务配套完善，写字楼林立，立体交通网络，出行方便快捷。','<ul class=\"ul-item01\">
+                    <li class=\"clearfix\"><div class=\"fl\">1 Seats</div><div class=\"fr\">￥3400元</div></li>
+                    <li class=\"clearfix\"><div class=\"fl\">2 Seats</div><div class=\"fr\">￥3400元</div></li>
+                    <li class=\"clearfix\"><div class=\"fl\">3 Seats</div><div class=\"fr\">￥3400元</div></li>
+                    <li class=\"clearfix\"><div class=\"fl\">4 Seats</div><div class=\"fr\">￥3400元</div></li>
+                    <li class=\"clearfix\"><div class=\"fl\">5 Seats</div><div class=\"fr\">￥3400元</div></li>
+                    <li class=\"clearfix\"><div class=\"fl\">6 Seats</div><div class=\"fr\">￥3400元</div></li>
+                    <li class=\"clearfix\">更多房型，请拨打服务电话 400-803-2900，获取最优报价</li>
+                </ul>','1、配置现代风格的办公座椅，多个会议室及智能门禁；<br />
+<br />
+2、专业的商务行政支持，快递收发，前台服务，每日清洁服务；<br />
+<br />
+3、高速互联网络，先进的通许技术及IT技术人员；<br />
+<br />
+4、即租即用，租期灵活，可以快速办公。','创智天地商务中心出租','提供高品质的服务式办公室，办公室以及洽谈室，建筑设计十分考究，装修精致优雅，提供全套的办公设备及品牌办公家具，让您可以在此轻松办公。
+','2','1','1533994944','1534052864','性价比高,融资支持','12','');
+INSERT INTO `of_product` (`id`,`name`,`img`,`flag`,`rent`,`city_id`,`region_id`,`address`,`subway`,`airport`,`lg`,`lat`,`summary`,`area`,`equipment`,`seo_title`,`seo_des`,`order_key`,`state`,`create_time`,`update_time`,`tag`,`bs_id`,`discount`) VALUES ('13','淮海国际广场商务中心','/uploads/image/20180811/5f3bb974e160628bf4c452b77483ecdf.jpg','1','3500','2','5','黄浦区淮海中路1128号','1/10号线陕西南路站，步行1分钟。','距离虹桥机场约12公里，浦东机场约37公里','','','提供共387个工位，能够包含15-70人的不同面积办公室，独立办公室及休息室，内部装修大气优雅，打造了一个高效舒适的商务办公环境。<br />
+<br />
+地处南京西路商圈，地段繁华，是一座甲级写字楼，周围五星级林立酒店、商场等标志性建筑环绕，交通发达，多条地铁线可到达，是企业领袖精明睿智之选择。','<ul class=\"ul-item01\">
+                    <li class=\"clearfix\"><div class=\"fl\">1 Seats</div><div class=\"fr\">￥3400元</div></li>
+                    <li class=\"clearfix\"><div class=\"fl\">2 Seats</div><div class=\"fr\">￥3400元</div></li>
+                    <li class=\"clearfix\"><div class=\"fl\">3 Seats</div><div class=\"fr\">￥3400元</div></li>
+                    <li class=\"clearfix\"><div class=\"fl\">4 Seats</div><div class=\"fr\">￥3400元</div></li>
+                    <li class=\"clearfix\"><div class=\"fl\">5 Seats</div><div class=\"fr\">￥3400元</div></li>
+                    <li class=\"clearfix\"><div class=\"fl\">6 Seats</div><div class=\"fr\">￥3400元</div></li>
+                    <li class=\"clearfix\">更多房型，请拨打服务电话 400-803-2900，获取最优报价</li>
+                </ul>','1、提供宽敞、高效和舒适的办公环境、高配置的办公设备和更优质的服务；<br />
+<br />
+2、含有LCD电视的会议室，茶水间及休息室，咖啡喝各类茶饮品；<br />
+<br />
+3、房间内有大量储物柜，隔音效果的分离强以及高质量的办公家具。<br />
+<br />','淮海国际广场商务中心，淮海国际广场服务式办公室出租','','1','1','1533995880','1534052853','性价比高,地段一流','12','');
 
 -- ----------------------------
 -- Table structure for of_product_img
@@ -1204,21 +1361,15 @@ CREATE TABLE `of_product_img` (
 -- ----------------------------
 -- Records of of_product_img
 -- ----------------------------
-INSERT INTO `of_product_img` (`product_id`,`product_img`) VALUES ('2','/uploads/image/20180804/7068da617324f9453dd1c166ae295936.jpg');
-INSERT INTO `of_product_img` (`product_id`,`product_img`) VALUES ('1','/uploads/image/20180804/b1696c41951530ac0e201f7a0582c177.jpg');
-INSERT INTO `of_product_img` (`product_id`,`product_img`) VALUES ('1','/uploads/image/20180804/b1696c41951530ac0e201f7a0582c177.jpg');
 INSERT INTO `of_product_img` (`product_id`,`product_img`) VALUES ('4','/uploads/image/20180804/91b7cd7cbde3ef429b48532f9bcaf3d5.jpg');
-INSERT INTO `of_product_img` (`product_id`,`product_img`) VALUES ('2','/uploads/image/20180804/57604ba11ffb2e216cdadf7c8748c062.jpg');
 INSERT INTO `of_product_img` (`product_id`,`product_img`) VALUES ('3','');
-INSERT INTO `of_product_img` (`product_id`,`product_img`) VALUES ('1','/uploads/image/20180804/b1696c41951530ac0e201f7a0582c177.jpg');
-INSERT INTO `of_product_img` (`product_id`,`product_img`) VALUES ('1','/uploads/image/20180805/8524e9fb54bf3243cd5692a975d17d28.jpg');
 INSERT INTO `of_product_img` (`product_id`,`product_img`) VALUES ('5','/uploads/image/20180805/210ca65794605127267d2ad88ee99ef7.jpg');
 INSERT INTO `of_product_img` (`product_id`,`product_img`) VALUES ('5','/uploads/image/20180805/210ca65794605127267d2ad88ee99ef7.jpg');
-INSERT INTO `of_product_img` (`product_id`,`product_img`) VALUES ('8','/uploads/image/20180805/6a9af3cb21fc3b6ca916fbb91c2ffebd.jpg');
-INSERT INTO `of_product_img` (`product_id`,`product_img`) VALUES ('6','/uploads/image/20180805/bd37ad7a16fc68380efc0ae61bcc087d.jpg');
-INSERT INTO `of_product_img` (`product_id`,`product_img`) VALUES ('6','/uploads/image/20180805/a843fb52d22cc5ae970b0ae9c08830be.jpg');
-INSERT INTO `of_product_img` (`product_id`,`product_img`) VALUES ('7','');
-INSERT INTO `of_product_img` (`product_id`,`product_img`) VALUES ('9','');
+INSERT INTO `of_product_img` (`product_id`,`product_img`) VALUES ('12','/uploads/image/20180811/314a24c3d85f05989ebc0aa66bf7a12c.jpg');
+INSERT INTO `of_product_img` (`product_id`,`product_img`) VALUES ('13','/uploads/image/20180811/2f83ab9154a89acf225f12c3ad0d51c0.jpg');
+INSERT INTO `of_product_img` (`product_id`,`product_img`) VALUES ('10','/uploads/image/20180811/43cca55430ec62b7126a332d29cf0e53.jpg');
+INSERT INTO `of_product_img` (`product_id`,`product_img`) VALUES ('11','/uploads/image/20180811/3c40e0b0e2b4ab750c35a1becfc94bd7.jpg');
+INSERT INTO `of_product_img` (`product_id`,`product_img`) VALUES ('10','');
 
 -- ----------------------------
 -- Table structure for of_product_self
@@ -1276,7 +1427,7 @@ CREATE TABLE `of_role` (
 -- Records of of_role
 -- ----------------------------
 INSERT INTO `of_role` (`id`,`role_name`,`role_type`,`describe`,`role_pri`,`add_time`) VALUES ('1','超级管理员','1','最高管理员',' ','1528632337');
-INSERT INTO `of_role` (`id`,`role_name`,`role_type`,`describe`,`role_pri`,`add_time`) VALUES ('2','普通管理员','2','管理网站','16,17,18,19,20,22,26,27,1,2,4,5','1528633466');
+INSERT INTO `of_role` (`id`,`role_name`,`role_type`,`describe`,`role_pri`,`add_time`) VALUES ('2','普通管理员','2','管理网站','16,17,18,19,20,21,75,76,77,22,23,24,25,30,31,32,33,34,35,36,44,45,46,37,47,48,49,38,50,51,52,39,41,42,43,70,71,72,73,56,57,58,59,60,74,61,62,63,64,65,66,67,68,69,1,2,3,4,5,10,11,12,13,14,15','1528633466');
 
 -- ----------------------------
 -- Table structure for of_url_simplify
@@ -1289,31 +1440,33 @@ CREATE TABLE `of_url_simplify` (
   `other_id` smallint(5) unsigned NOT NULL COMMENT '关联id',
   `create_time` int(11) unsigned NOT NULL COMMENT '增加时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COMMENT='url简化表';
+) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=utf8 COMMENT='url简化表';
 -- ----------------------------
 -- Records of of_url_simplify
 -- ----------------------------
 INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('1','beijing','City','1','1533138694');
 INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('2','shanghai','City','2','1533139096');
-INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('3','pjinanbuss','Product','1','1533363241');
-INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('4','jingan_buss','Product','2','1533363573');
 INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('5','dsadssa','Product','3','1533364251');
 INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('6','dsadss','Product','4','1533364484');
 INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('7','aaa','Product','5','1533400989');
-INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('8','shh','Product','6','1533401206');
-INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('9','ssss','Product','8','1533449330');
-INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('10','sss','Product','7','1533449641');
-INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('11','lujiazuibuss','City','7','1533458323');
-INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('12','haiding','City','6','1533458505');
-INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('13','lujiazui','City','4','1533458564');
-INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('14','nanjingxilu','City','5','1533458580');
+INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('31','huaihaiguoji','Product','13','1533995880');
+INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('30','xianggang','Product','12','1533995700');
+INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('11','lujiazui','City','7','1533458323');
+INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('13','pudong','City','4','1533458564');
+INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('14','huangpu','City','5','1533458580');
 INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('15','jingan','City','3','1533458591');
-INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('16','testbus','City','8','1533459994');
-INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('17','jinganbus','City','9','1533460017');
-INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('18','swzx2','City','10','1533460037');
-INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('19','121','Product','9','1533462136');
-INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('20','csgwzx','City','11','1533554614');
-INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('21','njxlgw','City','12','1533565468');
+INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('16','shijidadao','City','8','1533459994');
+INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('17','nanjingxilu','City','9','1533460017');
+INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('18','jingansi','City','10','1533460037');
+INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('22','beijing/haidian/','City','13','1533992855');
+INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('21','rmgc','City','12','1533565468');
+INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('23','tianhe','City','14','1533993199');
+INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('24','东城','City','15','1533993229');
+INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('25','shenzhen','City','16','1533993245');
+INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('26','hongkong','City','17','1533993263');
+INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('27','tiyuzhongxin','City','18','1533993371');
+INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('28','zhonghuan','Product','10','1533994109');
+INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('29','chuangzhi','Product','11','1533994944');
 
 -- ----------------------------
 -- Table structure for of_visitors
@@ -1602,4 +1755,7 @@ INSERT INTO `of_visitors` (`num`,`date`) VALUES ('43974','2018-07-27');
 INSERT INTO `of_visitors` (`num`,`date`) VALUES ('24123','2018-07-28');
 INSERT INTO `of_visitors` (`num`,`date`) VALUES ('45','2018-08-07');
 INSERT INTO `of_visitors` (`num`,`date`) VALUES ('218','2018-08-08');
+INSERT INTO `of_visitors` (`num`,`date`) VALUES ('220','2018-08-10');
+INSERT INTO `of_visitors` (`num`,`date`) VALUES ('697','2018-08-11');
+INSERT INTO `of_visitors` (`num`,`date`) VALUES ('1','2018-08-10');
 
