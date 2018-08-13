@@ -4,6 +4,7 @@ use think\Controller;
 use app\index\model\News as newsMode;
 use app\index\model\Product as productMode;
 use app\index\model\City as cityModel;
+use app\index\model\Brand as brandModel;
 class Index extends Base
 {
     public function _initialize(){
@@ -103,27 +104,27 @@ class Index extends Base
         return json_encode($data,JSON_UNESCAPED_UNICODE);
     }
     public function news() {
-        $newsMode = new newsMode();
-        $pMolde   = new productMode();
+        $newsMode  = new newsMode();
+        $cityModel = new cityModel();
         $newsList  = $newsMode->getNewsList();
-        $pData    = $pMolde->getProductList();
+        $cData     = $cityModel->getHotCityCache();
         $this->setPageInfo(
                 '行业资讯',
                 $this->conf['seo_title']['v'],
                 $this->conf['seo_des']['v']
             );
         $this->assign('newsList',$newsList);
-        $this->assign('pData',$pData);
+        $this->assign('cData',$cData);
         return $this->fetch();
     }
 
     public function news_detail($url_title) {
         $newsMode = new newsMode();
-        $pMolde   = new productMode();
+        $cityModel= new cityModel();
         $cityData = $newsMode->getCityInfo($url_title);
         $prev     = $newsMode->getPrev($cityData);
         $next     = $newsMode->getNext($cityData);
-        $pData    = $pMolde->getProductList();
+        $cData    = $cityModel->getHotCityCache();
         $this->setPageInfo(
                 $cityData['title'],
                 $cityData['seo_title'],
@@ -131,8 +132,22 @@ class Index extends Base
             );
         $this->assign('prev',$prev);
         $this->assign('next',$next);
-        $this->assign('pData',$pData);
+        $this->assign('cData',$cData);
         $this->assign('cityData',$cityData);
+        return $this->fetch();
+    }
+
+    public function brand($brand) {
+        $brandModel = new brandModel;
+        $pData      = $brandModel->getProductByBrand($brand);
+        $bData      = $brandModel->get($pData[0]['brand_id']);
+        $this->setPageInfo(
+                $bData['name'],
+                $bData['seo_title'],
+                $bData['seo_des']
+            );
+        $this->assign('bData',$bData);
+        $this->assign('pData',$pData);
         return $this->fetch();
     }
 

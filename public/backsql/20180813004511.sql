@@ -2,7 +2,7 @@
 MySQL Database Backup Tools
 Server:localhost:
 Database:of
-Data:2018-08-12 23:55:15
+Data:2018-08-13 00:45:11
 */
 SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
@@ -196,7 +196,7 @@ CREATE TABLE `of_log` (
   `add_time` int(11) unsigned NOT NULL COMMENT '添加时间',
   PRIMARY KEY (`id`),
   KEY `admin_id` (`admin_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=789 DEFAULT CHARSET=utf8 COMMENT=' 操作日志表';
+) ENGINE=MyISAM AUTO_INCREMENT=796 DEFAULT CHARSET=utf8 COMMENT=' 操作日志表';
 -- ----------------------------
 -- Records of of_log
 -- ----------------------------
@@ -988,6 +988,13 @@ INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) V
 INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('786','delete','127.0.0.1','删除备份成功!','1','1534089305');
 INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('787','delete','127.0.0.1','删除备份成功!','1','1534089307');
 INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('788','delete','127.0.0.1','删除备份成功!','1','1534089309');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('789','backup','127.0.0.1','备份数据库成功!','1','1534089315');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('790','backup','127.0.0.1','备份数据库失败的原因：备份失败！','1','1534091980');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('791','backup','127.0.0.1','备份数据库失败的原因：备份失败！','1','1534092014');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('792','backup','127.0.0.1','备份数据库失败的原因：备份失败！','1','1534092051');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('793','upload','127.0.0.1','上传文件成功!','1','1534092074');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('794','backup','127.0.0.1','备份数据库失败的原因：备份失败！','1','1534092111');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('795','backup','127.0.0.1','备份数据库失败的原因：备份失败！','1','1534092182');
 
 -- ----------------------------
 -- Table structure for of_nav
@@ -1758,4 +1765,5 @@ INSERT INTO `of_visitors` (`num`,`date`) VALUES ('218','2018-08-08');
 INSERT INTO `of_visitors` (`num`,`date`) VALUES ('220','2018-08-10');
 INSERT INTO `of_visitors` (`num`,`date`) VALUES ('697','2018-08-11');
 INSERT INTO `of_visitors` (`num`,`date`) VALUES ('1','2018-08-10');
+INSERT INTO `of_visitors` (`num`,`date`) VALUES ('377','2018-08-12');
 

@@ -56,6 +56,8 @@ class Product extends Base
             }
         } else {
             $this->setPageBtn();
+            $bData = $this->cModel->getBrandList();
+            $this->assign('bData',$bData);
             return $this->fetch();
         }
     }
@@ -86,7 +88,9 @@ class Product extends Base
         } else {
             $this->setPageBtn();
             $data = $this->cModel->get($id);
-            if (empty($data)) return $this->notFound();               
+            if (empty($data)) return $this->notFound();
+            $bData = $this->cModel->getBrandList();
+            $this->assign('bData',$bData);               
             $this->assign('data', $data);
             return $this->fetch();
         }

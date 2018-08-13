@@ -2,7 +2,7 @@
 MySQL Database Backup Tools
 Server:localhost:
 Database:of
-Data:2018-08-12 23:55:15
+Data:2018-08-14 00:17:33
 */
 SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
@@ -82,8 +82,28 @@ CREATE TABLE `of_admin` (
 -- ----------------------------
 -- Records of of_admin
 -- ----------------------------
-INSERT INTO `of_admin` (`id`,`admin_name`,`password`,`img`,`role_id`,`account`,`sex`,`state`,`add_time`,`last_time`) VALUES ('1','游兴祥','83da85fd821d97b07e11440269315151','/uploads/image/20180811/6c9d228310c44b5be070737af6263d25.jpg','1','1365831278@qq.com','1','1','1505874617','1534087951');
+INSERT INTO `of_admin` (`id`,`admin_name`,`password`,`img`,`role_id`,`account`,`sex`,`state`,`add_time`,`last_time`) VALUES ('1','游兴祥','83da85fd821d97b07e11440269315151','/uploads/image/20180811/6c9d228310c44b5be070737af6263d25.jpg','1','1365831278@qq.com','1','1','1505874617','1534176333');
 INSERT INTO `of_admin` (`id`,`admin_name`,`password`,`img`,`role_id`,`account`,`sex`,`state`,`add_time`,`last_time`) VALUES ('4','测试','83da85fd821d97b07e11440269315151','/uploads/image/20180811/c52fb7986c57e22c2f7b71790d38d1a2.jpg','2','123456','1','1','1532794210','1534053619');
+
+-- ----------------------------
+-- Table structure for of_brand
+-- ----------------------------
+DROP TABLE IF EXISTS `of_brand`;
+CREATE TABLE `of_brand` (
+  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(128) NOT NULL COMMENT ' 名称',
+  `order_key` smallint(5) unsigned NOT NULL COMMENT '排序',
+  `create_time` int(11) unsigned NOT NULL COMMENT '增加时间',
+  `seo_title` varchar(255) NOT NULL DEFAULT '',
+  `seo_des` varchar(500) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='品牌表';
+-- ----------------------------
+-- Records of of_brand
+-- ----------------------------
+INSERT INTO `of_brand` (`id`,`name`,`order_key`,`create_time`,`seo_title`,`seo_des`) VALUES ('1','万达','1','1534171275','万达楼盘','万达楼盘');
+INSERT INTO `of_brand` (`id`,`name`,`order_key`,`create_time`,`seo_title`,`seo_des`) VALUES ('2','万科','1','1534171436','万科','万科');
+INSERT INTO `of_brand` (`id`,`name`,`order_key`,`create_time`,`seo_title`,`seo_des`) VALUES ('3','雷格斯','1','1534171486','雷格斯','雷格斯');
 
 -- ----------------------------
 -- Table structure for of_city
@@ -103,7 +123,7 @@ CREATE TABLE `of_city` (
 -- ----------------------------
 -- Records of of_city
 -- ----------------------------
-INSERT INTO `of_city` (`id`,`name`,`parent_id`,`order_key`,`create_time`,`is_hot`,`seo_title`,`seo_des`) VALUES ('1','北京','0','1','1533134287','0','','');
+INSERT INTO `of_city` (`id`,`name`,`parent_id`,`order_key`,`create_time`,`is_hot`,`seo_title`,`seo_des`) VALUES ('1','北京','0','1','1533134287','1','','');
 INSERT INTO `of_city` (`id`,`name`,`parent_id`,`order_key`,`create_time`,`is_hot`,`seo_title`,`seo_des`) VALUES ('2','上海','0','1','1533134296','1','','');
 INSERT INTO `of_city` (`id`,`name`,`parent_id`,`order_key`,`create_time`,`is_hot`,`seo_title`,`seo_des`) VALUES ('3','静安区','2','1','1533134307','0','','');
 INSERT INTO `of_city` (`id`,`name`,`parent_id`,`order_key`,`create_time`,`is_hot`,`seo_title`,`seo_des`) VALUES ('4','浦东新区','2','1','1533134508','0','','');
@@ -196,7 +216,7 @@ CREATE TABLE `of_log` (
   `add_time` int(11) unsigned NOT NULL COMMENT '添加时间',
   PRIMARY KEY (`id`),
   KEY `admin_id` (`admin_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=789 DEFAULT CHARSET=utf8 COMMENT=' 操作日志表';
+) ENGINE=MyISAM AUTO_INCREMENT=822 DEFAULT CHARSET=utf8 COMMENT=' 操作日志表';
 -- ----------------------------
 -- Records of of_log
 -- ----------------------------
@@ -988,6 +1008,39 @@ INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) V
 INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('786','delete','127.0.0.1','删除备份成功!','1','1534089305');
 INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('787','delete','127.0.0.1','删除备份成功!','1','1534089307');
 INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('788','delete','127.0.0.1','删除备份成功!','1','1534089309');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('789','backup','127.0.0.1','备份数据库成功!','1','1534089315');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('790','backup','127.0.0.1','备份数据库失败的原因：备份失败！','1','1534091980');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('791','backup','127.0.0.1','备份数据库失败的原因：备份失败！','1','1534092014');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('792','backup','127.0.0.1','备份数据库失败的原因：备份失败！','1','1534092051');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('793','upload','127.0.0.1','上传文件成功!','1','1534092074');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('794','backup','127.0.0.1','备份数据库失败的原因：备份失败！','1','1534092111');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('795','backup','127.0.0.1','备份数据库失败的原因：备份失败！','1','1534092182');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('796','backup','127.0.0.1','备份数据库成功!','1','1534092311');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('797','login','127.0.0.1','用户登录成功!','1','1534168892');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('798','add','127.0.0.1','增加权限成功!','1','1534171111');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('799','add','127.0.0.1','增加权限成功!','1','1534171161');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('800','add','127.0.0.1','增加权限失败的原因：权限名称已经存在！','1','1534171194');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('801','add','127.0.0.1','增加权限成功!','1','1534171206');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('802','add','127.0.0.1','增加权限成功!','1','1534171233');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('803','edit','127.0.0.1','修改品牌成功!','1','1534171395');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('804','edit','127.0.0.1','修改品牌成功!','1','1534171416');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('805','add','127.0.0.1','增加品牌失败的原因：url别名已存在','1','1534171430');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('806','add','127.0.0.1','增加品牌成功!','1','1534171436');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('807','add','127.0.0.1','增加品牌成功!','1','1534171486');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('808','edit','127.0.0.1','修改品牌成功!','1','1534171490');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('809','edit','127.0.0.1','编辑楼盘成功!','1','1534174001');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('810','edit','127.0.0.1','编辑楼盘成功!','1','1534174008');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('811','edit','127.0.0.1','编辑楼盘成功!','1','1534174132');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('812','edit','127.0.0.1','编辑楼盘成功!','1','1534174155');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('813','edit','127.0.0.1','编辑楼盘成功!','1','1534174161');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('814','edit','127.0.0.1','编辑楼盘成功!','1','1534174165');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('815','edit','127.0.0.1','编辑楼盘成功!','1','1534174176');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('816','edit','127.0.0.1','编辑楼盘成功!','1','1534174181');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('817','edit','127.0.0.1','修改城市成功!','1','1534176211');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('818','edit','127.0.0.1','修改城市成功!','1','1534176231');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('819','login','127.0.0.1','用户登录成功!','1','1534176333');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('820','edit','127.0.0.1','修改角色成功!','1','1534176350');
+INSERT INTO `of_log` (`id`,`log_type`,`ip`,`log_detail`,`admin_id`,`add_time`) VALUES ('821','edit','127.0.0.1','修改城市成功!','1','1534176924');
 
 -- ----------------------------
 -- Table structure for of_nav
@@ -1123,7 +1176,7 @@ CREATE TABLE `of_privilege` (
   `add_time` int(11) unsigned NOT NULL COMMENT '增加时间',
   PRIMARY KEY (`id`),
   KEY `pri_name` (`pri_name`)
-) ENGINE=MyISAM AUTO_INCREMENT=78 DEFAULT CHARSET=utf8 COMMENT='权限表';
+) ENGINE=MyISAM AUTO_INCREMENT=82 DEFAULT CHARSET=utf8 COMMENT='权限表';
 -- ----------------------------
 -- Records of of_privilege
 -- ----------------------------
@@ -1200,6 +1253,10 @@ INSERT INTO `of_privilege` (`id`,`pri_name`,`module_name`,`controller_name`,`act
 INSERT INTO `of_privilege` (`id`,`pri_name`,`module_name`,`controller_name`,`action_name`,`icon`,`parent_id`,`order_key`,`add_time`) VALUES ('75','还原数据库','admin','Database','restore','','21','1','1533838367');
 INSERT INTO `of_privilege` (`id`,`pri_name`,`module_name`,`controller_name`,`action_name`,`icon`,`parent_id`,`order_key`,`add_time`) VALUES ('76','下载备份','admin','Database','dowonload','','21','1','1533838405');
 INSERT INTO `of_privilege` (`id`,`pri_name`,`module_name`,`controller_name`,`action_name`,`icon`,`parent_id`,`order_key`,`add_time`) VALUES ('77','删除备份','admin','Database','delete','','21','1','1533838446');
+INSERT INTO `of_privilege` (`id`,`pri_name`,`module_name`,`controller_name`,`action_name`,`icon`,`parent_id`,`order_key`,`add_time`) VALUES ('78','品牌管理','admin','Brand','lst','fa fa-fw fa-folder-o','56','1','1534171111');
+INSERT INTO `of_privilege` (`id`,`pri_name`,`module_name`,`controller_name`,`action_name`,`icon`,`parent_id`,`order_key`,`add_time`) VALUES ('79','增加品牌','admin','Brand','add','','78','1','1534171161');
+INSERT INTO `of_privilege` (`id`,`pri_name`,`module_name`,`controller_name`,`action_name`,`icon`,`parent_id`,`order_key`,`add_time`) VALUES ('80','修改品牌','admin','Brand','edit','','78','1','1534171206');
+INSERT INTO `of_privilege` (`id`,`pri_name`,`module_name`,`controller_name`,`action_name`,`icon`,`parent_id`,`order_key`,`add_time`) VALUES ('81','删除品牌','admin','Brand','delete','','78','1','1534171233');
 
 -- ----------------------------
 -- Table structure for of_product
@@ -1230,13 +1287,14 @@ CREATE TABLE `of_product` (
   `tag` varchar(255) NOT NULL DEFAULT '',
   `bs_id` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '商圈id',
   `discount` varchar(255) NOT NULL DEFAULT '',
+  `brand_id` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '品牌id',
   PRIMARY KEY (`id`),
   KEY `order_key` (`order_key`)
 ) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COMMENT='楼盘表';
 -- ----------------------------
 -- Records of of_product
 -- ----------------------------
-INSERT INTO `of_product` (`id`,`name`,`img`,`flag`,`rent`,`city_id`,`region_id`,`address`,`subway`,`airport`,`lg`,`lat`,`summary`,`area`,`equipment`,`seo_title`,`seo_des`,`order_key`,`state`,`create_time`,`update_time`,`tag`,`bs_id`,`discount`) VALUES ('10','中环广场商务中心','/uploads/image/20180811/656f4073c68f98ca0ab97138058fac8a.jpg','1','4000','2','3','静安区南京西路1266号','2号线静安寺站，步行3分钟。','距离虹桥机场约12公里，浦东机场约37公里','','','  云海大厦商务中心，提供全套的办公家具和设备，多种房型的办公室可供选择，精装修配套齐全，办公环境舒适，租期灵活即租即用，有效为企业节省运营成本。<br />
+INSERT INTO `of_product` (`id`,`name`,`img`,`flag`,`rent`,`city_id`,`region_id`,`address`,`subway`,`airport`,`lg`,`lat`,`summary`,`area`,`equipment`,`seo_title`,`seo_des`,`order_key`,`state`,`create_time`,`update_time`,`tag`,`bs_id`,`discount`,`brand_id`) VALUES ('10','中环广场商务中心','/uploads/image/20180811/656f4073c68f98ca0ab97138058fac8a.jpg','1','4000','2','3','静安区南京西路1266号','2号线静安寺站，步行3分钟。','距离虹桥机场约12公里，浦东机场约37公里','','','  云海大厦商务中心，提供全套的办公家具和设备，多种房型的办公室可供选择，精装修配套齐全，办公环境舒适，租期灵活即租即用，有效为企业节省运营成本。<br />
 <br />
   位于淮海中路近常熟路，附近有多国领事馆，人文气息高尚优雅，临近ICC环贸广场、百盛商厦、希尔顿酒店、上海图书馆等知名地点，银行、餐饮、娱乐等设施一应俱全。','<ul class=\"ul-item01\">
 	<li class=\"clearfix\">
@@ -1296,10 +1354,10 @@ INSERT INTO `of_product` (`id`,`name`,`img`,`flag`,`rent`,`city_id`,`region_id`,
 <br />
 3、先进的网络系统、每日清洁服务和快递收发服务；<br />
 <br />
-4、完善的工商服务、法律、会计事务所服务；','中环广场商务中心出租-中环广场服务式办公室','位于淮海中路近常熟路，附近有多国领事馆，人文气息高尚优雅，临近ICC环贸广场、百盛商厦、希尔顿酒店','1','1','1533994109','1534089219','CBD地段,甲级大厦,一流品质','9','优惠一个月');
-INSERT INTO `of_product` (`id`,`name`,`img`,`flag`,`rent`,`city_id`,`region_id`,`address`,`subway`,`airport`,`lg`,`lat`,`summary`,`area`,`equipment`,`seo_title`,`seo_des`,`order_key`,`state`,`create_time`,`update_time`,`tag`,`bs_id`,`discount`) VALUES ('3','上海s','/uploads/image/20180806/3319d3a176a2e35822deb85766a84a05.jpg','1','1','1','18','dawsd','sad','dsa','121.30749','31.183053','','','','','','1','1','1533364251','1534088189','cbd商圈','11','');
-INSERT INTO `of_product` (`id`,`name`,`img`,`flag`,`rent`,`city_id`,`region_id`,`address`,`subway`,`airport`,`lg`,`lat`,`summary`,`area`,`equipment`,`seo_title`,`seo_des`,`order_key`,`state`,`create_time`,`update_time`,`tag`,`bs_id`,`discount`) VALUES ('5','测试','/uploads/image/20180805/c0aac6fd1781588c347a133f04a99aae.jpg','1','28000','2','3','华夏路','2/7号线静安寺站，步行2分钟','距离机场30分','121.24195','31.248279','asdasd','asd','das','das','dsa','1','1','1533400989','1534087965','非常不错,服务周到','9','');
-INSERT INTO `of_product` (`id`,`name`,`img`,`flag`,`rent`,`city_id`,`region_id`,`address`,`subway`,`airport`,`lg`,`lat`,`summary`,`area`,`equipment`,`seo_title`,`seo_des`,`order_key`,`state`,`create_time`,`update_time`,`tag`,`bs_id`,`discount`) VALUES ('12','香港广场商务中心','/uploads/image/20180811/65cbb3d81eecaa1fc8f93012afe23236.jpg','1','3500','2','5','黄浦区淮海中路128号','1号线黄陂北路站，步行2分钟。','距离虹桥机场约12公里，浦东机场约37公里','','','浦东金融广场商务中心，提供高规格的服务式办公室、会议室等商务空间，细致的商务支持，精装修、带家具，让您以较小的投入获得高档的办公环境。<br />
+4、完善的工商服务、法律、会计事务所服务；','中环广场商务中心出租-中环广场服务式办公室','位于淮海中路近常熟路，附近有多国领事馆，人文气息高尚优雅，临近ICC环贸广场、百盛商厦、希尔顿酒店','1','1','1533994109','1534174132','CBD地段,甲级大厦,一流品质','9','优惠一个月','3');
+INSERT INTO `of_product` (`id`,`name`,`img`,`flag`,`rent`,`city_id`,`region_id`,`address`,`subway`,`airport`,`lg`,`lat`,`summary`,`area`,`equipment`,`seo_title`,`seo_des`,`order_key`,`state`,`create_time`,`update_time`,`tag`,`bs_id`,`discount`,`brand_id`) VALUES ('3','上海s','/uploads/image/20180806/3319d3a176a2e35822deb85766a84a05.jpg','1','1','1','18','dawsd','sad','dsa','121.30749','31.183053','','','','','','1','1','1533364251','1534174155','cbd商圈','11','','1');
+INSERT INTO `of_product` (`id`,`name`,`img`,`flag`,`rent`,`city_id`,`region_id`,`address`,`subway`,`airport`,`lg`,`lat`,`summary`,`area`,`equipment`,`seo_title`,`seo_des`,`order_key`,`state`,`create_time`,`update_time`,`tag`,`bs_id`,`discount`,`brand_id`) VALUES ('5','测试','/uploads/image/20180805/c0aac6fd1781588c347a133f04a99aae.jpg','1','28000','2','3','华夏路','2/7号线静安寺站，步行2分钟','距离机场30分','121.24195','31.248279','asdasd','asd','das','das','dsa','1','1','1533400989','1534174161','非常不错,服务周到','9','','2');
+INSERT INTO `of_product` (`id`,`name`,`img`,`flag`,`rent`,`city_id`,`region_id`,`address`,`subway`,`airport`,`lg`,`lat`,`summary`,`area`,`equipment`,`seo_title`,`seo_des`,`order_key`,`state`,`create_time`,`update_time`,`tag`,`bs_id`,`discount`,`brand_id`) VALUES ('12','香港广场商务中心','/uploads/image/20180811/65cbb3d81eecaa1fc8f93012afe23236.jpg','1','3500','2','5','黄浦区淮海中路128号','1号线黄陂北路站，步行2分钟。','距离虹桥机场约12公里，浦东机场约37公里','','','浦东金融广场商务中心，提供高规格的服务式办公室、会议室等商务空间，细致的商务支持，精装修、带家具，让您以较小的投入获得高档的办公环境。<br />
 <br />
 陆家嘴金融广场坐落于世纪大道与商城路交汇处，由3栋甲级写字楼、1座奢华购物中心、1个地面公交换乘枢纽站组成，周边环境非常优越，商业氛围浓厚，国际高端水准配置。','<ul class=\"ul-item01\">
                     <li class=\"clearfix\"><div class=\"fl\">1 Seats</div><div class=\"fr\">￥3400元</div></li>
@@ -1313,8 +1371,8 @@ INSERT INTO `of_product` (`id`,`name`,`img`,`flag`,`rent`,`city_id`,`region_id`,
 <br />
 2、含有LCD电视的会议室，茶水间及休息室，咖啡喝各类茶饮品；<br />
 <br />
-3、房间内有大量储物柜，隔音效果的分离强以及高质量的办公家具。<br />','香港广场商务中心出租—香港广场服务式办公室','提供高规格的服务式办公室、会议室等商务空间，细致的商务支持，精装修、带家具，让您以较小的投入获得高档的办公环境。','1','1','1533995700','1534052839','CBD地段, 专业度高','12','');
-INSERT INTO `of_product` (`id`,`name`,`img`,`flag`,`rent`,`city_id`,`region_id`,`address`,`subway`,`airport`,`lg`,`lat`,`summary`,`area`,`equipment`,`seo_title`,`seo_des`,`order_key`,`state`,`create_time`,`update_time`,`tag`,`bs_id`,`discount`) VALUES ('11','创智天地商务中心','/uploads/image/20180811/f9fc531b2c6ab66201143fe6ea9aafe3.jpg','1','2500','2','5','黄浦区延安东路550号','1/2/8号线人民广场站，步行5分钟。','距离虹桥机场约12公里，浦东机场约37公里','','','国际广场商务中心，提供高品质的服务式办公室，办公室以及洽谈室，建筑设计十分考究，装修精致优雅，提供全套的办公设备及品牌办公家具，让您可以在此轻松办公。<br />
+3、房间内有大量储物柜，隔音效果的分离强以及高质量的办公家具。<br />','香港广场商务中心出租—香港广场服务式办公室','提供高规格的服务式办公室、会议室等商务空间，细致的商务支持，精装修、带家具，让您以较小的投入获得高档的办公环境。','1','1','1533995700','1534174165','CBD地段, 专业度高','12','','1');
+INSERT INTO `of_product` (`id`,`name`,`img`,`flag`,`rent`,`city_id`,`region_id`,`address`,`subway`,`airport`,`lg`,`lat`,`summary`,`area`,`equipment`,`seo_title`,`seo_des`,`order_key`,`state`,`create_time`,`update_time`,`tag`,`bs_id`,`discount`,`brand_id`) VALUES ('11','创智天地商务中心','/uploads/image/20180811/f9fc531b2c6ab66201143fe6ea9aafe3.jpg','1','2500','2','5','黄浦区延安东路550号','1/2/8号线人民广场站，步行5分钟。','距离虹桥机场约12公里，浦东机场约37公里','','','国际广场商务中心，提供高品质的服务式办公室，办公室以及洽谈室，建筑设计十分考究，装修精致优雅，提供全套的办公设备及品牌办公家具，让您可以在此轻松办公。<br />
 <br />
 位于十大商业中心之一的五角场，集五星级酒店、大型高端购物中心和甲级写字楼为一体，周边商务配套完善，写字楼林立，立体交通网络，出行方便快捷。','<ul class=\"ul-item01\">
                     <li class=\"clearfix\"><div class=\"fl\">1 Seats</div><div class=\"fr\">￥3400元</div></li>
@@ -1331,8 +1389,8 @@ INSERT INTO `of_product` (`id`,`name`,`img`,`flag`,`rent`,`city_id`,`region_id`,
 3、高速互联网络，先进的通许技术及IT技术人员；<br />
 <br />
 4、即租即用，租期灵活，可以快速办公。','创智天地商务中心出租','提供高品质的服务式办公室，办公室以及洽谈室，建筑设计十分考究，装修精致优雅，提供全套的办公设备及品牌办公家具，让您可以在此轻松办公。
-','2','1','1533994944','1534052864','性价比高,融资支持','12','');
-INSERT INTO `of_product` (`id`,`name`,`img`,`flag`,`rent`,`city_id`,`region_id`,`address`,`subway`,`airport`,`lg`,`lat`,`summary`,`area`,`equipment`,`seo_title`,`seo_des`,`order_key`,`state`,`create_time`,`update_time`,`tag`,`bs_id`,`discount`) VALUES ('13','淮海国际广场商务中心','/uploads/image/20180811/5f3bb974e160628bf4c452b77483ecdf.jpg','1','3500','2','5','黄浦区淮海中路1128号','1/10号线陕西南路站，步行1分钟。','距离虹桥机场约12公里，浦东机场约37公里','','','提供共387个工位，能够包含15-70人的不同面积办公室，独立办公室及休息室，内部装修大气优雅，打造了一个高效舒适的商务办公环境。<br />
+','2','1','1533994944','1534174181','性价比高,融资支持','12','','3');
+INSERT INTO `of_product` (`id`,`name`,`img`,`flag`,`rent`,`city_id`,`region_id`,`address`,`subway`,`airport`,`lg`,`lat`,`summary`,`area`,`equipment`,`seo_title`,`seo_des`,`order_key`,`state`,`create_time`,`update_time`,`tag`,`bs_id`,`discount`,`brand_id`) VALUES ('13','淮海国际广场商务中心','/uploads/image/20180811/5f3bb974e160628bf4c452b77483ecdf.jpg','1','3500','2','5','黄浦区淮海中路1128号','1/10号线陕西南路站，步行1分钟。','距离虹桥机场约12公里，浦东机场约37公里','','','提供共387个工位，能够包含15-70人的不同面积办公室，独立办公室及休息室，内部装修大气优雅，打造了一个高效舒适的商务办公环境。<br />
 <br />
 地处南京西路商圈，地段繁华，是一座甲级写字楼，周围五星级林立酒店、商场等标志性建筑环绕，交通发达，多条地铁线可到达，是企业领袖精明睿智之选择。','<ul class=\"ul-item01\">
                     <li class=\"clearfix\"><div class=\"fl\">1 Seats</div><div class=\"fr\">￥3400元</div></li>
@@ -1347,7 +1405,7 @@ INSERT INTO `of_product` (`id`,`name`,`img`,`flag`,`rent`,`city_id`,`region_id`,
 2、含有LCD电视的会议室，茶水间及休息室，咖啡喝各类茶饮品；<br />
 <br />
 3、房间内有大量储物柜，隔音效果的分离强以及高质量的办公家具。<br />
-<br />','淮海国际广场商务中心，淮海国际广场服务式办公室出租','','1','1','1533995880','1534052853','性价比高,地段一流','12','');
+<br />','淮海国际广场商务中心，淮海国际广场服务式办公室出租','','1','1','1533995880','1534174176','性价比高,地段一流','12','','3');
 
 -- ----------------------------
 -- Table structure for of_product_img
@@ -1367,9 +1425,9 @@ INSERT INTO `of_product_img` (`product_id`,`product_img`) VALUES ('5','/uploads/
 INSERT INTO `of_product_img` (`product_id`,`product_img`) VALUES ('5','/uploads/image/20180805/210ca65794605127267d2ad88ee99ef7.jpg');
 INSERT INTO `of_product_img` (`product_id`,`product_img`) VALUES ('12','/uploads/image/20180811/314a24c3d85f05989ebc0aa66bf7a12c.jpg');
 INSERT INTO `of_product_img` (`product_id`,`product_img`) VALUES ('13','/uploads/image/20180811/2f83ab9154a89acf225f12c3ad0d51c0.jpg');
+INSERT INTO `of_product_img` (`product_id`,`product_img`) VALUES ('10','');
 INSERT INTO `of_product_img` (`product_id`,`product_img`) VALUES ('10','/uploads/image/20180811/43cca55430ec62b7126a332d29cf0e53.jpg');
 INSERT INTO `of_product_img` (`product_id`,`product_img`) VALUES ('11','/uploads/image/20180811/3c40e0b0e2b4ab750c35a1becfc94bd7.jpg');
-INSERT INTO `of_product_img` (`product_id`,`product_img`) VALUES ('10','');
 
 -- ----------------------------
 -- Table structure for of_product_self
@@ -1427,7 +1485,7 @@ CREATE TABLE `of_role` (
 -- Records of of_role
 -- ----------------------------
 INSERT INTO `of_role` (`id`,`role_name`,`role_type`,`describe`,`role_pri`,`add_time`) VALUES ('1','超级管理员','1','最高管理员',' ','1528632337');
-INSERT INTO `of_role` (`id`,`role_name`,`role_type`,`describe`,`role_pri`,`add_time`) VALUES ('2','普通管理员','2','管理网站','16,17,18,19,20,21,75,76,77,22,23,24,25,30,31,32,33,34,35,36,44,45,46,37,47,48,49,38,50,51,52,39,41,42,43,70,71,72,73,56,57,58,59,60,74,61,62,63,64,65,66,67,68,69,1,2,3,4,5,10,11,12,13,14,15','1528633466');
+INSERT INTO `of_role` (`id`,`role_name`,`role_type`,`describe`,`role_pri`,`add_time`) VALUES ('2','普通管理员','2','管理网站','16,17,18,19,20,21,75,76,77,22,23,24,25,30,31,32,33,34,35,39,41,42,43,36,44,45,46,37,47,48,49,38,50,51,52,70,71,72,73,56,57,58,59,60,74,61,62,63,64,65,66,67,68,69,78,80,81,79,1,2,3,4,5,10,11,12,13,14,15','1528633466');
 
 -- ----------------------------
 -- Table structure for of_url_simplify
@@ -1440,7 +1498,7 @@ CREATE TABLE `of_url_simplify` (
   `other_id` smallint(5) unsigned NOT NULL COMMENT '关联id',
   `create_time` int(11) unsigned NOT NULL COMMENT '增加时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=utf8 COMMENT='url简化表';
+) ENGINE=MyISAM AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 COMMENT='url简化表';
 -- ----------------------------
 -- Records of of_url_simplify
 -- ----------------------------
@@ -1467,6 +1525,9 @@ INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_
 INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('27','tiyuzhongxin','City','18','1533993371');
 INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('28','zhonghuan','Product','10','1533994109');
 INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('29','chuangzhi','Product','11','1533994944');
+INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('32','wanda','Brand','1','1534171395');
+INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('33','wanke','Brand','2','1534171436');
+INSERT INTO `of_url_simplify` (`id`,`url_title`,`table_name`,`other_id`,`create_time`) VALUES ('34','legesi','Brand','3','1534171486');
 
 -- ----------------------------
 -- Table structure for of_visitors
@@ -1758,4 +1819,6 @@ INSERT INTO `of_visitors` (`num`,`date`) VALUES ('218','2018-08-08');
 INSERT INTO `of_visitors` (`num`,`date`) VALUES ('220','2018-08-10');
 INSERT INTO `of_visitors` (`num`,`date`) VALUES ('697','2018-08-11');
 INSERT INTO `of_visitors` (`num`,`date`) VALUES ('1','2018-08-10');
+INSERT INTO `of_visitors` (`num`,`date`) VALUES ('377','2018-08-12');
+INSERT INTO `of_visitors` (`num`,`date`) VALUES ('68','2018-08-13');
 

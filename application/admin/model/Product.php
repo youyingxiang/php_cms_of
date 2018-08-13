@@ -58,6 +58,10 @@ class Product extends Model
     {
         return $this->belongsTo('City','city_id');
     }
+    public function Brand()
+    {
+        return $this->belongsTo('Brand','brand_id');
+    }
     public function Region()
     {
     	return $this->belongsTo('City','region_id');
@@ -79,6 +83,11 @@ class Product extends Model
     {
         $value = str_replace("，", ",", $value);
         return $value;
+    }
+    public function getBrandList()
+    {
+        $data = db('brand')->order('order_key asc')->select();
+        return $data;
     }
     
 }

@@ -18,8 +18,8 @@
             <div class="hot">
                 <div class="title">热门地点推荐</div>
                 <ul>
-                {volist name="pData" id="vo"}
-                <li><a class="textHidden" href="{:of_url($vo->urlSimplify->url_title)}">{$vo->name}</a></li>
+                {volist name="cData" id="vo"}
+                <li><a class="textHidden" href="/{$vo->urlSimplify->url_title}/">{$vo->name}</a></li>
                 {/volist}    
                 </ul>
             </div>
