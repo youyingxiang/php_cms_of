@@ -42,7 +42,7 @@ class Index extends Base
         $cData      = $cityMode->getCityInfoByUrltitle($city);
         $cityParent = $cityMode->get($cityMode->getParentIsCity($cData['id']));
         $this->setPageInfo(
-                $cData['name'],
+                $cData['seo_title'],
                 $cData['seo_title'],
                 $cData['seo_des']
             );
@@ -58,7 +58,7 @@ class Index extends Base
         $productMode = new productMode;
         $pData = $productMode->getProductInfo($product);
         $this->setPageInfo(
-                $pData['name'],
+                $pData['seo_title'],
                 $pData['seo_title'],
                 $pData['seo_des']
             );
@@ -126,7 +126,7 @@ class Index extends Base
         $next     = $newsMode->getNext($cityData);
         $cData    = $cityModel->getHotCityCache();
         $this->setPageInfo(
-                $cityData['title'],
+                $cityData['seo_title'],
                 $cityData['seo_title'],
                 $cityData['seo_des']
             );
@@ -142,7 +142,7 @@ class Index extends Base
         $pData      = $brandModel->getProductByBrand($brand);
         $bData      = $brandModel->get($pData[0]['brand_id']);
         $this->setPageInfo(
-                $bData['name'],
+                $bData['seo_title'],
                 $bData['seo_title'],
                 $bData['seo_des']
             );

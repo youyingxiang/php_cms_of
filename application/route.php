@@ -32,8 +32,6 @@ if (!empty($_SERVER['PATH_INFO'])) {
 			Route::rule(':city','index/index/city');
 		} else if ($class === 'Product') {
 			Route::rule(':product','index/index/product');
-		} else if ($class === 'Brand') {
-			Route::rule(':brand','index/index/brand');
 		}
 	}
 }

@@ -50,6 +50,7 @@
                                 <label class="col-sm-2 control-label">品牌</label>
                                 <div class="col-sm-7">
                                     <select class="form-control select2" name="brand_id">
+                                    <option value="0" {if condition="$data.brand_id == 0"}selected='selected'{/if}>暂无品牌</option>
                                     {volist name="bData" id="vo"}
                                     <option value="{$vo.id}" {if condition="$vo.id == $data.brand_id"}selected='selected'{/if}>{$vo.name}</option>
                                     {/volist}                              

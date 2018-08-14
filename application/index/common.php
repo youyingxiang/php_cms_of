@@ -1,7 +1,7 @@
 <?php
 function of_url($url_title,$tag = '') {
 	if ($tag) {
-		$result = DS.$tag.DS.$url_title.'.html';
+        $result = DS.$tag.DS.$url_title.'.html';
 	} else {
 		$result = DS.$url_title.'.html';
 	}
