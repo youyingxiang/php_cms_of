@@ -318,7 +318,7 @@ $(function(){
                     return;
                 },
                 success:function(result){
-                    var html += "<option value='0'>无</option>";
+                    var html = "<option value='0'>无</option>";
                     result.forEach(function(item,index){
                         if (bs_id == item['id']) {
                             html += "<option selected='selected' value='"+item.id+"'>"+item.name+"</option>";
