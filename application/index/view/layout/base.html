@@ -100,7 +100,9 @@
         <div class="clear"></div>
         <div class="bottom clearfix">
             <div class="fl">
+                {if condition="!empty($showIndex)"}
                 <div class="link">友情链接：{volist name="link" id="vo"}<a target="_blank" href="{$vo.url}">{$vo.name}</a>{/volist}</div>
+                {/if}
                 <div class="copy">版权所有：{$conf['company_name']['v']} <a href="">{$conf['copyright']['v']}</a></div>
             </div>
             <div class="fr">

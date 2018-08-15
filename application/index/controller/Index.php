@@ -27,6 +27,7 @@ class Index extends Base
 	    		$this->conf['seo_title']['v'],
 	    		$this->conf['seo_des']['v']
     		);
+        $this->assign('showIndex',1);
     	$this->assign('newsData',$newsData);
         $this->assign('prKeys',$prKeys);
         $this->assign('prData',$prData);
@@ -142,7 +143,7 @@ class Index extends Base
         $pData      = $brandModel->getProductByBrand($brand);
         $bData      = $brandModel->get($pData[0]['brand_id']);
         $this->setPageInfo(
-                $bData['seo_title'],
+                $bData['title'],
                 $bData['seo_title'],
                 $bData['seo_des']
             );
