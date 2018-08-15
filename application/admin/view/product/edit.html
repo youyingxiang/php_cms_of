@@ -318,9 +318,9 @@ $(function(){
                     return;
                 },
                 success:function(result){
-                    var html = "";
+                    var html += "<option value='0'>无</option>";
                     result.forEach(function(item,index){
-                        html += "<option value='0'>无</option>";
+                        h
                         if (bs_id == item['id']) {
                             html += "<option selected='selected' value='"+item.id+"'>"+item.name+"</option>";
                         } else {
