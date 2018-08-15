@@ -82,7 +82,7 @@
                             <td style="vertical-align:middle">{$vo->urlSimplify->url_title}</td>
                              <td style="vertical-align:middle"><span class="editable" data-pk="{$vo.id}" data-name="order_key" data-url="{:url(CONTROLLER_NAME.'/edit', 'id='.$vo['id'])}" >{$vo.order_key}</span></td>
                             <td style="vertical-align:middle">
-                                {:authAction(CONTROLLER_NAME.'/edit', 'edit', ['id' => $vo.id,'page'=>input('get.page')])} {:authAction(CONTROLLER_NAME.'/relation_s', 'relation_s',$vo.id)} {:authAction(CONTROLLER_NAME.'/delete', 'delete', $vo.id)}
+                                {:authAction(CONTROLLER_NAME.'/edit', 'edit', ['id' => $vo.id,'page'=>input('get.page')])} {:authAction(CONTROLLER_NAME.'/relation_self', 'relation_self',$vo.id)} {:authAction(CONTROLLER_NAME.'/delete', 'delete', $vo.id)}
                             </td>
                         </tr>
                         {/volist}
