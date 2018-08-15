@@ -305,6 +305,7 @@ $(function(){
                 success:function(result){
                     var html = "";
                     result.forEach(function(item,index){
+                        html += "<option value='0'>无</option>";
                         if (bs_id == item['id']) {
                             html += "<option selected='selected' value='"+item.id+"'>"+item.name+"</option>";
                         } else {
