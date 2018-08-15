@@ -142,7 +142,6 @@ class Index extends Base
         $brandModel = new brandModel;
         $pData      = $brandModel->getProductByBrand($brand);
         $bData      = $brandModel->get($pData[0]['brand_id']);
-        dd($bData);
         $this->setPageInfo(
                 $bData['name'],
                 $bData['name'],
