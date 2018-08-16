@@ -192,4 +192,8 @@ class Index extends Base
         return $this->fetch();
     }
 
+    public function error404() {
+        return response($this->fetch('layout/404'),404);
+    }
+
 }

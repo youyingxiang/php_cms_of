@@ -15,7 +15,7 @@ return [
     // +----------------------------------------------------------------------
 
     // 应用调试模式
-    'app_debug'              => true,
+    'app_debug'              => false,
     // 应用Trace
     'app_trace'              => false,
     // 应用模式状态
@@ -151,12 +151,22 @@ return [
     // 异常页面的模板文件
     'exception_tmpl'         => THINK_PATH . 'tpl' . DS . 'think_exception.tpl',
 
+    'exception_handle' => function(Exception $e){
+        return redirect(url('index/index/error404'));
+    },
+    // 'http_exception_template'    =>  [  
+    //     // // 定义404错误的重定向页面地址  
+    //     // 404 =>  return redirect(url('index//index')), 
+    //     // // 还可以定义其它的HTTP status  
+    //     // 500 =>  return redirect(url('home/index/index')),
+    // ], 
+    'layout_on'                 => true,
     // 错误显示信息,非调试模式有效
     'error_message'          => '页面错误！请稍后再试～',
     // 显示错误信息
     'show_error_msg'         => false,
     // 异常处理handle类 留空使用 \think\exception\Handle
-    'exception_handle'       => '',
+    // 'exception_handle'       => '',
 
     // +----------------------------------------------------------------------
     // | 日志设置

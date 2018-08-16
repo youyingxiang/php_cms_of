@@ -155,10 +155,9 @@ $(function(){
                 },  
                 success:function(result){
                     var array_str = new Array();
-                    var html = "";
+                    var html = "<li><a href='/{:cookie('city_url')}/'>全部区域</a>";
                     result.forEach(function(item,index){
                         array_str[index] = item.id;
-                        html += "<li><a href='/{:cookie('city_url')}/'>全部区域</a>";
                         html += "<li><a href='"+item.of_url+"'>"+item.name+"</a></li>";
                     })
                     $("#region").empty().html(html);

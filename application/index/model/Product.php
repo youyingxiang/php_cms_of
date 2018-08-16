@@ -39,9 +39,10 @@ class Product extends aProduct
    {
       if (input('get.keyword')) {
          $where['name|summary'] = ['like', '%'.trim(input('get.keyword')).'%'];
+      } else {
+         $where['flag']  = 1;
       }
       $where['state'] = 1;
-      $where['flag']  = 1;
       if (input('get.keyword')) 
          $pData = $this->where($where)->order('order_key asc')->paginate('', false, page_param());
       else
