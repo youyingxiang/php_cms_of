@@ -293,3 +293,13 @@ h1,h2,h3,h4,h5,h6{font-weight:normal;}
 .position a{color:#999;}
 .position span{margin:0px 5px;}
 .position span:last-child{color:#333;}
+
+.error{text-align:center;padding:200px 0px 100px 0;color:#222;font-size:22px;}
+.error img{margin:0 auto;margin-bottom:40px;}
+.error .txt{margin-top:15px;}
+.error a{background:#222;width:90px;height:30px;display:inline-block;vertical-align:middle;color:#fff;font-size:12px;line-height:30px;margin-left:10px;margin-top:-5px;}
+
+@media screen and (max-width:1025px) {
+    .error{padding:10% 0;padding-top:110px;font-size:16px;}
+    .error img{max-width:250px;}
+}
