@@ -49,7 +49,7 @@ class Index extends Base
             );
         cookie('city_url',$cityParent->urlSimplify->url_title);
         cookie('city_name',$cityParent['name']);
-        $this->assign('indexProduct','indexProduct');
+        $this->assign('header_p','header_p');
         $this->assign('city_url',$city);
         $this->assign('pData',$pData);
         $this->assign('cityParent',$cityParent);
@@ -150,7 +150,7 @@ class Index extends Base
             );
         $this->assign('bData',$bData);
         $this->assign('pData',$pData);
-        $this->assign('indexProduct','indexProduct');
+        $this->assign('header_p','header_p');
         return $this->fetch();
     }
 
