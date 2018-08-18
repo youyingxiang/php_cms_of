@@ -50,7 +50,7 @@ function array_changekey($data,$k)
 function page_param(){
     $param = request()->param();
     foreach ($param as $k => $v) {
-        if (!in_array($k,['page','price'])) {
+        if (!in_array($k,['page','price','keyword'])) {
             unset($param[$k]);
         }
     }
