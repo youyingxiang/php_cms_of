@@ -4,7 +4,7 @@
 {block name="body"}
 <div class="page-banner" style="background:url({$ad['楼盘列表-banner'][0]['img']}) no-repeat center center/cover;">
     <div class="w1200">
-            <div class="tit">共搜索到与 " {:input('get.keyword')} " 相关的 {:count($pData)} 个结果</div>
+            <div class="tit">共搜索到与 " {:input('get.keyword')} " 相关的 {if condition="$pData->render()"}多条{else/}{:count($pData)}{/if} 个结果</div>
     </div>
 </div>
 <div class="product-item03">
