@@ -195,6 +195,11 @@ class Index extends Base
     }
 
     public function error404() {
+        $this->setPageInfo(
+                '404页面',
+                $this->conf['seo_title']['v'],
+                $this->conf['seo_des']['v']
+            );
         return response($this->fetch('layout/404'),404);
     }
 
