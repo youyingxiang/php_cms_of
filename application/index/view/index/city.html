@@ -71,10 +71,8 @@
             <li class="grid active"><i></i>网格</li>
             <li class="list"><i></i>列表</li>
         </ul>
-    </div>
-    <div class="tab-con grid-content clearfix" style="display:block;">
-        <div class="w1200 clearfix">
-        	{volist name="pData" id="vo"}
+        <div class="tab-con grid-content clearfix" style="display:block;">
+            {volist name="pData" id="vo"}
             <div class="list">
                 <div class="box">
                     <div class="img"><a href="{:of_url($vo->urlSimplify->url_title)}" style="background:url({$vo.img}) no-repeat center center/cover;"></a></div>
@@ -97,39 +95,39 @@
             {/if}
             <div class="load-more"></div>
         </div>
-    </div>
-    <div class="tab-con list-content clearfix">
-        <div class="w1200 clearfix">
-        	{volist name="pData" id="vo"}
-            <div class="list clearfix">
-                <div class="img fl"><a href="{:of_url($vo->urlSimplify->url_title)}" style="background:url({$vo.img}) no-repeat center center/cover;"></a></div>
-                <div class="right clearfix">
-                    <h2 class="title textHidden"><a href="{:of_url($vo->urlSimplify->url_title)}">{$vo.name}</a></h2>
-                    <ul>
-                        <li class="address textHidden">{$vo.address}</li>
-                        <li class="bus">{$vo.airport}</li>
-                        <li class="plain">{$vo.subway}</li>
-                    </ul>
-                    <div class="tag-box clearfix">
-                    	{volist name="vo.tag" id="vt"}
-                        <span>{$vt}</span>
-                    	{/volist}                
-                    </div>
-                    <div class="price">
-                        <sup>￥</sup>{$vo.rent}
-                        <span>起人/月</span>
+        <div class="tab-con list-content clearfix">
+            <div class="w1200 clearfix">
+                {volist name="pData" id="vo"}
+                <div class="list clearfix">
+                    <div class="img fl"><a href="{:of_url($vo->urlSimplify->url_title)}" style="background:url({$vo.img}) no-repeat center center/cover;"></a></div>
+                    <div class="right clearfix">
+                        <h2 class="title textHidden"><a href="{:of_url($vo->urlSimplify->url_title)}">{$vo.name}</a></h2>
+                        <ul>
+                            <li class="address textHidden">{$vo.address}</li>
+                            <li class="bus">{$vo.airport}</li>
+                            <li class="plain">{$vo.subway}</li>
+                        </ul>
+                        <div class="tag-box clearfix">
+                            {volist name="vo.tag" id="vt"}
+                            <span>{$vt}</span>
+                            {/volist}                
+                        </div>
+                        <div class="price">
+                            <sup>￥</sup>{$vo.rent}
+                            <span>起人/月</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            {/volist}
-            <div class="clear"></div>
-            <div>
-            {if condition="$pData->render()"}
-                {$pData->render()}
-            {else/}
-                <div class="page"> 
+                {/volist}
+                <div class="clear"></div>
+                <div>
+                {if condition="$pData->render()"}
+                    {$pData->render()}
+                {else/}
+                    <div class="page"> 
+                    </div>
+                {/if}
                 </div>
-            {/if}
             </div>
         </div>
     </div>
