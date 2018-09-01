@@ -282,7 +282,6 @@ h1,h2,h3,h4,h5,h6{font-weight:normal;}
     .page{margin:20px 0;}
 }
 @media screen and (max-width:769px) {
-    .page{display:none;}
     .page a{display:none;}
     .page a.prev,.page a.next{display:inline-block;font-size:16px;}
 }

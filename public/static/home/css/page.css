@@ -301,8 +301,7 @@
     .contact-item02 .form-data .list input[type="button"]{height:40px;line-height:40px;}
 }
 
-.product-item01{margin-top:85px !important;}
-.product-item01 .w1200{padding:60px 15px;}
+.product-item01{margin-top:85px !important;padding:60px 0px;}
 .product-item01 .left{margin-right:380px;}
 .product-item01 .left h1{font-size:30px;}
 .product-item01 .left .contxt{margin:20px 0px 50px 0;font-size:16px;line-height:28px;color:#666;}
@@ -315,8 +314,7 @@
 .product-item01 .left .form-data .list input[type="button"]:hover{color:#35436c;border:2px solid #35436c;}
 
 @media screen and (max-width:1025px) {
-    .product-item01{margin-top:50px !important;}
-    .product-item01 .w1200{padding:30px 15px;padding-bottom:20px;}
+    .product-item01{margin-top:50px !important;padding:30px 0px;padding-bottom:20px;}
     .product-item01 .left h1{font-size:18px;}
     .product-item01 .left .contxt{margin:15px 0px 30px 0;font-size:14px;line-height:24px;}
     .product-item01 .left .form-data .list{margin-bottom:10px;}
@@ -330,8 +328,7 @@
     .product-item01 .left .form-data{display:none;}
 }
 
-.product-item02{margin-bottom:40px;}
-.product-item02 .w1200{border-top:1px solid #e8e8e8;border-bottom:1px solid #e8e8e8;height:75px;border-right:1px solid #e8e8e8;}
+.product-item02{margin-bottom:40px;border-top:1px solid #e8e8e8;border-bottom:1px solid #e8e8e8;height:75px;border-right:1px solid #e8e8e8;}
 .product-item02 .txt{font-size:24px;line-height:73px;}
 .product-item02 ul.tab{}
 .product-item02 ul.tab > li{float:left;width:190px;border-left:1px solid #e8e8e8;position:relative;cursor:pointer;text-align:center;font-size:16px;}
@@ -348,7 +345,7 @@
 .product-item02 ul.tab > li > .select-box::-webkit-scrollbar-track{background:#e8e8e8;}
 
 @media screen and (max-width:1025px) {
-    .product-item02 .w1200{height:auto;border:none;}
+    .product-item02{height:auto;border:none;}
     .product-item02 .txt{display:none;}
     .product-item02 ul.tab{float:none;border-top:1px solid #e8e8e8;border-right:1px solid #e8e8e8;}
     .product-item02 ul.tab > li{width:100%;border-bottom:1px solid #e8e8e8;padding:0px 15px;}
@@ -426,7 +423,7 @@
 @media screen and (max-width:769px) {
 
     .product-item03 ul.tab{border-right:1px solid #e8e8e8;height:45px;}
-    .product-item03 ul.tab li{width:33.33%;margin:0;border-radius:0;border-right:none;font-size:16px;height:45px;line-height:45px;}
+    .product-item03 ul.tab li{width:50%;margin:0;border-radius:0;border-right:none;font-size:16px;height:45px;line-height:45px;}
 
     .product-item03 .tab-con{padding-bottom:20px;}
 
